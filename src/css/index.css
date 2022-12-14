@@ -21,3 +21,7 @@ body {
 .icon {
   padding-right: 8px;
 }
+
+.fa-regular::before {
+  margin-right: 8px;
+}
