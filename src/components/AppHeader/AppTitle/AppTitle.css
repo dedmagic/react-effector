@@ -1,5 +1,4 @@
-.title {
-  color: white;
-  text-transform: uppercase;
-  letter-spacing: 2px;
+.app-title {
+  flex-grow: 1;
+  text-align: center;
 }

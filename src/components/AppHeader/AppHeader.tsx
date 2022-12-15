@@ -1,10 +1,15 @@
-import React from "react";
+import "./AppHeader.css";
+
+import { AppLogo } from "./AppLogo/AppLogo";
 import { AppTitle } from "./AppTitle/AppTitle";
 
 export const AppHeader = () => {
   return (
     <>
-      <AppTitle />
+      <div className="app-header">
+        <AppLogo />
+        <AppTitle />
+      </div>
     </>
   );
 };
