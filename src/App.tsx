@@ -1,7 +1,6 @@
-import React from "react";
-import "./App.css";
-import { AppHeader } from "./components/AppHeader/AppHeader";
-import { AppMain } from "./components/AppMain/AppMain";
+import "./app.css";
+import { AppHeader } from "./components/app-header";
+import { AppMain } from "./components/app-main";
 
 function App() {
   return (
