@@ -5,6 +5,7 @@
 - React
 - MobX
 - Typescript
+- Font Awesome
 
 ## Техническое задание:
 
