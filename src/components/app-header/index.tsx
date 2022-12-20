@@ -1,7 +1,7 @@
-import "./AppHeader.css";
+import "./index.css";
 
-import { AppLogo } from "./AppLogo/AppLogo";
-import { AppTitle } from "./AppTitle/AppTitle";
+import { AppLogo } from "./app-logo";
+import { AppTitle } from "./app-title";
 
 export const AppHeader = () => {
   return (
