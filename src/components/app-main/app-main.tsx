@@ -1,4 +1,4 @@
-import "./index.css";
+import "./app-main.css";
 
 export const AppMain = () => {
   return (

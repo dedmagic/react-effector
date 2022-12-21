@@ -1,4 +1,4 @@
-import "./index.css";
+import "./app-logo.css";
 
 export const AppLogo = () => {
   return (

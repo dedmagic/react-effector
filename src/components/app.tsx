@@ -1,8 +1,8 @@
 import "./app.css";
 
-import { AppFooter } from "./app-footer";
-import { AppHeader } from "./app-header";
-import { AppMain } from "./app-main";
+import { AppFooter } from "./app-footer/app-footer";
+import { AppHeader } from "./app-header/app-header";
+import { AppMain } from "./app-main/app-main";
 
 function App() {
   return (
