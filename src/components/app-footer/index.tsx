@@ -1,3 +1,11 @@
+import "./index.css";
+
 export const AppFooter = () => {
-  return <h3>Footer</h3>;
+  return (
+    <div className="app-footer">
+      <p>
+        Created by <strong>dedmagic</strong>, 2022-2023
+      </p>
+    </div>
+  );
 };

@@ -1,15 +1,19 @@
 @import url(normalize.css);
 @import url(../fontawesome/css/all.css);
 
+:root {
+  --main-background-color: #252b3b;
+}
 
 body {
   background-color: #1d222e;
-  font-family: Inter, Consolas, sans-serif;
-  /* font-family: Consolas, sans-serif; */
+  font-family: "Roboto Condensed", Consolas, sans-serif;
   color: white;
+  width: 100%;
+  height: 100%;
 }
 
-@font-face {
+/* @font-face {
   font-family: Inter;
   font-style: normal;
   font-weight: 500;
@@ -17,7 +21,7 @@ body {
   src:
     url(../fonts/inter-medium.woff2) format("woff2"),
     url(../fonts/inter-medium.woff) format("woff");
-}
+} */
 
 .icon {
   padding-right: 8px;
