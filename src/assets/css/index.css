@@ -2,12 +2,19 @@
 @import url(../fontawesome/css/all.css);
 
 :root {
-  --main-background-color: #252b3b;
+  --main-background-color: #1d222e;
+  --content-background-color: #252b3b;
+}
+
+* {
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  background-color: #1d222e;
-  font-family: "Roboto Condensed", Consolas, sans-serif;
+  background-color: var(--main-background-color);
+  /* font-family: "Roboto Condensed", Consolas, sans-serif; */
+  font-family: Verdana, sans-serif;
   color: white;
   width: 100%;
 }

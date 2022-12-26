@@ -1,3 +1,25 @@
+.main-menu {
+  background-color: var(--content-background-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px 0;
+  width: 260px;
+}
+
 ul {
   list-style: none;
+}
+
+li {
+  padding: 12px 20px;
+}
+
+a {
+  color: #8590a5;
+  text-decoration: none;
+}
+
+a:hover {
+  color: white;
 }

@@ -1,5 +1,6 @@
 .title {
   color: white;
   text-transform: uppercase;
-  /* letter-spacing: 2px; */
+  letter-spacing: 2px;
+  padding: 0 16px;
 }

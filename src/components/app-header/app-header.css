@@ -1,6 +1,7 @@
 .app-header {
   display: flex;
-  background-color: var(--main-background-color);
+  background-color: var(--content-background-color);
   box-shadow: 1px 0 20px rgb(0 0 0 / 5%);
   font-size: 20px;
+  padding: 20px 0;
 }

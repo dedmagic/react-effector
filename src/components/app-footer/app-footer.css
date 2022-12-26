@@ -1,7 +1,8 @@
 .app-footer {
-  background-color: var(--main-background-color);
+  background-color: var(--content-background-color);
   height: 50px;
 
   display: flex;
   justify-content: center;
+  align-items: center;
 }
