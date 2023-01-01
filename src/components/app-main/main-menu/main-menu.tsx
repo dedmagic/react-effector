@@ -6,16 +6,28 @@ export const MainMenu = () => {
     <div className="main-menu">
       <ul className="business-logic-menu">
         <li>
-          <a href="#">Поручения</a>
+          <a href="#">
+            {/* <i className="fa fa-person-digging"></i>Поручения */}
+            <i className="fa fa-person-walking-arrow-right"></i>Поручения
+          </a>
         </li>
         <li>
-          <a href="#">Сотрудники</a>
+          <a href="#">
+            {/* <i className="fa fa-person-praying"></i>Сотрудники */}
+            {/* <i className="fa fa-users"></i>Сотрудники */}
+            <i className="fa fa-people-group"></i>Сотрудники
+          </a>
         </li>
         <li>
-          <a href="#">Должности</a>
+          <a href="#">
+            {/* <i className="fa fa-user-tie"></i>Должности */}
+            <i className="fa-regular fa-address-card"></i>Должности
+          </a>
         </li>
         <li>
-          <a href="#">Аналитика</a>
+          <a href="#">
+            <i className="fa fa-chart-line"></i>Аналитика
+          </a>
         </li>
       </ul>
       <ul className="support-menu">

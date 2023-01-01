@@ -29,10 +29,7 @@ body {
     url(../fonts/inter-medium.woff) format("woff");
 } */
 
-.icon {
-  padding-right: 8px;
-}
-
-.fa-regular::before {
+.fa-regular::before,
+.fa::before {
   margin-right: 8px;
 }
