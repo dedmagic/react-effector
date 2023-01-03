@@ -1,3 +1,3 @@
 export const JobTitles = () => {
-  return <h2>JobTitles</h2>;
+  return <h4 className="pageTitle">Должности</h4>;
 };

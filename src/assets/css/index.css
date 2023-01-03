@@ -13,8 +13,7 @@
 
 body {
   background-color: var(--main-background-color);
-  /* font-family: "Roboto Condensed", Consolas, sans-serif; */
-  font-family: Verdana, sans-serif;
+  font-family: "Roboto Condensed", Consolas, sans-serif;
   color: white;
   width: 100%;
 }
@@ -32,4 +31,8 @@ body {
 .fa-regular::before,
 .fa::before {
   margin-right: 8px;
+}
+
+.pageTitle {
+  margin: 20px;
 }

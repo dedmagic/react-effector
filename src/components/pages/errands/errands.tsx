@@ -1,3 +1,10 @@
+import { PageMock } from "../../common/page-mock/page-mock";
+
 export const Errands = () => {
-  return <h2>Errands</h2>;
+  return (
+    <>
+      <h4 className="pageTitle">Поручения</h4>
+      <PageMock />
+    </>
+  );
 };

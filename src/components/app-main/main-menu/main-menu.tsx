@@ -1,19 +1,10 @@
 import "./main-menu.css";
 
-import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
-
-import {
-  Analytics,
-  Employees,
-  Errands,
-  Help,
-  JobTitles,
-  Settings,
-} from "../../pages";
+import { Link } from "react-router-dom";
 
 export const MainMenu = () => {
   return (
-    <BrowserRouter>
+    <>
       <div className="main-menu">
         <ul className="business-logic-menu">
           <li>
@@ -50,17 +41,6 @@ export const MainMenu = () => {
           </li>
         </ul>
       </div>
-
-      <main>
-        <Routes>
-          <Route path="/help" element={<Help />} />
-          <Route path="/settings" element={<Settings />} />
-          <Route path="/analytics" element={<Analytics />} />
-          <Route path="/job-titles" element={<JobTitles />} />
-          <Route path="/employees" element={<Employees />} />
-          <Route path="/errands" element={<Errands />} />
-        </Routes>
-      </main>
-    </BrowserRouter>
+    </>
   );
 };
