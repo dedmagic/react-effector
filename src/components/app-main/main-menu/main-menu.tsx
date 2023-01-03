@@ -1,49 +1,66 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import "./main-menu.css";
+
+import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
+
+import {
+  Analytics,
+  Employees,
+  Errands,
+  Help,
+  JobTitles,
+  Settings,
+} from "../../pages";
 
 export const MainMenu = () => {
   return (
-    <div className="main-menu">
-      <ul className="business-logic-menu">
-        <li>
-          <a href="#">
-            {/* <i className="fa fa-person-digging"></i>Поручения */}
-            <i className="fa fa-person-walking-arrow-right"></i>Поручения
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            {/* <i className="fa fa-person-praying"></i>Сотрудники */}
-            {/* <i className="fa fa-users"></i>Сотрудники */}
-            <i className="fa fa-people-group"></i>Сотрудники
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            {/* <i className="fa fa-user-tie"></i>Должности */}
-            <i className="fa-regular fa-address-card"></i>Должности
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <i className="fa fa-chart-line"></i>Аналитика
-          </a>
-        </li>
-      </ul>
-      <ul className="support-menu">
-        <li>
-          <a href="#">
-            <i className="fa fa-gear"></i>
-            Настройки
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <i className="fa-regular fa-circle-question"></i>
-            Помощь
-          </a>
-        </li>
-      </ul>
-    </div>
+    <BrowserRouter>
+      <div className="main-menu">
+        <ul className="business-logic-menu">
+          <li>
+            <Link to="/errands">
+              <i className="fa fa-person-walking-arrow-right"></i>Поручения
+            </Link>
+          </li>
+          <li>
+            <Link to="/employees">
+              <i className="fa fa-people-group"></i>Сотрудники
+            </Link>
+          </li>
+          <li>
+            <Link to="/job-titles">
+              <i className="fa-regular fa-address-card"></i>Должности
+            </Link>
+          </li>
+          <li>
+            <Link to="/analytics">
+              <i className="fa fa-chart-line"></i>Аналитика
+            </Link>
+          </li>
+        </ul>
+        <ul className="support-menu">
+          <li>
+            <Link to="/settings">
+              <i className="fa fa-gear"></i>Настройки
+            </Link>
+          </li>
+          <li>
+            <Link to="/help">
+              <i className="fa-regular fa-circle-question"></i>Помощь
+            </Link>
+          </li>
+        </ul>
+      </div>
+
+      <main>
+        <Routes>
+          <Route path="/help" element={<Help />} />
+          <Route path="/settings" element={<Settings />} />
+          <Route path="/analytics" element={<Analytics />} />
+          <Route path="/job-titles" element={<JobTitles />} />
+          <Route path="/employees" element={<Employees />} />
+          <Route path="/errands" element={<Errands />} />
+        </Routes>
+      </main>
+    </BrowserRouter>
   );
 };
