@@ -1,7 +1,11 @@
 .app-header {
-  display: flex;
-  background-color: var(--content-background-color);
-  box-shadow: 1px 0 20px rgb(0 0 0 / 5%);
-  font-size: 20px;
+  z-index: 102;
+
   padding: 20px 0;
+
+  background-color: var(--content-background-color);
+  box-shadow: 0 2px 4px rgb(0 0 0 / 8%);
+
+  font-size: 20px;
+  display: flex;
 }
