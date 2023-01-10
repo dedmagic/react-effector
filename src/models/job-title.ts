@@ -7,6 +7,10 @@ export interface JobTitle {
   parentId?: number;
 }
 
+export interface JobTitleView extends JobTitle {
+  parentName?: string;
+}
+
 export const addJobTitle = createEvent<JobTitle>("add job title");
 const addJobTitleHandler = (
   state: JobTitle[],
@@ -37,3 +41,10 @@ export const $jobTitles = createStore<JobTitle[]>(jobTitlesMock)
   .on(addJobTitle, addJobTitleHandler)
   .on(removeJobTitle, removeJobTitleHandler)
   .on(updateJobTitle, updateJobTitleHandler);
+
+export const $jobTitlesWithParentName = $jobTitles.map((jobTitles) => {
+  return jobTitles.map((jt) => ({
+    ...jt,
+    parentName: jobTitles.find((parent) => parent.id === jt.parentId)?.name,
+  }));
+});
