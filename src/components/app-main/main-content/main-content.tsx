@@ -1,3 +1,4 @@
+import "./main-content.css";
 import { Route, Routes } from "react-router";
 
 import {

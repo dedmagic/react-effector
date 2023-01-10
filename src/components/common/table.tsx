@@ -19,15 +19,19 @@ export const Table = (props: TableProps) => {
   );
 
   return (
-    <table>
-      <tr>
-        {columns.map((column) => (
-          <th>{column.caption}</th>
-        ))}
-      </tr>
-      {data.map((row) => {
-        return createRow(row);
-      })}
+    <table className="data-table">
+      <thead>
+        <tr>
+          {columns.map((column) => (
+            <th>{column.caption}</th>
+          ))}
+        </tr>
+      </thead>
+      <tbody>
+        {data.map((row) => {
+          return createRow(row);
+        })}
+      </tbody>
     </table>
   );
 };

@@ -16,7 +16,7 @@ li {
 }
 
 a {
-  color: #8590a5;
+  color: var(--content-text-color);
   text-decoration: none;
 }
 
