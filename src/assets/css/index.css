@@ -17,6 +17,7 @@ body {
   font-family: "Roboto Condensed", Consolas, sans-serif;
   color: white;
   width: 100%;
+  font-size: 20px;
 }
 
 /* @font-face {
@@ -38,8 +39,29 @@ body {
   margin: 20px;
 }
 
+.tableWrapper {
+  padding: 16px;
+}
+
 table.data-table {
   background-color: var(--content-background-color);
   color: var(--content-text-color);
   width: 100%;
+  padding: 16px;
+}
+
+table.data-table tr {
+  border-bottom: 1px solid var(--content-text-color);
+}
+
+table.data-table th {
+  text-align: left;
+  color: #b5c0d5;
+}
+
+table.data-table td,
+table.data-table th {
+  padding: 12px;
+  /* border-bottom: 1px solid var(--content-text-color); */
+  border-bottom: 1px solid #79859c;
 }

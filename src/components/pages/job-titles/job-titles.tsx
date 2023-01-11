@@ -20,7 +20,10 @@ const columns: Column[] = [
     dataName: "name",
   },
   {
-    caption: "Кому подчиняется",
+    caption: "Непосредственный руководитель",
     dataName: "parentName",
+  },
+  {
+    caption: "Action",
   },
 ];
