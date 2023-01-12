@@ -24,7 +24,7 @@ export const Table = (props: TableProps) => {
     <div className="tableWrapper">
       <table className="data-table">
         <thead>
-          <tr>
+          <tr className="header">
             {columns.map((column) => (
               <th>{column.caption}</th>
             ))}

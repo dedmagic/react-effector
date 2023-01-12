@@ -5,6 +5,7 @@
   --main-background-color: #1d222e;
   --content-background-color: #252b3b;
   --content-text-color: #8590a5;
+  --highlited-background-color: #2d3448;
 }
 
 * {
@@ -52,6 +53,14 @@ table.data-table {
 
 table.data-table tr {
   border-bottom: 1px solid var(--content-text-color);
+}
+
+table.data-table tr:hover {
+  background-color: var(--highlited-background-color);
+}
+
+table.data-table tr.header:hover {
+  background-color: inherit;
 }
 
 table.data-table th {
