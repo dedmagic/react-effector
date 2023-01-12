@@ -47,7 +47,7 @@ body {
 table.data-table {
   background-color: var(--content-background-color);
   color: var(--content-text-color);
-  width: 100%;
+  /* width: 100%; */
   padding: 16px;
 }
 
@@ -69,4 +69,8 @@ table.data-table th {
   padding: 12px;
   /* border-bottom: 1px solid var(--content-text-color); */
   border-bottom: 1px solid #79859c;
+}
+
+.action+.action {
+  margin-left: 12px;
 }

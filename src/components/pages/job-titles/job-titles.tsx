@@ -14,19 +14,33 @@ export const JobTitles = () => {
   );
 };
 
+const editHandler = () => {};
+
+const deleteHandler = () => {};
+
 const columns: Column[] = [
   {
-    caption: "Должность",
+    header: "Должность",
     dataName: "name",
   },
   {
-    caption: "Непосредственный руководитель",
+    header: "Непосредственный руководитель",
     dataName: "parentName",
   },
   {
-    caption: "Action",
+    header: () => <i className="fa fa-gears"></i>,
     render: () => {
-      return <i>test</i>;
+      return (
+        /* eslint-disable jsx-a11y/anchor-is-valid */
+        <>
+          <a href="#" onClick={editHandler} className="action">
+            <i className="far fa-edit"></i>
+          </a>
+          <a href="#" onClick={deleteHandler} className="action">
+            <i className="far fa-trash-alt"></i>
+          </a>
+        </>
+      );
     },
   },
 ];

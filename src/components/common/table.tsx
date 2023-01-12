@@ -1,9 +1,14 @@
 import { ReactNode } from "react";
 
+type RenderFunction = () => ReactNode;
+
+type CellContent = string | RenderFunction;
+
 export interface Column {
-  caption: string;
+  header: CellContent;
+  width?: number;
   dataName?: string;
-  render?: () => ReactNode;
+  render?: RenderFunction;
 }
 
 export interface TableProps {
@@ -26,6 +31,14 @@ export const Table = (props: TableProps) => {
     return <td>***</td>;
   };
 
+  const createColumnHeader = (content: CellContent) => {
+    if (typeof content === "string") {
+      return content;
+    }
+
+    return content();
+  };
+
   const createRow = (row: any) => (
     <tr>{columns.map((column) => createCell(row, column))}</tr>
   );
@@ -36,7 +49,7 @@ export const Table = (props: TableProps) => {
         <thead>
           <tr className="header">
             {columns.map((column) => (
-              <th>{column.caption}</th>
+              <th>{createColumnHeader(column.header)}</th>
             ))}
           </tr>
         </thead>
