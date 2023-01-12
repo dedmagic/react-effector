@@ -25,5 +25,8 @@ const columns: Column[] = [
   },
   {
     caption: "Action",
+    render: () => {
+      return <i>test</i>;
+    },
   },
 ];

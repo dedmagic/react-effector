@@ -55,12 +55,8 @@ table.data-table tr {
   border-bottom: 1px solid var(--content-text-color);
 }
 
-table.data-table tr:hover {
+table.data-table tr:not(.header):hover {
   background-color: var(--highlited-background-color);
-}
-
-table.data-table tr.header:hover {
-  background-color: inherit;
 }
 
 table.data-table th {

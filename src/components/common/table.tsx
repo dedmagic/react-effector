@@ -1,6 +1,9 @@
+import { ReactNode } from "react";
+
 export interface Column {
   caption: string;
   dataName?: string;
+  render?: () => ReactNode;
 }
 
 export interface TableProps {
@@ -12,8 +15,15 @@ export const Table = (props: TableProps) => {
   const { columns, data } = props;
 
   const createCell = (row: any, column: Column) => {
-    const cellContent = column.dataName ? row[column.dataName] : "***";
-    return <td>{cellContent}</td>;
+    if (column.dataName) {
+      return <td>{row[column.dataName]}</td>;
+    }
+
+    if (column.render) {
+      return <td>{column.render()}</td>;
+    }
+
+    return <td>***</td>;
   };
 
   const createRow = (row: any) => (
