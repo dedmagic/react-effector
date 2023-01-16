@@ -1,3 +1,4 @@
+import { Card } from "components/common/card/card";
 import { Column, Table } from "components/common/table";
 import { useStore } from "effector-react";
 
@@ -9,7 +10,10 @@ export const JobTitles = () => {
   return (
     <>
       <h4 className="pageTitle">Должности</h4>
-      <Table columns={columns} data={store} />
+      <Card>
+        <button>QQQQQ</button>
+        <Table columns={columns} data={store} />
+      </Card>
     </>
   );
 };

@@ -49,6 +49,7 @@ table.data-table {
   color: var(--content-text-color);
   /* width: 100%; */
   padding: 16px;
+  border-spacing: 10px 0px;
 }
 
 table.data-table tr {

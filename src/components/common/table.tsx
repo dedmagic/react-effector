@@ -6,9 +6,9 @@ type CellContent = string | RenderFunction;
 
 export interface Column {
   header: CellContent;
-  width?: number;
   dataName?: string;
   render?: RenderFunction;
+  width?: number;
 }
 
 export interface TableProps {
