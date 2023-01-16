@@ -48,8 +48,9 @@ table.data-table {
   background-color: var(--content-background-color);
   color: var(--content-text-color);
   /* width: 100%; */
-  padding: 16px;
+  /* padding: 16px; */
   border-spacing: 10px 0px;
+  margin-bottom: 16px;
 }
 
 table.data-table tr {
@@ -74,4 +75,28 @@ table.data-table th {
 
 .action+.action {
   margin-left: 12px;
+}
+
+button.table-action {
+  cursor: pointer;
+  border-radius: 0.25rem;
+  line-height: 1.5;
+  padding: 8px 12px;
+  margin-bottom: 16px;
+  background-color: var(--highlited-background-color);
+  border: none;
+  color: white;
+}
+
+
+button.table-action:hover {
+  background-color: #0f9cf3;
+}
+
+.icon-before-label {
+  margin-right: 8px;
+}
+
+.center {
+  text-align: center;
 }

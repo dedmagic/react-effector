@@ -44,21 +44,21 @@ export const Table = (props: TableProps) => {
   );
 
   return (
-    <div className="tableWrapper">
-      <table className="data-table">
-        <thead>
-          <tr className="header">
-            {columns.map((column) => (
-              <th>{createColumnHeader(column.header)}</th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {data.map((row) => {
-            return createRow(row);
-          })}
-        </tbody>
-      </table>
-    </div>
+    // <div className="tableWrapper">
+    <table className="data-table">
+      <thead>
+        <tr className="header">
+          {columns.map((column) => (
+            <th>{createColumnHeader(column.header)}</th>
+          ))}
+        </tr>
+      </thead>
+      <tbody>
+        {data.map((row) => {
+          return createRow(row);
+        })}
+      </tbody>
+    </table>
+    // </div>
   );
 };

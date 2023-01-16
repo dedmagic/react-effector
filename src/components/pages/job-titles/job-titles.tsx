@@ -11,7 +11,10 @@ export const JobTitles = () => {
     <>
       <h4 className="pageTitle">Должности</h4>
       <Card>
-        <button>QQQQQ</button>
+        <button className="table-action">
+          <i className="far fa-square-plus icon-before-label"></i>
+          Добавить должность
+        </button>
         <Table columns={columns} data={store} />
       </Card>
     </>
@@ -32,7 +35,11 @@ const columns: Column[] = [
     dataName: "parentName",
   },
   {
-    header: () => <i className="fa fa-gears"></i>,
+    header: () => (
+      <div className="center">
+        <i className="fa fa-gears"></i>
+      </div>
+    ),
     render: () => {
       return (
         /* eslint-disable jsx-a11y/anchor-is-valid */
