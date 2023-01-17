@@ -1,14 +1,27 @@
 @import url(normalize.css);
 @import url(../fontawesome/css/all.css);
 
-
-body {
-  background-color: #1d222e;
-  font-family: Inter, sans-serif;
-  color: white;
+:root {
+  --main-background-color: #1d222e;
+  --content-background-color: #252b3b;
+  --content-text-color: #8590a5;
+  --highlited-background-color: #2d3448;
 }
 
-@font-face {
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--main-background-color);
+  font-family: "Roboto Condensed", Consolas, sans-serif;
+  color: white;
+  width: 100%;
+  font-size: 20px;
+}
+
+/* @font-face {
   font-family: Inter;
   font-style: normal;
   font-weight: 500;
@@ -16,12 +29,74 @@ body {
   src:
     url(../fonts/inter-medium.woff2) format("woff2"),
     url(../fonts/inter-medium.woff) format("woff");
-}
+} */
 
-.icon {
-  padding-right: 8px;
-}
-
-.fa-regular::before {
+.fa-regular::before,
+.fa::before {
   margin-right: 8px;
+}
+
+.pageTitle {
+  margin: 20px;
+}
+
+.tableWrapper {
+  padding: 16px;
+}
+
+table.data-table {
+  background-color: var(--content-background-color);
+  color: var(--content-text-color);
+  /* width: 100%; */
+  /* padding: 16px; */
+  border-spacing: 10px 0px;
+  margin-bottom: 16px;
+}
+
+table.data-table tr {
+  border-bottom: 1px solid var(--content-text-color);
+}
+
+table.data-table tr:not(.header):hover {
+  background-color: var(--highlited-background-color);
+}
+
+table.data-table th {
+  text-align: left;
+  color: #b5c0d5;
+}
+
+table.data-table td,
+table.data-table th {
+  padding: 12px;
+  /* border-bottom: 1px solid var(--content-text-color); */
+  border-bottom: 1px solid #79859c;
+}
+
+.action+.action {
+  margin-left: 12px;
+}
+
+button.table-action {
+  cursor: pointer;
+  border-radius: 0.25rem;
+  line-height: 1.5;
+  padding: 8px 12px;
+  margin-bottom: 16px;
+  background-color: var(--highlited-background-color);
+  border: none;
+  color: white;
+}
+
+
+button.table-action:hover {
+  background-color: #0f9cf3;
+}
+
+.icon-before-label {
+  margin-right: 8px;
+}
+
+.center {
+  text-align: center;
 }

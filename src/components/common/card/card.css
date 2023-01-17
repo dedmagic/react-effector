@@ -1,0 +1,10 @@
+.card {
+  display: table;
+  background-color: var(--content-background-color);
+  margin-left: 16px;
+  padding: 24px;
+}
+
+.card-title {
+  margin: 24px;
+}
