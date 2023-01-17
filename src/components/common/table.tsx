@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 
-type RenderFunction = () => ReactNode;
+type RenderFunction = (row?: any) => ReactNode;
 
 type CellContent = string | RenderFunction;
 
@@ -25,7 +25,7 @@ export const Table = (props: TableProps) => {
     }
 
     if (column.render) {
-      return <td>{column.render()}</td>;
+      return <td>{column.render(row)}</td>;
     }
 
     return <td>***</td>;
@@ -44,7 +44,6 @@ export const Table = (props: TableProps) => {
   );
 
   return (
-    // <div className="tableWrapper">
     <table className="data-table">
       <thead>
         <tr className="header">
@@ -59,6 +58,5 @@ export const Table = (props: TableProps) => {
         })}
       </tbody>
     </table>
-    // </div>
   );
 };

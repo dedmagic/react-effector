@@ -2,15 +2,10 @@ import { Card } from "components/common/card/card";
 import { Column, Table } from "components/common/table";
 import { useStore } from "effector-react";
 
-import {
-  $jobTitles,
-  $jobTitlesWithParentName,
-  removeJobTitle,
-} from "models/job-title";
+import { $jobTitlesWithParentName, removeJobTitle } from "models/job-title";
 
 export const JobTitles = () => {
   const viewData = useStore($jobTitlesWithParentName);
-  const store = useStore($jobTitles);
 
   return (
     <>
@@ -30,11 +25,8 @@ const addHandler = () => {};
 
 const editHandler = () => {};
 
-// const deleteHandler = (event: any) => {
-const deleteHandler = () => {
-  // store.
-  // console.log(typeof event);
-  // console.log(event);
+const deleteHandler = (jobTitleId: number) => {
+  removeJobTitle(jobTitleId);
 };
 
 const columns: Column[] = [
@@ -52,14 +44,14 @@ const columns: Column[] = [
         <i className="fa fa-gears"></i>
       </div>
     ),
-    render: () => {
+    render: (row: any) => {
       return (
         /* eslint-disable jsx-a11y/anchor-is-valid */
         <>
           <a href="#" onClick={editHandler} className="action">
             <i className="far fa-edit"></i>
           </a>
-          <a href="#" onClick={deleteHandler} className="action">
+          <a href="#" onClick={() => deleteHandler(row.id)} className="action">
             <i className="far fa-trash-alt"></i>
           </a>
         </>
