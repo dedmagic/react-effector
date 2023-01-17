@@ -2,28 +2,40 @@ import { Card } from "components/common/card/card";
 import { Column, Table } from "components/common/table";
 import { useStore } from "effector-react";
 
-import { $jobTitlesWithParentName } from "models/job-title";
+import {
+  $jobTitles,
+  $jobTitlesWithParentName,
+  removeJobTitle,
+} from "models/job-title";
 
 export const JobTitles = () => {
-  const store = useStore($jobTitlesWithParentName);
+  const viewData = useStore($jobTitlesWithParentName);
+  const store = useStore($jobTitles);
 
   return (
     <>
       <h4 className="pageTitle">Должности</h4>
       <Card>
-        <button className="table-action">
+        <button className="table-action" onClick={addHandler}>
           <i className="far fa-square-plus icon-before-label"></i>
           Добавить должность
         </button>
-        <Table columns={columns} data={store} />
+        <Table columns={columns} data={viewData} />
       </Card>
     </>
   );
 };
 
+const addHandler = () => {};
+
 const editHandler = () => {};
 
-const deleteHandler = () => {};
+// const deleteHandler = (event: any) => {
+const deleteHandler = () => {
+  // store.
+  // console.log(typeof event);
+  // console.log(event);
+};
 
 const columns: Column[] = [
   {
