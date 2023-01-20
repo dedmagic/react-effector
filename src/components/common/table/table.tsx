@@ -1,15 +1,4 @@
-import { ReactNode } from "react";
-
-type RenderFunction = (row?: any) => ReactNode;
-
-type CellContent = string | RenderFunction;
-
-export interface Column {
-  header: CellContent;
-  dataName?: string;
-  render?: RenderFunction;
-  width?: number;
-}
+import { CellContent, Column, shouldRender, isDataColumn } from "./types";
 
 export interface TableProps {
   columns: Column[];
@@ -20,15 +9,16 @@ export const Table = (props: TableProps) => {
   const { columns, data } = props;
 
   const createCell = (row: any, column: Column) => {
-    if (column.dataName) {
-      return <td>{row[column.dataName]}</td>;
-    }
-
-    if (column.render) {
+    if (shouldRender(column)) {
       return <td>{column.render(row)}</td>;
     }
 
-    return <td>***</td>;
+    if (isDataColumn(column)) {
+      return <td>{row[column.dataName]}</td>;
+    }
+
+    const guard: never = column;
+    return guard;
   };
 
   const createColumnHeader = (content: CellContent) => {
