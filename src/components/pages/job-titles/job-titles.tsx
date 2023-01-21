@@ -6,11 +6,19 @@ import { useState } from "react";
 
 export const JobTitles = () => {
   const viewData = useStore($jobTitlesWithParentName);
+
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [currentJobTitleId, setCurrentJobTitleId] = useState(0);
 
   const deleteHandler = (jobTitleId: number) => {
+    setCurrentJobTitleId(jobTitleId);
     setIsModalVisible(true);
     //removeJobTitle(jobTitleId);
+  };
+
+  const approveDelete = () => {
+    setIsModalVisible(false);
+    removeJobTitle(currentJobTitleId);
   };
 
   const columns = getColumns(deleteHandler);
@@ -30,7 +38,10 @@ export const JobTitles = () => {
         title="Удаление должности"
         content="Вы действительно хотите удалить эту должность?"
         footer={
-          <button onClick={() => setIsModalVisible(false)}>Отмена</button>
+          <>
+            <button onClick={() => approveDelete()}>Да, хочу</button>
+            <button onClick={() => setIsModalVisible(false)}>Отмена</button>
+          </>
         }
         onClose={() => setIsModalVisible(false)}
       />

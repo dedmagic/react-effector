@@ -14,7 +14,6 @@
 * {
   margin: 0;
   padding: 0;
-  /* position: static; */
 }
 
 body {
@@ -51,6 +50,7 @@ body {
 table.data-table {
   background-color: var(--content-background-color);
   color: var(--content-text-color);
+  /* Для растягивания на всю ширину: */
   /* width: 100%; */
   /* padding: 16px; */
   border-spacing: 10px 0px;
@@ -93,6 +93,10 @@ button {
 
 button:hover {
   background-color: #0f9cf3;
+}
+
+button+button {
+  margin-left: 12px;
 }
 
 button.table-action {
