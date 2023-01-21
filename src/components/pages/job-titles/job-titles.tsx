@@ -1,15 +1,32 @@
-import { Card, Column, Table } from "components/common";
+import { useState } from "react";
 import { useStore } from "effector-react";
 
-import { $jobTitlesWithParentName, removeJobTitle } from "models/job-title";
-import { useState } from "react";
+import { ByIdHandler, NullableNumber } from "types";
+import { Card, Column, Table } from "components/common";
+
+import {
+  $jobTitlesWithParentName,
+  JobTitleView,
+  removeJobTitle,
+} from "models/job-title";
 import { DeleteDialog } from "./delete-dialog";
+import { EditDialog } from "./edit-dialog";
 
 export const JobTitles = () => {
   const viewData = useStore($jobTitlesWithParentName);
 
+  const [isEditDialogVisible, setIsEditDialogVisible] = useState(false);
+  const [currentJobTitleId, setCurrentJobTitleId] =
+    useState<NullableNumber>(null);
   const [isDeleteDialogVisible, setIsDeleteDialogVisible] = useState(false);
-  const [currentJobTitleId, setCurrentJobTitleId] = useState(0);
+
+  const showEditDialog = () => {
+    setIsEditDialogVisible(true);
+  };
+
+  const closeEditDialog = () => {
+    setIsEditDialogVisible(false);
+  };
 
   const showDeleteDialog = () => {
     setIsDeleteDialogVisible(true);
@@ -19,17 +36,30 @@ export const JobTitles = () => {
     setIsDeleteDialogVisible(false);
   };
 
-  const queryingDeleteHandler = (jobTitleId: number) => {
+  const deleteHandler = (jobTitleId: number) => {
     setCurrentJobTitleId(jobTitleId);
     showDeleteDialog();
   };
 
   const approveDeleteHandler = () => {
     closeDeleteDialog();
-    removeJobTitle(currentJobTitleId);
+    if (currentJobTitleId) {
+      removeJobTitle(currentJobTitleId);
+      setCurrentJobTitleId(null);
+    }
   };
 
-  const columns = getColumns(queryingDeleteHandler);
+  const addHandler = () => {
+    setCurrentJobTitleId(null);
+    showEditDialog();
+  };
+
+  const editHandler = (jobTitleId: number) => {
+    setCurrentJobTitleId(jobTitleId);
+    showEditDialog();
+  };
+
+  const columns = getColumns(editHandler, deleteHandler);
 
   return (
     <>
@@ -41,6 +71,14 @@ export const JobTitles = () => {
         </button>
         <Table columns={columns} data={viewData} />
       </Card>
+      <EditDialog
+        isVisible={isEditDialogVisible}
+        entityId={currentJobTitleId}
+        approveHandler={function (): void {
+          throw new Error("Function not implemented.");
+        }}
+        closeHandler={closeEditDialog}
+      />
       <DeleteDialog
         isVisible={isDeleteDialogVisible}
         closeHandler={closeDeleteDialog}
@@ -50,11 +88,7 @@ export const JobTitles = () => {
   );
 };
 
-const addHandler = () => {};
-
-const editHandler = () => {};
-
-function getColumns(deleteHandler: (jobTitleId: number) => void) {
+function getColumns(editHandler: ByIdHandler, deleteHandler: ByIdHandler) {
   const columns: Column[] = [
     {
       header: "Должность",
@@ -70,11 +104,11 @@ function getColumns(deleteHandler: (jobTitleId: number) => void) {
           <i className="fa fa-gears"></i>
         </div>
       ),
-      render: (row: any) => {
+      render: (row: JobTitleView) => {
         return (
           /* eslint-disable jsx-a11y/anchor-is-valid */
           <>
-            <a href="#" onClick={editHandler} className="action">
+            <a href="#" onClick={() => editHandler(row.id)} className="action">
               <i className="far fa-edit"></i>
             </a>
             <a

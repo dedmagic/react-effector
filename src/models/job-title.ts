@@ -1,9 +1,9 @@
 import { createEvent, createStore } from "effector";
 import { jobTitlesMock } from "./mocks";
 
-export interface JobTitle {
-  id: number;
-  name: string;
+export class JobTitle {
+  id: number = 0;
+  name: string = "";
   parentId?: number;
 }
 
@@ -36,6 +36,7 @@ const updateJobTitleHandler = (
   return [...state];
 };
 
+// TODO: Убрать использование мока после реализации работы с API
 // export const $jobTitles = createStore<JobTitle[]>([])
 export const $jobTitles = createStore<JobTitle[]>(jobTitlesMock)
   .on(addJobTitle, addJobTitleHandler)

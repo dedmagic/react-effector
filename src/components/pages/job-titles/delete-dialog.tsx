@@ -8,6 +8,7 @@ interface DeleteDialogProps {
 
 export const DeleteDialog = (props: DeleteDialogProps) => {
   const { isVisible, closeHandler, approveHandler } = props;
+
   return (
     <Modal
       isVisible={isVisible}
@@ -15,7 +16,7 @@ export const DeleteDialog = (props: DeleteDialogProps) => {
       content="Вы действительно хотите удалить эту должность?"
       footer={
         <>
-          <button onClick={() => approveHandler()}>Удалить</button>
+          <button onClick={approveHandler}>Удалить</button>
           <button onClick={closeHandler}>Отмена</button>
         </>
       }

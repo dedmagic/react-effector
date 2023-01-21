@@ -6,9 +6,12 @@
   /* rgb(37, 43, 59) */
   --content-background-color: #252b3b;
   --content-text-color: #8590a5;
+  /* rgb(45, 52, 72) */
   --highlited-background-color: #2d3448;
   /* rgb(121, 133, 156) */
   --blocks-background-color: #79859c;
+  /* rgb(41, 47, 63) */
+  --input-background-color: #292f3f;
 }
 
 * {
@@ -109,4 +112,18 @@ button.table-action {
 
 .center {
   text-align: center;
+}
+
+.input-label {
+  margin-bottom: 12px;
+}
+
+input {
+  box-sizing: border-box;
+  width: 100%;
+  color: white;
+  /* color: var(--blocks-background-color); */
+  background-color: var(--input-background-color);
+  border: 1px solid var(--highlited-background-color);
+  padding: 8px 12px;
 }
