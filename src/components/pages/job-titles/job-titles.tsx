@@ -10,18 +10,25 @@ export const JobTitles = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [currentJobTitleId, setCurrentJobTitleId] = useState(0);
 
-  const deleteHandler = (jobTitleId: number) => {
-    setCurrentJobTitleId(jobTitleId);
+  const showModal = () => {
     setIsModalVisible(true);
-    //removeJobTitle(jobTitleId);
   };
 
-  const approveDelete = () => {
+  const closeModal = () => {
     setIsModalVisible(false);
+  };
+
+  const queryingDeleteHandler = (jobTitleId: number) => {
+    setCurrentJobTitleId(jobTitleId);
+    showModal();
+  };
+
+  const approveDeleteHandler = () => {
+    closeModal();
     removeJobTitle(currentJobTitleId);
   };
 
-  const columns = getColumns(deleteHandler);
+  const columns = getColumns(queryingDeleteHandler);
 
   return (
     <>
@@ -39,11 +46,11 @@ export const JobTitles = () => {
         content="Вы действительно хотите удалить эту должность?"
         footer={
           <>
-            <button onClick={() => approveDelete()}>Да, хочу</button>
-            <button onClick={() => setIsModalVisible(false)}>Отмена</button>
+            <button onClick={() => approveDeleteHandler()}>Да, хочу</button>
+            <button onClick={closeModal}>Отмена</button>
           </>
         }
-        onClose={() => setIsModalVisible(false)}
+        onClose={closeModal}
       />
     </>
   );
