@@ -1,4 +1,4 @@
-import "./main-content.css";
+import "./content.css";
 import { Route, Routes } from "react-router";
 
 import {
@@ -8,7 +8,7 @@ import {
   Help,
   JobTitles,
   Settings,
-} from "../../pages";
+} from "../../../pages";
 
 export const MainContent = () => {
   return (

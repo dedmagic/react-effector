@@ -1,5 +1,4 @@
-import { Card } from "components/common/card/card";
-import { Column, Table } from "components/common/table";
+import { Card, Column, Table } from "components/common";
 import { useStore } from "effector-react";
 
 import { $jobTitlesWithParentName, removeJobTitle } from "models/job-title";
