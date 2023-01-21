@@ -1,8 +1,9 @@
 /*
   Автор не я, компонент честно украден в инете :). Я только типизировал +
-  убрал мелкие косяки
+  убрал мелкие косяки + стилизовал под проект
 */
 import React, { ReactNode } from "react";
+import "./modal.css";
 
 interface ModalProps {
   isVisible: boolean;

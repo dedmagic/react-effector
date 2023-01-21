@@ -1,5 +1,5 @@
 .modal {
-  position: fixed;
+  position: fixed !important;
   top: 0;
   bottom: 0;
   left: 0;
@@ -17,7 +17,8 @@
 .modal-dialog {
   width: 100%;
   max-width: 550px;
-  background: white;
+  color: var(--blocks-background-color);
+  background-color: var(--content-background-color);
   position: relative;
   margin: 0 20px;
   max-height: calc(100vh - 40px);
@@ -30,6 +31,7 @@
   -webkit-animation-duration: 0.4s;
   animation-name: slide-in;
   animation-duration: 0.5s;
+  border-radius: 5px;
 }
 
 .modal-header,
@@ -40,12 +42,13 @@
 }
 
 .modal-header {
-  border-bottom: 1px solid #dbdbdb;
+  border-bottom: 1px solid var(--highlited-background-color);
   justify-content: space-between;
+  color: white;
 }
 
 .modal-footer {
-  border-top: 1px solid #dbdbdb;
+  /* border-top: 1px solid #dbdbdb; */
   justify-content: flex-end;
 }
 
