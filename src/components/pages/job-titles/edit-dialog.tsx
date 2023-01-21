@@ -20,18 +20,27 @@ export const EditDialog = (props: EditDialogProps) => {
   const entity = entityId
     ? store.find((jt) => jt.id === entityId)
     : new JobTitle();
+
   if (!entity) {
     throw new Error(`Должность с ID = ${entityId} не найдена`);
   }
 
-  const localState = useState<JobTitle>(entity);
+  const [entityName, setEntityName] = useState<string>(entity.name);
+  if (entityName !== entity.name) {
+    setEntityName(entity.name);
+  }
 
   const form = (
     <>
       <div className="input-label">
         <label htmlFor="entity-name">Наименование должности</label>
       </div>
-      <input id="entity-name" placeholder="Введите наименование должности" />
+      <input
+        id="entity-name"
+        placeholder="Введите наименование должности"
+        value={entityName}
+        onChange={(e) => setEntityName(e.target.value)}
+      />
     </>
   );
 

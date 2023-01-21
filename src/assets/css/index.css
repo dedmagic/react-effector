@@ -122,7 +122,6 @@ input {
   box-sizing: border-box;
   width: 100%;
   color: white;
-  /* color: var(--blocks-background-color); */
   background-color: var(--input-background-color);
   border: 1px solid var(--highlited-background-color);
   padding: 8px 12px;
