@@ -1,30 +1,31 @@
-import { Card, Column, Modal, Table } from "components/common";
+import { Card, Column, Table } from "components/common";
 import { useStore } from "effector-react";
 
 import { $jobTitlesWithParentName, removeJobTitle } from "models/job-title";
 import { useState } from "react";
+import { DeleteDialog } from "./delete-dialog";
 
 export const JobTitles = () => {
   const viewData = useStore($jobTitlesWithParentName);
 
-  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [isDeleteDialogVisible, setIsDeleteDialogVisible] = useState(false);
   const [currentJobTitleId, setCurrentJobTitleId] = useState(0);
 
-  const showModal = () => {
-    setIsModalVisible(true);
+  const showDeleteDialog = () => {
+    setIsDeleteDialogVisible(true);
   };
 
-  const closeModal = () => {
-    setIsModalVisible(false);
+  const closeDeleteDialog = () => {
+    setIsDeleteDialogVisible(false);
   };
 
   const queryingDeleteHandler = (jobTitleId: number) => {
     setCurrentJobTitleId(jobTitleId);
-    showModal();
+    showDeleteDialog();
   };
 
   const approveDeleteHandler = () => {
-    closeModal();
+    closeDeleteDialog();
     removeJobTitle(currentJobTitleId);
   };
 
@@ -40,17 +41,10 @@ export const JobTitles = () => {
         </button>
         <Table columns={columns} data={viewData} />
       </Card>
-      <Modal
-        isVisible={isModalVisible}
-        title="Удаление должности"
-        content="Вы действительно хотите удалить эту должность?"
-        footer={
-          <>
-            <button onClick={() => approveDeleteHandler()}>Да, хочу</button>
-            <button onClick={closeModal}>Отмена</button>
-          </>
-        }
-        onClose={closeModal}
+      <DeleteDialog
+        isVisible={isDeleteDialogVisible}
+        closeHandler={closeDeleteDialog}
+        approveHandler={approveDeleteHandler}
       />
     </>
   );
