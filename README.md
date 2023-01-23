@@ -1,9 +1,9 @@
-# react-mobx
+# react-effector
 
 Используемые технологии:
 
 - React
-- MobX
+- Effector
 - Typescript
 - Font Awesome
 
