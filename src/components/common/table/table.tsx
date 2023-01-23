@@ -10,11 +10,11 @@ export const Table = (props: TableProps) => {
 
   const createCell = (row: any, column: Column) => {
     if (shouldRender(column)) {
-      return <td>{column.render(row)}</td>;
+      return <td key={column.key}>{column.render(row)}</td>;
     }
 
     if (isDataColumn(column)) {
-      return <td>{row[column.dataName]}</td>;
+      return <td key={column.key}>{row[column.dataName]}</td>;
     }
 
     const guard: never = column;
@@ -30,7 +30,7 @@ export const Table = (props: TableProps) => {
   };
 
   const createRow = (row: any) => (
-    <tr>{columns.map((column) => createCell(row, column))}</tr>
+    <tr key={row.id}>{columns.map((column) => createCell(row, column))}</tr>
   );
 
   return (
@@ -38,7 +38,7 @@ export const Table = (props: TableProps) => {
       <thead>
         <tr className="header">
           {columns.map((column) => (
-            <th>{createColumnHeader(column.header)}</th>
+            <th key={column.key}>{createColumnHeader(column.header)}</th>
           ))}
         </tr>
       </thead>

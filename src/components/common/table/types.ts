@@ -5,6 +5,7 @@ export type CellContent = string | RenderFunction;
 // Столбец, у которого обязательно должно быть одно из двух:
 // или функция `render`, или имя поля с данными
 interface ColumnBase {
+  key: string;
   header: CellContent;
   width?: number;
 }

@@ -1,34 +1,24 @@
-import { useStore } from "effector-react";
-
-import { NullableNumber } from "types";
+import { useEffect, useState } from "react";
 
 import { Modal } from "components/common";
-import { $jobTitles, JobTitle } from "models/job-title";
-import { useState } from "react";
+
+import { JobTitle } from "models/job-title";
 
 interface EditDialogProps {
   isVisible: boolean;
   closeHandler: () => void;
-  approveHandler: () => void;
-  entityId?: NullableNumber;
+  saveHandler: (jobTitle: JobTitle) => void;
+  jobTitle: JobTitle;
 }
 
 export const EditDialog = (props: EditDialogProps) => {
-  const { isVisible, approveHandler, closeHandler, entityId } = props;
+  const { isVisible, saveHandler, closeHandler, jobTitle } = props;
+  const isNew = !jobTitle.id;
 
-  const store = useStore($jobTitles);
-  const entity = entityId
-    ? store.find((jt) => jt.id === entityId)
-    : new JobTitle();
-
-  if (!entity) {
-    throw new Error(`Должность с ID = ${entityId} не найдена`);
-  }
-
-  const [entityName, setEntityName] = useState<string>(entity.name);
-  if (entityName !== entity.name) {
-    setEntityName(entity.name);
-  }
+  const [entityName, setEntityName] = useState("");
+  useEffect(() => {
+    setEntityName(jobTitle.name);
+  }, [jobTitle]);
 
   const form = (
     <>
@@ -44,16 +34,22 @@ export const EditDialog = (props: EditDialogProps) => {
     </>
   );
 
+  const saveForm = () => {
+    saveHandler({
+      id: jobTitle.id,
+      name: entityName,
+      parentId: jobTitle.parentId,
+    });
+  };
+
   return (
     <Modal
       isVisible={isVisible}
-      title={
-        entityId ? "Редактирование должности" : "Добавление новой должности"
-      }
+      title={isNew ? "Редактирование должности" : "Добавление новой должности"}
       content={form}
       footer={
         <>
-          <button onClick={approveHandler}>Сохранить</button>
+          <button onClick={saveForm}>Сохранить</button>
           <button onClick={closeHandler}>Отменить</button>
         </>
       }
