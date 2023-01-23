@@ -6,6 +6,7 @@ import { Card, Column, Table } from "components/common";
 
 import {
   $jobTitlesWithParentName,
+  addJobTitle,
   JobTitle,
   JobTitleView,
   removeJobTitle,
@@ -69,7 +70,11 @@ export const JobTitles = () => {
 
   const saveJobTitle = (jobTitle: JobTitle) => {
     closeEditDialog();
-    updateJobTitle(jobTitle);
+    if (jobTitle.id) {
+      updateJobTitle(jobTitle);
+    } else {
+      addJobTitle(jobTitle);
+    }
   };
   const columns = getColumns(editHandler, deleteHandler);
 

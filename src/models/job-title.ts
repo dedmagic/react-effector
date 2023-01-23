@@ -15,7 +15,10 @@ export const addJobTitle = createEvent<JobTitle>("add job title");
 const addJobTitleHandler = (
   state: JobTitle[],
   newJobTitle: JobTitle
-): JobTitle[] => [...state, newJobTitle];
+): JobTitle[] => {
+  const newId = Math.max(...state.map((jt) => jt.id)) + 1;
+  return [...state, { ...newJobTitle, id: newId }];
+};
 
 export const removeJobTitle = createEvent<number>("remove job title");
 const removeJobTitleHandler = (
