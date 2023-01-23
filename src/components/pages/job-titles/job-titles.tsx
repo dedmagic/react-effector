@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useStore } from "effector-react";
 
-import { HandlerByEntity, HandlerById } from "types";
+import { EntityActionHandlerByEntity, EntityActionHandlerById } from "types";
 import { Card, Column, Table } from "components/common";
 
 import {
@@ -99,10 +99,8 @@ export const JobTitles = () => {
 };
 
 function getColumns(
-  editHandler: HandlerByEntity<JobTitle>,
-  // editHandler: (jobTitle: JobTitle) => void,
-  // deleteHandler: (id: number) => void
-  deleteHandler: HandlerById
+  editHandler: EntityActionHandlerByEntity<JobTitle>,
+  deleteHandler: EntityActionHandlerById
 ) {
   const columns: Column[] = [
     {

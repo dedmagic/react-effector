@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 
 import { Modal } from "components/common";
 
-import { JobTitle } from "models/job-title";
+import { $jobTitles, JobTitle } from "models/job-title";
+import { useStore } from "effector-react";
 
 interface EditDialogProps {
   isVisible: boolean;
@@ -16,21 +17,42 @@ export const EditDialog = (props: EditDialogProps) => {
   const isNew = !jobTitle.id;
 
   const [entityName, setEntityName] = useState("");
+  const [entityParentId, setEntityParentId] = useState<number | undefined>();
   useEffect(() => {
     setEntityName(jobTitle.name);
+    setEntityParentId(jobTitle.parentId ?? 0);
   }, [jobTitle]);
+
+  const jobTitleNames = useStore($jobTitles);
 
   const form = (
     <>
-      <div className="input-label">
+      {/* <div className="input-label"> */}
+      <div className="form-control">
         <label htmlFor="entity-name">Наименование должности</label>
+        <input
+          id="entity-name"
+          placeholder="Введите наименование должности"
+          value={entityName}
+          onChange={(e) => setEntityName(e.target.value)}
+        />
       </div>
-      <input
-        id="entity-name"
-        placeholder="Введите наименование должности"
-        value={entityName}
-        onChange={(e) => setEntityName(e.target.value)}
-      />
+      <div className="form-control">
+        <label htmlFor="entity-parentId">Кому подчиняется</label>
+        <select
+          value={entityParentId}
+          onChange={(e) => setEntityParentId(parseInt(e.target.value))}
+        >
+          <option key={0} value={0}>
+            (нет начальника)
+          </option>
+          {jobTitleNames.map((jt) => (
+            <option key={jt.id} value={jt.id}>
+              {jt.name}
+            </option>
+          ))}
+        </select>
+      </div>
     </>
   );
 
@@ -38,7 +60,7 @@ export const EditDialog = (props: EditDialogProps) => {
     saveHandler({
       id: jobTitle.id,
       name: entityName,
-      parentId: jobTitle.parentId,
+      parentId: entityParentId,
     });
   };
 

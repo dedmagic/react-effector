@@ -114,11 +114,17 @@ button.table-action {
   text-align: center;
 }
 
-.input-label {
-  margin-bottom: 12px;
+.form-control+.form-control {
+  margin-top: 16px;
 }
 
-input {
+.form-control label {
+  display: block;
+  margin-bottom: 16px;
+}
+
+input,
+select {
   box-sizing: border-box;
   width: 100%;
   color: white;
