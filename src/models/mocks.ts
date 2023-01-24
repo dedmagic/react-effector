@@ -1,6 +1,6 @@
-import { JobTitle } from "./job-title";
+import { Position } from "./posititon";
 
-export const jobTitlesMock: JobTitle[] = [
+export const positionsMock: Position[] = [
   {
     id: 1,
     name: "Начальник",

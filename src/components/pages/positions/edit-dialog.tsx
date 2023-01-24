@@ -2,14 +2,14 @@ import { useEffect, useState } from "react";
 
 import { Modal } from "components/common";
 
-import { $jobTitles, JobTitle } from "models/job-title";
+import { $positions, Position } from "models/posititon";
 import { useStore } from "effector-react";
 
 interface EditDialogProps {
   isVisible: boolean;
   closeHandler: () => void;
-  saveHandler: (jobTitle: JobTitle) => void;
-  jobTitle: JobTitle;
+  saveHandler: (jobTitle: Position) => void;
+  jobTitle: Position;
 }
 
 export const EditDialog = (props: EditDialogProps) => {
@@ -23,7 +23,7 @@ export const EditDialog = (props: EditDialogProps) => {
     setEntityParentId(jobTitle.parentId ?? 0);
   }, [jobTitle]);
 
-  const jobTitleNames = useStore($jobTitles);
+  const jobTitleNames = useStore($positions);
 
   const form = (
     <>

@@ -5,25 +5,32 @@ import { EntityActionHandlerByEntity, EntityActionHandlerById } from "types";
 import { Card, Column, Table } from "components/common";
 
 import {
-  $jobTitlesWithParentName,
-  addJobTitle,
-  JobTitle,
-  JobTitleView,
-  removeJobTitle,
-  updateJobTitle,
-} from "models/job-title";
+  $positionsWithParentName,
+  addPosition,
+  Position,
+  PositionView,
+  removePosition,
+  updatePosition,
+} from "models/posititon";
 import { DeleteDialog } from "./delete-dialog";
 import { EditDialog } from "./edit-dialog";
+// import { getAllJobTitles } from "api/job-title-api";
 
-export const JobTitles = () => {
-  const viewData = useStore($jobTitlesWithParentName);
+export const Positions = () => {
+  const viewData = useStore($positionsWithParentName);
 
-  const [currentJobTitle, setCurrentJobTitle] = useState<JobTitle>(
-    new JobTitle()
+  // const allJobTitles = getAllJobTitles();
+  // console.log(
+  //   "### → file: job-titles.tsx:23 → JobTitles → allJobTitles",
+  //   allJobTitles
+  // );
+
+  const [currentPosition, setCurrentPosition] = useState<Position>(
+    new Position()
   );
   const [isEditDialogVisible, setIsEditDialogVisible] = useState(false);
 
-  const [currentJobTitleId, setCurrentJobTitleId] = useState<number | null>(
+  const [currentPositionId, setCurrentPositionId] = useState<number | null>(
     null
   );
   const [isDeleteDialogVisible, setIsDeleteDialogVisible] = useState(false);
@@ -44,36 +51,36 @@ export const JobTitles = () => {
     setIsDeleteDialogVisible(false);
   };
 
-  const deleteHandler = (jobTitleId: number) => {
-    setCurrentJobTitleId(jobTitleId);
+  const deleteHandler = (positionId: number) => {
+    setCurrentPositionId(positionId);
     showDeleteDialog();
   };
 
-  const deleteJobTitle = () => {
+  const deletePosition = () => {
     closeDeleteDialog();
-    if (currentJobTitleId) {
-      removeJobTitle(currentJobTitleId);
-      setCurrentJobTitleId(null);
+    if (currentPositionId) {
+      removePosition(currentPositionId);
+      setCurrentPositionId(null);
     }
     throw new Error("Something went wrong...");
   };
 
   const addHandler = () => {
-    setCurrentJobTitle(new JobTitle());
+    setCurrentPosition(new Position());
     showEditDialog();
   };
 
-  const editHandler = (jobTitle: JobTitle) => {
-    setCurrentJobTitle(jobTitle);
+  const editHandler = (position: Position) => {
+    setCurrentPosition(position);
     showEditDialog();
   };
 
-  const saveJobTitle = (jobTitle: JobTitle) => {
+  const savePosition = (position: Position) => {
     closeEditDialog();
-    if (jobTitle.id) {
-      updateJobTitle(jobTitle);
+    if (position.id) {
+      updatePosition(position);
     } else {
-      addJobTitle(jobTitle);
+      addPosition(position);
     }
   };
   const columns = getColumns(editHandler, deleteHandler);
@@ -90,21 +97,21 @@ export const JobTitles = () => {
       </Card>
       <EditDialog
         isVisible={isEditDialogVisible}
-        jobTitle={currentJobTitle}
+        jobTitle={currentPosition}
         closeHandler={closeEditDialog}
-        saveHandler={saveJobTitle}
+        saveHandler={savePosition}
       />
       <DeleteDialog
         isVisible={isDeleteDialogVisible}
         closeHandler={closeDeleteDialog}
-        approveHandler={deleteJobTitle}
+        approveHandler={deletePosition}
       />
     </>
   );
 };
 
 function getColumns(
-  editHandler: EntityActionHandlerByEntity<JobTitle>,
+  editHandler: EntityActionHandlerByEntity<Position>,
   deleteHandler: EntityActionHandlerById
 ) {
   const columns: Column[] = [
@@ -125,7 +132,7 @@ function getColumns(
           <i className="fa fa-gears"></i>
         </div>
       ),
-      render: (row: JobTitleView) => {
+      render: (row: PositionView) => {
         return (
           /* eslint-disable jsx-a11y/anchor-is-valid */
           <>
