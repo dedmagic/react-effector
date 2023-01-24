@@ -29,10 +29,6 @@ export const Positions = () => {
     new Position()
   );
   const [isEditDialogVisible, setIsEditDialogVisible] = useState(false);
-
-  const [currentPositionId, setCurrentPositionId] = useState<number | null>(
-    null
-  );
   const [isDeleteDialogVisible, setIsDeleteDialogVisible] = useState(false);
 
   const showEditDialog = () => {
@@ -51,18 +47,18 @@ export const Positions = () => {
     setIsDeleteDialogVisible(false);
   };
 
-  const deleteHandler = (positionId: number) => {
-    setCurrentPositionId(positionId);
+  const deleteHandler = (position: Position) => {
+    setCurrentPosition(position);
     showDeleteDialog();
   };
 
   const deletePosition = () => {
     closeDeleteDialog();
-    if (currentPositionId) {
-      removePosition(currentPositionId);
-      setCurrentPositionId(null);
+    if (currentPosition.id) {
+      removePosition(currentPosition.id);
+    } else {
+      throw new Error("Something went wrong...");
     }
-    throw new Error("Something went wrong...");
   };
 
   const addHandler = () => {
@@ -112,7 +108,7 @@ export const Positions = () => {
 
 function getColumns(
   editHandler: EntityActionHandlerByEntity<Position>,
-  deleteHandler: EntityActionHandlerById
+  deleteHandler: EntityActionHandlerByEntity<Position>
 ) {
   const columns: Column[] = [
     {
@@ -139,11 +135,7 @@ function getColumns(
             <a href="#" onClick={() => editHandler(row)} className="action">
               <i className="far fa-edit"></i>
             </a>
-            <a
-              href="#"
-              onClick={() => deleteHandler(row.id)}
-              className="action"
-            >
+            <a href="#" onClick={() => deleteHandler(row)} className="action">
               <i className="far fa-trash-alt"></i>
             </a>
           </>
