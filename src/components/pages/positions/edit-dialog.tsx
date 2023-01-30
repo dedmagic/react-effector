@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 import { Modal } from "components/common";
 
-import { $positions, Position } from "models/posititon";
+import { $positions, Position } from "models/position";
 import { useStore } from "effector-react";
 
 interface EditDialogProps {
@@ -23,7 +23,7 @@ export const EditDialog = (props: EditDialogProps) => {
     setEntityParentId(jobTitle.parentId ?? 0);
   }, [jobTitle]);
 
-  const jobTitleNames = useStore($positions);
+  const positions = useStore($positions);
 
   const form = (
     <>
@@ -46,9 +46,9 @@ export const EditDialog = (props: EditDialogProps) => {
           <option key={0} value={0}>
             (нет начальника)
           </option>
-          {jobTitleNames.map((jt) => (
-            <option key={jt.id} value={jt.id}>
-              {jt.name}
+          {positions.map((position) => (
+            <option key={position.id} value={position.id}>
+              {position.name}
             </option>
           ))}
         </select>

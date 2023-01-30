@@ -11,19 +11,12 @@ import {
   PositionView,
   removePosition,
   updatePosition,
-} from "models/posititon";
+} from "models/position";
 import { DeleteDialog } from "./delete-dialog";
 import { EditDialog } from "./edit-dialog";
-// import { getAllJobTitles } from "api/job-title-api";
 
 export const Positions = () => {
   const viewData = useStore($positionsWithParentName);
-
-  // const allJobTitles = getAllJobTitles();
-  // console.log(
-  //   "### → file: job-titles.tsx:23 → JobTitles → allJobTitles",
-  //   allJobTitles
-  // );
 
   const [currentPosition, setCurrentPosition] = useState<Position>(
     new Position()

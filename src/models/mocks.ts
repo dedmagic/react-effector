@@ -1,4 +1,4 @@
-import { Position } from "./posititon";
+import { Position } from "./position";
 
 export const positionsMock: Position[] = [
   {

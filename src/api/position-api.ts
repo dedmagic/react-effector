@@ -1,15 +1,15 @@
-import { Position } from "models/posititon";
+import { Position } from "models/position";
 
 const API_URL = "http://localhost:3003";
 
-export const getAllJobTitles = async (): Promise<Position[]> => {
-  const url = `${API_URL}/job-titles`;
+export const getAllPositions = async (): Promise<Position[]> => {
+  const url = `${API_URL}/positions`;
 
   let res: Position[] = [];
   fetch(url)
     .then((response) => response.json())
     .then((data) => {
-      console.log("### → file: job-title-api.ts:12 → .then → data", data);
+      console.log("### → file: position-api.ts:12 → .then → data", data);
       res = data;
     })
     .catch((error) => console.log(error));

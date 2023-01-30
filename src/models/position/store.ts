@@ -1,15 +1,7 @@
+import * as api from "api/position-api";
 import { createEffect, createEvent, createStore } from "effector";
-import { positionsMock } from "./mocks";
-
-export class Position {
-  id: number = 0;
-  name: string = "";
-  parentId?: number;
-}
-
-export interface PositionView extends Position {
-  parentName?: string;
-}
+import { positionsMock } from "../mocks";
+import { Position } from "./types";
 
 export const addPosition = createEvent<Position>("add position");
 const addPositionHandler = (
@@ -41,7 +33,13 @@ const updatePositionHandler = (
   return [...state];
 };
 
-// const getAllPositions = createEffect("get all positions").
+const getAllPositionsFx = createEffect("get all positions").use(() =>
+  api.getAllPositions().then((res) => res)
+);
+
+// api.getAllPositions().then((res) => {
+//   console.log(res);
+// });
 
 // TODO: Убрать использование мока после реализации работы с API
 // export const $positions = createStore<Position[]>()
