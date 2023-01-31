@@ -1,5 +1,5 @@
 import * as api from "api/position-api";
-import { createEffect, createEvent, createStore } from "effector";
+import { createEffect, createEvent, createStore, sample } from "effector";
 import { positionsMock } from "../mocks";
 import { Position } from "./types";
 
@@ -33,20 +33,28 @@ const updatePositionHandler = (
   return [...state];
 };
 
-const getAllPositionsFx = createEffect("get all positions").use(() =>
-  api.getAllPositions().then((res) => res)
-);
-
-// api.getAllPositions().then((res) => {
-//   console.log(res);
-// });
-
 // TODO: Убрать использование мока после реализации работы с API
-// export const $positions = createStore<Position[]>()
-export const $positions = createStore<Position[]>(positionsMock)
+// export const $positions = createStore<Position[]>(positionsMock)
+export const $positions = createStore<Position[]>([])
   .on(addPosition, addPositionHandler)
   .on(removePosition, removePositionHandler)
   .on(updatePosition, updatePositionHandler);
+
+export const fetchAll = createEvent();
+const fetchAllPositionsFx = createEffect(() => {
+  console.log("I'm here!");
+  return api.fetchAllPositions();
+});
+
+sample({ clock: fetchAll, target: fetchAllPositionsFx });
+sample({
+  clock: fetchAllPositionsFx.doneData,
+  target: $positions,
+  // fn: (data) => {
+  //   console.log(data);
+  //   return data;
+  // },
+});
 
 export const $positionsWithParentName = $positions.map((positions) => {
   return positions.map((position) => ({

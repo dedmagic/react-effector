@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useStore } from "effector-react";
 
 import { EntityActionHandlerByEntity, EntityActionHandlerById } from "types";
@@ -7,6 +7,7 @@ import { Card, Column, Table } from "components/common";
 import {
   $positionsWithParentName,
   addPosition,
+  fetchAll,
   Position,
   PositionView,
   removePosition,
@@ -17,6 +18,8 @@ import { EditDialog } from "./edit-dialog";
 
 export const Positions = () => {
   const viewData = useStore($positionsWithParentName);
+
+  useEffect(() => fetchAll(), []);
 
   const [currentPosition, setCurrentPosition] = useState<Position>(
     new Position()
