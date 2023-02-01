@@ -1,6 +1,5 @@
 import * as api from "api/position-api";
 import { createEffect, createEvent, createStore, sample } from "effector";
-import { positionsMock } from "../mocks";
 import { Position } from "./types";
 
 export const addPosition = createEvent<Position>("add position");
@@ -12,11 +11,13 @@ const addPositionHandler = (
   return [...state, { ...newPosition, id: newId }];
 };
 
-export const removePosition = createEvent<number>("remove position");
-const removePositionHandler = (
-  state: Position[],
-  positionId: number
-): Position[] => state.filter((position) => position.id !== positionId);
+// export const removePosition = createEvent<number>("remove position");
+// const removePositionHandler = (
+//   state: Position[],
+//   positionId: number
+// ): Position[] => {
+//   return state.filter((position) => position.id !== positionId);
+// };
 
 export const updatePosition = createEvent<Position>("update position");
 const updatePositionHandler = (
@@ -33,16 +34,14 @@ const updatePositionHandler = (
   return [...state];
 };
 
-// TODO: Убрать использование мока после реализации работы с API
-// export const $positions = createStore<Position[]>(positionsMock)
 export const $positions = createStore<Position[]>([])
   .on(addPosition, addPositionHandler)
-  .on(removePosition, removePositionHandler)
+  // .on(removePosition, removePositionHandler)
   .on(updatePosition, updatePositionHandler);
 
+//#region fetch all
 export const fetchAll = createEvent();
 const fetchAllPositionsFx = createEffect(() => {
-  console.log("I'm here!");
   return api.fetchAllPositions();
 });
 
@@ -55,7 +54,14 @@ sample({
   //   return data;
   // },
 });
+//#endregion fetch all
 
+//#region delete position
+export const removePosition = createEvent<number>("remove position");
+const deletePositionFx = createEffect<number>((positionId): number => {});
+//#endregion delete position
+
+//#region for view
 export const $positionsWithParentName = $positions.map((positions) => {
   return positions.map((position) => ({
     ...position,
@@ -63,3 +69,4 @@ export const $positionsWithParentName = $positions.map((positions) => {
       ?.name,
   }));
 });
+//#endregion for view
