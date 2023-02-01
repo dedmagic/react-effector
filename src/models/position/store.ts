@@ -2,6 +2,7 @@ import * as api from "api/position-api";
 import { createEffect, createEvent, createStore, sample } from "effector";
 import { Position } from "./types";
 
+//#region old CRUD
 export const addPosition = createEvent<Position>("add position");
 const addPositionHandler = (
   state: Position[],
@@ -10,14 +11,6 @@ const addPositionHandler = (
   const newId = Math.max(...state.map((position) => position.id)) + 1;
   return [...state, { ...newPosition, id: newId }];
 };
-
-// export const removePosition = createEvent<number>("remove position");
-// const removePositionHandler = (
-//   state: Position[],
-//   positionId: number
-// ): Position[] => {
-//   return state.filter((position) => position.id !== positionId);
-// };
 
 export const updatePosition = createEvent<Position>("update position");
 const updatePositionHandler = (
@@ -33,10 +26,10 @@ const updatePositionHandler = (
   state.splice(itemIndex, 1, changedPosition);
   return [...state];
 };
+//#endregion old CRUD
 
 export const $positions = createStore<Position[]>([])
   .on(addPosition, addPositionHandler)
-  // .on(removePosition, removePositionHandler)
   .on(updatePosition, updatePositionHandler);
 
 //#region fetch all
@@ -49,16 +42,22 @@ sample({ clock: fetchAll, target: fetchAllPositionsFx });
 sample({
   clock: fetchAllPositionsFx.doneData,
   target: $positions,
+  //#region watch example
   // fn: (data) => {
   //   console.log(data);
   //   return data;
   // },
+  //#endregion watch example
 });
 //#endregion fetch all
 
 //#region delete position
 export const removePosition = createEvent<number>("remove position");
-const deletePositionFx = createEffect<number>((positionId): number => {});
+const deletePositionFx = createEffect((positionId: number) => {
+  api.deletePosition(positionId);
+});
+sample({ clock: removePosition, target: deletePositionFx });
+sample({ clock: deletePositionFx, target: fetchAllPositionsFx });
 //#endregion delete position
 
 //#region for view
