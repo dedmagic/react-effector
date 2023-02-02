@@ -6,7 +6,7 @@ import { Card, Column, Table } from "components/common";
 
 import {
   $positionsWithParentName,
-  addPosition,
+  createPosition,
   fetchAll,
   Position,
   PositionView,
@@ -72,7 +72,7 @@ export const Positions = () => {
     if (position.id) {
       updatePosition(position);
     } else {
-      addPosition(position);
+      createPosition(position);
     }
   };
   const columns = getColumns(editHandler, deleteHandler);
