@@ -18,7 +18,7 @@ export const MainMenu = () => {
             </Link>
           </li>
           <li>
-            <Link to="/job-titles">
+            <Link to="/positions">
               <i className="fa-regular fa-address-card"></i>Должности
             </Link>
           </li>

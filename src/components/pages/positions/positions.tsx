@@ -89,7 +89,7 @@ export const Positions = () => {
       </Card>
       <EditDialog
         isVisible={isEditDialogVisible}
-        jobTitle={currentPosition}
+        position={currentPosition}
         closeHandler={closeEditDialog}
         saveHandler={savePosition}
       />

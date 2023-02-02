@@ -8,20 +8,20 @@ import { useStore } from "effector-react";
 interface EditDialogProps {
   isVisible: boolean;
   closeHandler: () => void;
-  saveHandler: (jobTitle: Position) => void;
-  jobTitle: Position;
+  saveHandler: (position: Position) => void;
+  position: Position;
 }
 
 export const EditDialog = (props: EditDialogProps) => {
-  const { isVisible, saveHandler, closeHandler, jobTitle } = props;
-  const isNew = !jobTitle.id;
+  const { isVisible, saveHandler, closeHandler, position } = props;
+  const isNew = !position.id;
 
   const [entityName, setEntityName] = useState("");
   const [entityParentId, setEntityParentId] = useState<number | undefined>();
   useEffect(() => {
-    setEntityName(jobTitle.name);
-    setEntityParentId(jobTitle.parentId ?? 0);
-  }, [jobTitle]);
+    setEntityName(position.name);
+    setEntityParentId(position.parentId ?? 0);
+  }, [position]);
 
   const positions = useStore($positions);
 
@@ -58,7 +58,7 @@ export const EditDialog = (props: EditDialogProps) => {
 
   const saveForm = () => {
     saveHandler({
-      id: jobTitle.id,
+      id: position.id,
       name: entityName,
       parentId: entityParentId,
     });

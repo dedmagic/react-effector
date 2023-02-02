@@ -6,7 +6,7 @@ import {
   Employees,
   Errands,
   Help,
-  JobTitles,
+  Positions,
   Settings,
 } from "../../../pages";
 
@@ -17,7 +17,7 @@ export const MainContent = () => {
         <Route path="/help" element={<Help />} />
         <Route path="/settings" element={<Settings />} />
         <Route path="/analytics" element={<Analytics />} />
-        <Route path="/job-titles" element={<JobTitles />} />
+        <Route path="/positions" element={<Positions />} />
         <Route path="/employees" element={<Employees />} />
         <Route path="/errands" element={<Errands />} />
       </Routes>
