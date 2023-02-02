@@ -21,7 +21,6 @@ export const deletePosition = async (positionId: number): Promise<boolean> => {
 export const updatePosition = async (position: Position) => {
   const url = `${POSITIONS_API_URL}/${position.id}`;
   const response = await fetch(url, {
-    // method: "PATCH",
     method: "PUT",
     body: JSON.stringify(position),
     headers: HEADERS,
