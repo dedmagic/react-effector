@@ -6,6 +6,15 @@
 - Effector
 - Typescript
 - Font Awesome
+- json-server
+
+Запуск:
+
+`npm run server`
+
+`npm run start`
+
+---
 
 ## Техническое задание:
 
