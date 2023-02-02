@@ -10,14 +10,24 @@
       "parentId": 1
     },
     {
-      "id": 3,
-      "name": "Начальник отдела",
-      "parentId": 2
-    },
-    {
       "id": 42,
       "name": "Клерк",
-      "parentId": 3
+      "parentId": 0
+    },
+    {
+      "id": 43,
+      "name": "2342342",
+      "parentId": 42
+    },
+    {
+      "id": 44,
+      "name": "5555555555555",
+      "parentId": 42
+    },
+    {
+      "id": 45,
+      "name": "7777777777",
+      "parentId": 44
     }
   ]
 }

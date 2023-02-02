@@ -61,7 +61,7 @@ const deletePositionFx = createEffect(async (positionId: number) => {
   console.log(result);
 });
 sample({ clock: removePosition, target: deletePositionFx });
-sample({ clock: deletePositionFx, target: fetchAllPositionsFx });
+sample({ clock: deletePositionFx.done, target: fetchAllPositionsFx });
 //#endregion delete position
 
 //#region update position
@@ -71,7 +71,7 @@ const updatePositionFx = createEffect(async (position: Position) => {
   console.log(result);
 });
 sample({ clock: updatePosition, target: updatePositionFx });
-sample({ clock: updatePositionFx, target: fetchAllPositionsFx });
+sample({ clock: updatePositionFx.done, target: fetchAllPositionsFx });
 //#endregion update position
 
 //#region create position
@@ -81,7 +81,7 @@ const createPositionFx = createEffect(async (position: Position) => {
   console.log(result);
 });
 sample({ clock: createPosition, target: createPositionFx });
-sample({ clock: createPositionFx, target: fetchAllPositionsFx });
+sample({ clock: createPositionFx.done, target: fetchAllPositionsFx });
 //#endregion create position
 
 //#region for view
