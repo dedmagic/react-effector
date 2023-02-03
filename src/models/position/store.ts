@@ -2,38 +2,7 @@ import * as api from "api/position-api";
 import { createEffect, createEvent, createStore, sample } from "effector";
 import { Position } from "./types";
 
-//#region old CRUD
-// export const addPosition = createEvent<Position>("add position");
-// const addPositionHandler = (
-//   state: Position[],
-//   newPosition: Position
-// ): Position[] => {
-//   const newId = Math.max(...state.map((position) => position.id)) + 1;
-//   return [...state, { ...newPosition, id: newId }];
-// };
-
-// export const updatePosition = createEvent<Position>("update position");
-// const updatePositionHandler = (
-//   state: Position[],
-//   changedPosition: Position
-// ): Position[] => {
-//   const itemIndex = state.findIndex(
-//     (position) => position.id === changedPosition.id
-//   );
-//   if (itemIndex === -1) {
-//     throw new Error("Position not found");
-//   }
-//   state.splice(itemIndex, 1, changedPosition);
-//   return [...state];
-// };
-//#endregion old CRUD
-
 export const $positions = createStore<Position[]>([]);
-//   .on(
-//   createPosition,
-//   addPositionHandler
-// );
-// .on(updatePosition, updatePositionHandler);
 
 //#region fetch all
 export const fetchAll = createEvent();
