@@ -1,6 +1,6 @@
 import { Position } from "models/position";
 
-const API_URL = "http://localhost:3003";
+const API_URL = process.env.REACT_APP_API_URL;
 const POSITIONS_API_URL = `${API_URL}/positions`;
 const HEADERS = {
   "Content-type": "application/json; charset=UTF-8",
