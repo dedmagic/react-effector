@@ -1,10 +1,16 @@
 .card {
+  /* position */
   display: table;
-  background-color: var(--content-background-color);
+
+  /* size & indents */
   margin-left: 16px;
   padding: 24px;
+
+  /* appearance */
+  background-color: var(--content-background-color);
 }
 
 .card-title {
+  /* size & indents */
   margin: 24px;
 }

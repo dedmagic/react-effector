@@ -1,4 +1,7 @@
 .app-title {
+  /* size & indents */
   flex-grow: 1;
+
+  /* content */
   text-align: center;
 }

@@ -1,11 +1,15 @@
 .app-header {
+  /* position */
   z-index: 102;
 
+  /* size & indents */
   padding: 20px 0;
 
+  /* appearance */
   background-color: var(--content-background-color);
   box-shadow: 0 2px 4px rgb(0 0 0 / 8%);
-
   font-size: 20px;
+
+  /* content */
   display: flex;
 }
