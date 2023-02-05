@@ -6,13 +6,11 @@ import { MainMenu } from "./menu/menu";
 
 export const AppMain = () => {
   return (
-    <>
-      <div className="app-main">
-        <BrowserRouter>
-          <MainMenu />
-          <MainContent />
-        </BrowserRouter>
-      </div>
-    </>
+    <div className="app-main">
+      <BrowserRouter>
+        <MainMenu />
+        <MainContent />
+      </BrowserRouter>
+    </div>
   );
 };
