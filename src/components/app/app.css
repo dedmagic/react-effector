@@ -1,5 +1,8 @@
 .app-wrapper {
+  /* size & indents */
   height: 100vh;
+
+  /* content */
   display: flex;
   flex-direction: column;
 }

@@ -1,4 +1,7 @@
 .app-main {
+  /* size & indents */
   flex-grow: 1;
+
+  /* content */
   display: flex;
 }

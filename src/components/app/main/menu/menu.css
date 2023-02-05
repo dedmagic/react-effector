@@ -1,25 +1,34 @@
 .main-menu {
+  /* size & indents */
+  width: 240px;
+  padding: 20px 0;
+
+  /* appearance */
   background-color: var(--content-background-color);
+
+  /* content */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 20px 0;
-  width: 240px;
 }
 
 ul {
+  /* appearance */
   list-style: none;
 }
 
 li {
+  /* size & indents */
   padding: 12px 20px;
 }
 
 a {
+  /* appearance */
   color: var(--content-text-color);
   text-decoration: none;
 }
 
 a:hover {
+  /* appearance */
   color: white;
 }
