@@ -1,0 +1,56 @@
+.data-table {
+  /* size & indents */
+  margin-bottom: 16px;
+
+  /* Для растягивания на всю ширину: */
+  /* width: 100%; */
+  /* padding: 16px; */
+
+  /* appearance */
+  background-color: var(--content-background-color);
+  color: var(--content-text-color);
+
+  /* content */
+  border-spacing: 10px 0px;
+}
+
+.data-table tr {
+  border-bottom: 1px solid var(--content-text-color);
+}
+
+.data-table tr:not(.header):hover {
+  background-color: var(--highlited-background-color);
+}
+
+.data-table th {
+  /* appearance */
+  color: #b5c0d5;
+
+  /* content */
+  text-align: left;
+}
+
+.data-table td,
+.data-table th {
+  /* size & indents */
+  padding: 12px;
+
+  /* borders */
+  /* border-bottom: 1px solid var(--content-text-color); */
+  border-bottom: 1px solid var(--blocks-background-color);
+}
+
+.action+.action {
+  margin-left: 12px;
+}
+
+.data-table a {
+  /* appearance */
+  color: var(--content-text-color);
+  text-decoration: none;
+}
+
+.data-table a:hover {
+  /* appearance */
+  color: white;
+}

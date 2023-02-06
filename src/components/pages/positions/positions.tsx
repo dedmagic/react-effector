@@ -81,10 +81,12 @@ export const Positions = () => {
     <>
       <h4 className="pageTitle">Должности</h4>
       <Card>
-        <button className="table-action" onClick={addHandler}>
-          <i className="far fa-square-plus icon-before-label"></i>
-          Добавить должность
-        </button>
+        <div className="actions-panel">
+          <button onClick={addHandler}>
+            <i className="far fa-square-plus icon-before-label"></i>
+            Добавить должность
+          </button>
+        </div>
         <Table columns={columns} data={viewData} />
       </Card>
       <EditDialog

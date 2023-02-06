@@ -52,56 +52,6 @@ body {
   margin: 20px;
 }
 
-.tableWrapper {
-  padding: 16px;
-}
-
-table.data-table {
-  /* size & indents */
-  margin-bottom: 16px;
-
-  /* Для растягивания на всю ширину: */
-  /* width: 100%; */
-  /* padding: 16px; */
-
-  /* appearance */
-  background-color: var(--content-background-color);
-  color: var(--content-text-color);
-
-  /* content */
-  border-spacing: 10px 0px;
-}
-
-table.data-table tr {
-  border-bottom: 1px solid var(--content-text-color);
-}
-
-table.data-table tr:not(.header):hover {
-  background-color: var(--highlited-background-color);
-}
-
-table.data-table th {
-  /* appearance */
-  color: #b5c0d5;
-
-  /* content */
-  text-align: left;
-}
-
-table.data-table td,
-table.data-table th {
-  /* size & indents */
-  padding: 12px;
-
-  /* borders */
-  /* border-bottom: 1px solid var(--content-text-color); */
-  border-bottom: 1px solid var(--blocks-background-color);
-}
-
-.action+.action {
-  margin-left: 12px;
-}
-
 button {
   /* size & indents */
   padding: 8px 12px;
@@ -125,7 +75,7 @@ button+button {
   margin-left: 12px;
 }
 
-button.table-action {
+.actions-panel {
   margin-bottom: 16px;
 }
 
@@ -149,8 +99,8 @@ button.table-action {
   margin-bottom: 16px;
 }
 
-input,
-select {
+.form-control input,
+.form-control select {
   /* size & indents */
   box-sizing: border-box;
   width: 100%;
