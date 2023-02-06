@@ -12,7 +12,7 @@ import {
 
 export const MainContent = () => {
   return (
-    <main className="content">
+    <main className="main-content">
       <Routes>
         <Route path="/help" element={<Help />} />
         <Route path="/settings" element={<Settings />} />
