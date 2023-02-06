@@ -52,10 +52,6 @@ body {
   margin: 20px;
 }
 
-/* .tableWrapper {
-  padding: 16px;
-} */
-
 button {
   /* size & indents */
   padding: 8px 12px;
@@ -79,7 +75,7 @@ button+button {
   margin-left: 12px;
 }
 
-button.table-action {
+.actions-panel {
   margin-bottom: 16px;
 }
 

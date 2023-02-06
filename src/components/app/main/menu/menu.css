@@ -12,23 +12,23 @@
   justify-content: space-between;
 }
 
-.app-left-menu {
+.main-menu ul {
   /* appearance */
   list-style: none;
 }
 
-.app-left-menu li {
+.main-menu li {
   /* size & indents */
   padding: 12px 20px;
 }
 
-.app-left-menu li a {
+.main-menu a {
   /* appearance */
   color: var(--content-text-color);
   text-decoration: none;
 }
 
-.app-left-menu li a:hover {
+.main-menu a:hover {
   /* appearance */
   color: white;
 }

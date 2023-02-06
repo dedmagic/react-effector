@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 export const MainMenu = () => {
   return (
     <div className="main-menu">
-      <ul className="app-left-menu">
+      <ul>
         <li>
           <Link to="/errands">
             <i className="fa fa-person-walking-arrow-right"></i>Поручения
@@ -27,7 +27,7 @@ export const MainMenu = () => {
           </Link>
         </li>
       </ul>
-      <ul className="app-left-menu">
+      <ul>
         <li>
           <Link to="/settings">
             <i className="fa fa-gear"></i>Настройки
