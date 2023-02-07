@@ -2,7 +2,7 @@
   Автор не я, компонент честно украден в инете :). Я только типизировал +
   убрал мелкие косяки + стилизовал под проект
 */
-import React, { ReactNode } from "react";
+import { ReactNode, useEffect } from "react";
 import "./modal.css";
 
 interface ModalProps {
@@ -29,7 +29,7 @@ export const Modal = ({
     }
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     document.addEventListener("keydown", keydownHandler);
     return () => document.removeEventListener("keydown", keydownHandler);
   });
