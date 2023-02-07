@@ -1,44 +1,73 @@
 import "./menu.css";
 
-import { Link } from "react-router-dom";
+import { MainMenuItem } from "./menu-item";
 
 export const MainMenu = () => {
   return (
     <div className="main-menu">
       <ul>
-        <li>
-          <Link to="/errands">
-            <i className="fa fa-person-walking-arrow-right"></i>Поручения
-          </Link>
-        </li>
-        <li>
-          <Link to="/employees">
-            <i className="fa fa-people-group"></i>Сотрудники
-          </Link>
-        </li>
-        <li>
-          <Link to="/positions">
-            <i className="fa-regular fa-address-card"></i>Должности
-          </Link>
-        </li>
-        <li>
-          <Link to="/analytics">
-            <i className="fa fa-chart-line"></i>Аналитика
-          </Link>
-        </li>
+        {getBusinessLogicMenuItems().map((menuItem) => (
+          <li key={menuItem.path}>
+            <MainMenuItem
+              path={menuItem.path}
+              icon={menuItem.icon}
+              label={menuItem.label}
+            />
+          </li>
+        ))}
       </ul>
       <ul>
-        <li>
-          <Link to="/settings">
-            <i className="fa fa-gear"></i>Настройки
-          </Link>
-        </li>
-        <li>
-          <Link to="/help">
-            <i className="fa-regular fa-circle-question"></i>Помощь
-          </Link>
-        </li>
+        {getSupportMenuItems().map((menuItem) => (
+          <li key={menuItem.path}>
+            <MainMenuItem
+              path={menuItem.path}
+              icon={menuItem.icon}
+              label={menuItem.label}
+            />
+          </li>
+        ))}
       </ul>
     </div>
   );
 };
+
+function getBusinessLogicMenuItems() {
+  return [
+    {
+      path: "/errands",
+      icon: "fa fa-person-walking-arrow-right",
+      label: "Поручения",
+    },
+    {
+      path: "/employees",
+      icon: "fa fa-people-group",
+      label: "Сотрудники",
+    },
+    {
+      path: "/positions",
+      icon: "fa-regular fa-address-card",
+      label: "Должности",
+    },
+    {
+      path: "/analytics",
+      icon: "fa fa-chart-line",
+      label: "Аналитика",
+    },
+  ];
+}
+
+function getSupportMenuItems() {
+  return [
+    {
+      path: "/settings",
+      icon: "fa fa-gear",
+      label: "Настройки",
+    },
+
+    {
+      path: "/help",
+      icon: "fa-regular fa-circle-question",
+      label: "Помощь",
+    },
+  ];
+}
