@@ -71,10 +71,11 @@ export const Positions = () => {
     closeEditDialog();
     if (position.id) {
       updatePosition(position);
-    } else {
-      createPosition(position);
+      return;
     }
+    createPosition(position);
   };
+
   const columns = getColumns(editHandler, deleteHandler);
 
   return (
