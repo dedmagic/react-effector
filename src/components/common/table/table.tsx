@@ -1,3 +1,5 @@
+import "./table.css";
+
 import { CellContent, Column, shouldRender, isDataColumn } from "./types";
 
 export interface TableProps {

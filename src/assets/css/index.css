@@ -2,9 +2,11 @@
 @import url(../fontawesome/css/all.css);
 
 :root {
+  /* rgb(29, 34, 46) */
   --main-background-color: #1d222e;
   /* rgb(37, 43, 59) */
   --content-background-color: #252b3b;
+  /* rgb(133, 144, 165) */
   --content-text-color: #8590a5;
   /* rgb(45, 52, 72) */
   --highlited-background-color: #2d3448;
@@ -15,15 +17,19 @@
 }
 
 * {
+  /* size & indents */
   margin: 0;
   padding: 0;
 }
 
 body {
+  /* size & indents */
+  width: 100%;
+
+  /* appearance */
   background-color: var(--main-background-color);
   font-family: "Roboto Condensed", Consolas, sans-serif;
   color: white;
-  width: 100%;
   font-size: 20px;
 }
 
@@ -46,52 +52,19 @@ body {
   margin: 20px;
 }
 
-.tableWrapper {
-  padding: 16px;
-}
-
-table.data-table {
-  background-color: var(--content-background-color);
-  color: var(--content-text-color);
-  /* Для растягивания на всю ширину: */
-  /* width: 100%; */
-  /* padding: 16px; */
-  border-spacing: 10px 0px;
-  margin-bottom: 16px;
-}
-
-table.data-table tr {
-  border-bottom: 1px solid var(--content-text-color);
-}
-
-table.data-table tr:not(.header):hover {
-  background-color: var(--highlited-background-color);
-}
-
-table.data-table th {
-  text-align: left;
-  color: #b5c0d5;
-}
-
-table.data-table td,
-table.data-table th {
-  padding: 12px;
-  /* border-bottom: 1px solid var(--content-text-color); */
-  border-bottom: 1px solid var(--blocks-background-color);
-}
-
-.action+.action {
-  margin-left: 12px;
-}
-
 button {
-  cursor: pointer;
-  border-radius: 0.25rem;
-  line-height: 1.5;
+  /* size & indents */
   padding: 8px 12px;
-  background-color: var(--highlited-background-color);
+
+  /* borders */
   border: none;
+  border-radius: 0.25rem;
+
+  /* appearance */
+  cursor: pointer;
   color: white;
+  background-color: var(--highlited-background-color);
+  line-height: 1.5;
 }
 
 button:hover {
@@ -102,7 +75,7 @@ button+button {
   margin-left: 12px;
 }
 
-button.table-action {
+.actions-panel {
   margin-bottom: 16px;
 }
 
@@ -119,16 +92,24 @@ button.table-action {
 }
 
 .form-control label {
+  /* position */
   display: block;
+
+  /* size & indents */
   margin-bottom: 16px;
 }
 
-input,
-select {
+.form-control input,
+.form-control select {
+  /* size & indents */
   box-sizing: border-box;
   width: 100%;
+  padding: 8px 12px;
+
+  /* borders */
+  border: 1px solid var(--highlited-background-color);
+
+  /* appearance */
   color: white;
   background-color: var(--input-background-color);
-  border: 1px solid var(--highlited-background-color);
-  padding: 8px 12px;
 }
