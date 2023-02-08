@@ -1,5 +1,6 @@
 import { Position } from "./position";
 
+// TODO: после добавления серверной части нигде не используется
 export const positionsMock: Position[] = [
   {
     id: 1,
