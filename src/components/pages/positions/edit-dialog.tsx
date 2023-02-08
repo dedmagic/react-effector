@@ -4,6 +4,7 @@ import { Modal } from "components/common";
 
 import { $positions, Position } from "models/position";
 import { useStore } from "effector-react";
+import { OkCancelButtons } from "components/common/modal/ok-cancel-buttons";
 
 interface EditDialogProps {
   isVisible: boolean;
@@ -70,10 +71,11 @@ export const EditDialog = (props: EditDialogProps) => {
       title={isNew ? "Редактирование должности" : "Добавление новой должности"}
       content={form}
       footer={
-        <>
-          <button onClick={saveForm}>Сохранить</button>
-          <button onClick={closeHandler}>Отменить</button>
-        </>
+        <OkCancelButtons
+          okLabel="Сохранить"
+          okHandler={saveForm}
+          cancelHandler={closeHandler}
+        />
       }
       onClose={closeHandler}
     />
