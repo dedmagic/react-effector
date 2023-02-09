@@ -1,4 +1,4 @@
-import { PageMock } from "../../common/page-mock";
+import { PageMock } from "components/page-mock";
 
 export const Settings = () => {
   return (

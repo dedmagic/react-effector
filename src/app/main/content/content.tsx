@@ -8,7 +8,7 @@ import {
   Help,
   Positions,
   Settings,
-} from "../../../pages";
+} from "modules";
 
 export const MainContent = () => {
   return (

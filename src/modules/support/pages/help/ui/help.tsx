@@ -1,4 +1,4 @@
-import { PageMock } from "components/common/page-mock";
+import { PageMock } from "components/page-mock";
 
 export const Help = () => {
   return (

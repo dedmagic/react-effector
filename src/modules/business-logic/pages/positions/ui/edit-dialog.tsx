@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 
-import { Modal } from "components/common";
+import { Modal } from "components";
 
 import { $positions, Position } from "models/position";
 import { useStore } from "effector-react";
-import { OkCancelButtons } from "components/common/modal/ok-cancel-buttons";
+import { OkCancelButtons } from "components/modal/ok-cancel-buttons";
 
 interface EditDialogProps {
   isVisible: boolean;
