@@ -7,6 +7,7 @@
 - Typescript
 - Font Awesome
 - json-server
+- react-router
 
 Запуск:
 
