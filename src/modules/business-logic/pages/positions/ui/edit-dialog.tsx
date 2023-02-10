@@ -28,7 +28,6 @@ export const EditDialog = (props: EditDialogProps) => {
 
   const form = (
     <>
-      {/* <div className="input-label"> */}
       <div className="form-control">
         <label htmlFor="entity-name">Наименование должности</label>
         <input
@@ -65,10 +64,14 @@ export const EditDialog = (props: EditDialogProps) => {
     });
   };
 
+  const dialogTitle = isNew
+    ? "Добавление новой должности"
+    : "Редактирование должности";
+
   return (
     <Modal
       isVisible={isVisible}
-      title={isNew ? "Редактирование должности" : "Добавление новой должности"}
+      title={dialogTitle}
       content={form}
       footer={
         <OkCancelButtons
