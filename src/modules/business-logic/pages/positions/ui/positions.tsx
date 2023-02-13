@@ -15,6 +15,7 @@ import {
 } from "models/position";
 import { DeleteDialog } from "./delete-dialog";
 import { EditDialog } from "./edit-dialog";
+import { useToggle } from "hooks/use-toggle";
 
 export const Positions = () => {
   const viewData = useStore($positionsWithParentName);
@@ -24,8 +25,10 @@ export const Positions = () => {
   const [currentPosition, setCurrentPosition] = useState<Position>(
     new Position()
   );
-  const [isEditDialogVisible, setIsEditDialogVisible] = useState(false);
-  const [isDeleteDialogVisible, setIsDeleteDialogVisible] = useState(false);
+  // const [isEditDialogVisible, setIsEditDialogVisible] = useState(false);
+  // const [isDeleteDialogVisible, setIsDeleteDialogVisible] = useState(false);
+  const [isEditDialogVisible, setIsEditDialogVisible] = useToggle(false);
+  const [isDeleteDialogVisible, setIsDeleteDialogVisible] = useToggle(false);
 
   const showEditDialog = () => {
     setIsEditDialogVisible(true);
