@@ -1,22 +1,24 @@
+import { ReactNode } from "react";
 import "./table.css";
 
 import { CellContent, Column, shouldRender, isDataColumn } from "./types";
 
-export interface TableProps {
-  columns: Column[];
-  data: any[];
+export interface TableProps<TRow> {
+  columns: Column<TRow>[];
+  data: TRow[];
 }
 
-export const Table = (props: TableProps) => {
+export const Table = <TRow extends { id: number }>(props: TableProps<TRow>) => {
   const { columns, data } = props;
 
-  const createCell = (row: any, column: Column) => {
+  const createCell = (row: TRow, column: Column<TRow>) => {
     if (shouldRender(column)) {
       return <td key={column.key}>{column.render(row)}</td>;
     }
 
     if (isDataColumn(column)) {
-      return <td key={column.key}>{row[column.dataName]}</td>;
+      const cellContent = row[column.dataName] as ReactNode;
+      return <td key={column.key}>{cellContent}</td>;
     }
 
     const guard: never = column;
@@ -31,7 +33,7 @@ export const Table = (props: TableProps) => {
     return content();
   };
 
-  const createRow = (row: any) => (
+  const createRow = (row: TRow) => (
     <tr key={row.id}>{columns.map((column) => createCell(row, column))}</tr>
   );
 
