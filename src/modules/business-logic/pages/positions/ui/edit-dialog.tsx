@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useRef } from "react";
 
 import { Modal } from "components";
 
@@ -17,12 +17,8 @@ export const EditDialog = (props: EditDialogProps) => {
   const { isVisible, saveHandler, closeHandler, position } = props;
   const isNew = !position.id;
 
-  const [entityName, setEntityName] = useState("");
-  const [entityParentId, setEntityParentId] = useState<number | undefined>();
-  useEffect(() => {
-    setEntityName(position.name);
-    setEntityParentId(position.parentId ?? 0);
-  }, [position]);
+  const nameField = useRef<HTMLInputElement>(null);
+  const parentIdField = useRef<HTMLSelectElement>(null);
 
   const positions = useStore($positions);
 
@@ -33,16 +29,13 @@ export const EditDialog = (props: EditDialogProps) => {
         <input
           id="entity-name"
           placeholder="Введите наименование должности"
-          value={entityName}
-          onChange={(e) => setEntityName(e.target.value)}
+          defaultValue={position.name}
+          ref={nameField}
         />
       </div>
       <div className="form-control">
         <label htmlFor="entity-parentId">Кому подчиняется</label>
-        <select
-          value={entityParentId}
-          onChange={(e) => setEntityParentId(parseInt(e.target.value))}
-        >
+        <select defaultValue={position.parentId} ref={parentIdField}>
           <option key={0} value={0}>
             (нет начальника)
           </option>
@@ -59,8 +52,8 @@ export const EditDialog = (props: EditDialogProps) => {
   const saveForm = () => {
     saveHandler({
       id: position.id,
-      name: entityName,
-      parentId: entityParentId,
+      name: nameField.current?.value ?? "",
+      parentId: parseInt(parentIdField.current?.value ?? "0") ?? undefined,
     });
   };
 
