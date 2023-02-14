@@ -25,25 +25,23 @@ export const Positions = () => {
   const [currentPosition, setCurrentPosition] = useState<Position>(
     new Position()
   );
-  // const [isEditDialogVisible, setIsEditDialogVisible] = useState(false);
-  // const [isDeleteDialogVisible, setIsDeleteDialogVisible] = useState(false);
-  const [isEditDialogVisible, setIsEditDialogVisible] = useToggle(false);
-  const [isDeleteDialogVisible, setIsDeleteDialogVisible] = useToggle(false);
+  const [isEditDialogVisible, toggleIsEditDialogVisible] = useToggle(false);
+  const [isDeleteDialogVisible, toggleIsDeleteDialogVisible] = useToggle(false);
 
   const showEditDialog = () => {
-    setIsEditDialogVisible(true);
+    toggleIsEditDialogVisible(true);
   };
 
   const closeEditDialog = () => {
-    setIsEditDialogVisible(false);
+    toggleIsEditDialogVisible(false);
   };
 
   const showDeleteDialog = () => {
-    setIsDeleteDialogVisible(true);
+    toggleIsDeleteDialogVisible(true);
   };
 
   const closeDeleteDialog = () => {
-    setIsDeleteDialogVisible(false);
+    toggleIsDeleteDialogVisible(false);
   };
 
   const deleteHandler = (position: Position) => {
