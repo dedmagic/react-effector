@@ -14,16 +14,20 @@ interface ColumnWithRender extends ColumnBase {
   render: RenderFunction;
 }
 
-interface ColumnWithData extends ColumnBase {
-  dataName: string;
+interface ColumnWithData<TRow> extends ColumnBase {
+  dataName: keyof TRow;
 }
 
-export type Column = ColumnWithRender | ColumnWithData;
+export type Column<TRow> = ColumnWithRender | ColumnWithData<TRow>;
 
-export function shouldRender(column: Column): column is ColumnWithRender {
+export function shouldRender<TRow>(
+  column: Column<TRow>
+): column is ColumnWithRender {
   return (column as ColumnWithRender).render !== undefined;
 }
 
-export function isDataColumn(column: Column): column is ColumnWithData {
-  return (column as ColumnWithData).dataName !== undefined;
+export function isDataColumn<TRow>(
+  column: Column<TRow>
+): column is ColumnWithData<TRow> {
+  return (column as ColumnWithData<TRow>).dataName !== undefined;
 }

@@ -9,7 +9,7 @@ import {
   createPosition,
   fetchAll,
   Position,
-  PositionView,
+  PositionRow,
   removePosition,
   updatePosition,
 } from "models/position";
@@ -89,7 +89,7 @@ export const Positions = () => {
             Добавить должность
           </button>
         </div>
-        <Table columns={columns} data={viewData} />
+        <Table<PositionRow> columns={columns} data={viewData} />
       </Card>
       <EditDialog
         isVisible={isEditDialogVisible}
@@ -110,7 +110,7 @@ function getColumns(
   editHandler: EntityActionHandlerByEntity<Position>,
   deleteHandler: EntityActionHandlerByEntity<Position>
 ) {
-  const columns: Column[] = [
+  const columns: Column<PositionRow>[] = [
     {
       key: "name",
       header: "Должность",
@@ -128,7 +128,7 @@ function getColumns(
           <i className="fa fa-gears"></i>
         </div>
       ),
-      render: (row: PositionView) => {
+      render: (row: PositionRow) => {
         return (
           /* eslint-disable jsx-a11y/anchor-is-valid */
           <>

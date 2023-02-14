@@ -4,6 +4,6 @@ export class Position {
   parentId?: number;
 }
 
-export interface PositionView extends Position {
+export interface PositionRow extends Position {
   parentName?: string;
 }
