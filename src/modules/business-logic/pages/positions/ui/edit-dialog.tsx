@@ -20,12 +20,17 @@ export const EditDialog = (props: EditDialogProps) => {
   const [parentId, setParentId] = useState<number | undefined>(
     position.parentId
   );
+  console.log(name, parentId);
 
-  const changeNameHandler = (newName: string) => setName(newName);
-  const changeParentIdHangler = (newParentId: number | undefined) =>
+  const changeNameHandler = (newName: string) => {
+    setName(newName);
+  };
+  const changeParentIdHangler = (newParentId: number | undefined) => {
     setParentId(newParentId);
+  };
 
   const saveForm = () => {
+    console.log(name, parentId);
     saveHandler({
       id: position.id,
       name: name,

@@ -13,9 +13,6 @@ export const PositionForm = (props: PositionFormProps) => {
   const { position, changeNameHandler, changeParentIdHandler } = props;
   const positions = useStore($positions);
 
-  const nameField = useRef<HTMLInputElement>(null);
-  const parentIdField = useRef<HTMLSelectElement>(null);
-
   return (
     <>
       <div className="form-control">
@@ -24,19 +21,15 @@ export const PositionForm = (props: PositionFormProps) => {
           id="entity-name"
           placeholder="Введите наименование должности"
           defaultValue={position.name}
-          ref={nameField}
-          onChange={() => changeNameHandler(nameField.current?.value ?? "")}
+          onChange={(e) => changeNameHandler(e.target.value)}
         />
       </div>
       <div className="form-control">
         <label htmlFor="entity-parentId">Кому подчиняется</label>
         <select
           defaultValue={position.parentId}
-          ref={parentIdField}
-          onChange={() =>
-            changeParentIdHandler(
-              parseInt(parentIdField.current?.value ?? "0") ?? undefined
-            )
+          onChange={(e) =>
+            changeParentIdHandler(parseInt(e.target.value) ?? undefined)
           }
         >
           <option key={0} value={0}>
