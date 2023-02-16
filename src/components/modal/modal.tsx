@@ -8,17 +8,17 @@ import "./modal.css";
 interface ModalProps {
   isVisible: boolean;
   title: string | ReactNode;
-  content: ReactNode;
   footer: ReactNode;
   onClose: () => void;
+  children: ReactNode;
 }
 
 export const Modal = ({
   isVisible = false,
   title,
-  content,
   footer,
   onClose,
+  children,
 }: ModalProps) => {
   const keydownHandler = ({ key }: KeyboardEvent) => {
     switch (key) {
@@ -51,7 +51,7 @@ export const Modal = ({
           </span>
         </div>
         <div className="modal-body">
-          <div className="modal-content">{content}</div>
+          <div className="modal-content">{children}</div>
         </div>
         {footer && <div className="modal-footer">{footer}</div>}
       </div>

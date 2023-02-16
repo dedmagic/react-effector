@@ -14,7 +14,7 @@ export const DeleteDialog = (props: DeleteDialogProps) => {
     <Modal
       isVisible={isVisible}
       title="Удаление должности"
-      content="Вы действительно хотите удалить эту должность?"
+      // content="Вы действительно хотите удалить эту должность?"
       footer={
         <OkCancelButtons
           okLabel="Удалить"
@@ -23,6 +23,8 @@ export const DeleteDialog = (props: DeleteDialogProps) => {
         />
       }
       onClose={closeHandler}
-    />
+    >
+      Вы действительно хотите удалить эту должность?
+    </Modal>
   );
 };

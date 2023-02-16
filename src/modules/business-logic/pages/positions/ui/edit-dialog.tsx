@@ -22,8 +22,31 @@ export const EditDialog = (props: EditDialogProps) => {
 
   const positions = useStore($positions);
 
-  const form = (
-    <>
+  const saveForm = () => {
+    saveHandler({
+      id: position.id,
+      name: nameField.current?.value ?? "",
+      parentId: parseInt(parentIdField.current?.value ?? "0") ?? undefined,
+    });
+  };
+
+  const dialogTitle = isNew
+    ? "Добавление новой должности"
+    : "Редактирование должности";
+
+  return (
+    <Modal
+      isVisible={isVisible}
+      title={dialogTitle}
+      footer={
+        <OkCancelButtons
+          okLabel="Сохранить"
+          okHandler={saveForm}
+          cancelHandler={closeHandler}
+        />
+      }
+      onClose={closeHandler}
+    >
       <div className="form-control">
         <label htmlFor="entity-name">Наименование должности</label>
         <input
@@ -46,34 +69,6 @@ export const EditDialog = (props: EditDialogProps) => {
           ))}
         </select>
       </div>
-    </>
-  );
-
-  const saveForm = () => {
-    saveHandler({
-      id: position.id,
-      name: nameField.current?.value ?? "",
-      parentId: parseInt(parentIdField.current?.value ?? "0") ?? undefined,
-    });
-  };
-
-  const dialogTitle = isNew
-    ? "Добавление новой должности"
-    : "Редактирование должности";
-
-  return (
-    <Modal
-      isVisible={isVisible}
-      title={dialogTitle}
-      content={form}
-      footer={
-        <OkCancelButtons
-          okLabel="Сохранить"
-          okHandler={saveForm}
-          cancelHandler={closeHandler}
-        />
-      }
-      onClose={closeHandler}
-    />
+    </Modal>
   );
 };
