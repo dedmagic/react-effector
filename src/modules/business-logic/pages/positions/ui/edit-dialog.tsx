@@ -65,7 +65,6 @@ export const EditDialog = (props: EditDialogProps) => {
     <Modal
       isVisible={isVisible}
       title={dialogTitle}
-      content={form}
       footer={
         <OkCancelButtons
           okLabel="Сохранить"
@@ -74,6 +73,8 @@ export const EditDialog = (props: EditDialogProps) => {
         />
       }
       onClose={closeHandler}
-    />
+    >
+      {form}
+    </Modal>
   );
 };
