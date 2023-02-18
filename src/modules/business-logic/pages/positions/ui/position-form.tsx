@@ -1,17 +1,30 @@
-import { useRef } from "react";
 import { useStore } from "effector-react";
 
 import { $positions, Position } from "models/position";
+import { useEffect } from "react";
+import {
+  $nameField,
+  $parentIdField,
+  changeNameField,
+  changeParentIdField,
+} from "../lib/position-form-store";
 
 interface PositionFormProps {
   position: Position;
-  changeNameHandler: (newName: string) => void;
-  changeParentIdHandler: (newParentId: number | undefined) => void;
 }
 
 export const PositionForm = (props: PositionFormProps) => {
-  const { position, changeNameHandler, changeParentIdHandler } = props;
+  const { position } = props;
+  useEffect(() => {
+    changeNameField(position.name);
+    // TODO: `undefined` в стор не кладётся -- почему?
+    changeParentIdField(position.parentId ?? 0);
+  }, [position]);
+
   const positions = useStore($positions);
+
+  const name = useStore($nameField);
+  const parentId = useStore($parentIdField);
 
   return (
     <>
@@ -20,16 +33,16 @@ export const PositionForm = (props: PositionFormProps) => {
         <input
           id="entity-name"
           placeholder="Введите наименование должности"
-          defaultValue={position.name}
-          onChange={(e) => changeNameHandler(e.target.value)}
+          value={name}
+          onChange={(e) => changeNameField(e.target.value)}
         />
       </div>
       <div className="form-control">
         <label htmlFor="entity-parentId">Кому подчиняется</label>
         <select
-          defaultValue={position.parentId}
+          value={parentId}
           onChange={(e) =>
-            changeParentIdHandler(parseInt(e.target.value) ?? undefined)
+            changeParentIdField(parseInt(e.target.value) ?? undefined)
           }
         >
           <option key={0} value={0}>

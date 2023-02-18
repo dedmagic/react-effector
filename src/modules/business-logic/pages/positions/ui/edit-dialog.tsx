@@ -3,7 +3,8 @@ import { Modal } from "components";
 import { Position } from "models/position";
 import { OkCancelButtons } from "components/modal/ok-cancel-buttons";
 import { PositionForm } from "./position-form";
-import { useEffect, useState } from "react";
+import { useStore } from "effector-react";
+import { $nameField, $parentIdField } from "../lib/position-form-store";
 
 interface EditDialogProps {
   isVisible: boolean;
@@ -16,22 +17,8 @@ export const EditDialog = (props: EditDialogProps) => {
   const { isVisible, saveHandler, closeHandler, position } = props;
   const isNew = !position.id;
 
-  const [name, setName] = useState<string>(position.name);
-  const [parentId, setParentId] = useState<number | undefined>(
-    position.parentId
-  );
-
-  useEffect(() => {
-    setName(position.name);
-    setParentId(position.parentId);
-  }, [position]);
-
-  const changeNameHandler = (newName: string) => {
-    setName(newName);
-  };
-  const changeParentIdHangler = (newParentId: number | undefined) => {
-    setParentId(newParentId);
-  };
+  const name = useStore($nameField);
+  const parentId = useStore($parentIdField);
 
   const saveForm = () => {
     saveHandler({
@@ -58,11 +45,7 @@ export const EditDialog = (props: EditDialogProps) => {
       }
       onClose={closeHandler}
     >
-      <PositionForm
-        position={position}
-        changeNameHandler={changeNameHandler}
-        changeParentIdHandler={changeParentIdHangler}
-      />
+      <PositionForm position={position} />
     </Modal>
   );
 };
