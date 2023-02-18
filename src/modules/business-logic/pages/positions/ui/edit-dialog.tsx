@@ -3,7 +3,7 @@ import { Modal } from "components";
 import { Position } from "models/position";
 import { OkCancelButtons } from "components/modal/ok-cancel-buttons";
 import { PositionForm } from "./position-form";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface EditDialogProps {
   isVisible: boolean;
@@ -20,7 +20,11 @@ export const EditDialog = (props: EditDialogProps) => {
   const [parentId, setParentId] = useState<number | undefined>(
     position.parentId
   );
-  console.log(name, parentId);
+
+  useEffect(() => {
+    setName(position.name);
+    setParentId(position.parentId);
+  }, [position]);
 
   const changeNameHandler = (newName: string) => {
     setName(newName);
@@ -30,7 +34,6 @@ export const EditDialog = (props: EditDialogProps) => {
   };
 
   const saveForm = () => {
-    console.log(name, parentId);
     saveHandler({
       id: position.id,
       name: name,

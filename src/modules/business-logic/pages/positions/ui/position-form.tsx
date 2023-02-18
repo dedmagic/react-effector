@@ -1,4 +1,3 @@
-import { useRef } from "react";
 import { useStore } from "effector-react";
 
 import { $positions, Position } from "models/position";
