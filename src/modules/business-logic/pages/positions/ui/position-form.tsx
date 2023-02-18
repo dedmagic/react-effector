@@ -17,8 +17,7 @@ export const PositionForm = (props: PositionFormProps) => {
   const { position } = props;
   useEffect(() => {
     changeNameField(position.name);
-    // TODO: `undefined` в стор не кладётся -- почему?
-    changeParentIdField(position.parentId ?? 0);
+    changeParentIdField(position.parentId);
   }, [position]);
 
   const positions = useStore($positions);
@@ -40,7 +39,7 @@ export const PositionForm = (props: PositionFormProps) => {
       <div className="form-control">
         <label htmlFor="entity-parentId">Кому подчиняется</label>
         <select
-          value={parentId}
+          value={parentId ?? undefined}
           onChange={(e) =>
             changeParentIdField(parseInt(e.target.value) ?? undefined)
           }

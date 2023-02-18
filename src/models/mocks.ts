@@ -5,6 +5,7 @@ export const positionsMock: Position[] = [
   {
     id: 1,
     name: "Начальник",
+    parentId: null,
   },
   {
     id: 2,
