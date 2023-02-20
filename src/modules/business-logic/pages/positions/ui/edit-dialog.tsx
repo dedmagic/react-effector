@@ -35,7 +35,10 @@ export const EditDialog = (props: EditDialogProps) => {
       </div>
       <div className="form-control">
         <label htmlFor="entity-parentId">Кому подчиняется</label>
-        <select defaultValue={position.parentId} ref={parentIdField}>
+        <select
+          defaultValue={position.parentId ?? undefined}
+          ref={parentIdField}
+        >
           <option key={0} value={0}>
             (нет начальника)
           </option>

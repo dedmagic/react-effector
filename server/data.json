@@ -10,6 +10,11 @@
       "parentId": 1
     },
     {
+      "id": 3,
+      "name": "Начальник отдела",
+      "parentId": 2
+    },
+    {
       "id": 42,
       "name": "Клерк",
       "parentId": 2
