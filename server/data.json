@@ -17,7 +17,7 @@
     {
       "id": 42,
       "name": "Клерк",
-      "parentId": 2
+      "parentId": 3
     },
     {
       "id": 45,
@@ -26,13 +26,28 @@
     },
     {
       "id": 47,
-      "name": "new position 123456",
+      "name": "new position 12345678",
       "parentId": 45
     },
     {
       "id": 49,
       "name": "fffffff",
-      "parentId": 2
+      "parentId": 3
+    },
+    {
+      "id": 50,
+      "name": "aaaaaa",
+      "parentId": 42
+    },
+    {
+      "id": 51,
+      "name": "bbbbbbbbbb",
+      "parentId": 0
+    },
+    {
+      "id": 52,
+      "name": "ccccccccccccc",
+      "parentId": 42
     }
   ]
 }
