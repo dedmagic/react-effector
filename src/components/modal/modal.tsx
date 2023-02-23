@@ -2,7 +2,7 @@
   Автор не я, компонент честно украден в инете :). Я только типизировал +
   убрал мелкие косяки + стилизовал под проект + заиспользовал `children`
 */
-import { ReactNode, useEffect } from "react";
+import { ReactNode, useCallback, useEffect } from "react";
 import "./modal.css";
 
 interface ModalProps {
@@ -20,19 +20,22 @@ export const Modal = ({
   onClose,
   children,
 }: ModalProps) => {
-  const keydownHandler = ({ key }: KeyboardEvent) => {
-    switch (key) {
-      case "Escape":
-        onClose();
-        break;
-      default:
-    }
-  };
+  const keydownHandler = useCallback(
+    ({ key }: KeyboardEvent) => {
+      switch (key) {
+        case "Escape":
+          onClose();
+          break;
+        default:
+      }
+    },
+    [onClose]
+  );
 
   useEffect(() => {
     document.addEventListener("keydown", keydownHandler);
     return () => document.removeEventListener("keydown", keydownHandler);
-  });
+  }, [keydownHandler]);
 
   return !isVisible ? null : (
     // Чтобы окно закрывалось при щелчке вне его, надо так:
