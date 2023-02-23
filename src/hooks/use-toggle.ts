@@ -6,10 +6,18 @@ export const useToggle = (
   const [toggle, setToggle] = useState<boolean>(initialValue);
   const toggler = useCallback(
     (value?: any) => {
-      const newValue = typeof value === "boolean" ? value : !toggle;
-      setToggle(newValue);
+      // const newValue = typeof value === "boolean" ? value : !toggle;
+      // setToggle(newValue);
+
+      if (typeof value === "boolean") {
+        setToggle(value);
+        return;
+      }
+
+      setToggle((oldValue) => !oldValue);
     },
-    [toggle]
+    // [toggle]
+    []
   );
   return [toggle, toggler];
 };
