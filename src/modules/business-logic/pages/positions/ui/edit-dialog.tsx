@@ -1,10 +1,10 @@
-import { useRef } from "react";
-
 import { Modal } from "components";
 
-import { $positions, Position } from "models/position";
-import { useStore } from "effector-react";
+import { Position } from "models/position";
 import { OkCancelButtons } from "components/modal/ok-cancel-buttons";
+import { PositionForm } from "./position-form";
+import { useStore } from "effector-react";
+import { $nameField, $parentIdField } from "../lib/position-form-store";
 
 interface EditDialogProps {
   isVisible: boolean;
@@ -17,46 +17,14 @@ export const EditDialog = (props: EditDialogProps) => {
   const { isVisible, saveHandler, closeHandler, position } = props;
   const isNew = !position.id;
 
-  const nameField = useRef<HTMLInputElement>(null);
-  const parentIdField = useRef<HTMLSelectElement>(null);
-
-  const positions = useStore($positions);
-
-  const form = (
-    <>
-      <div className="form-control">
-        <label htmlFor="entity-name">Наименование должности</label>
-        <input
-          id="entity-name"
-          placeholder="Введите наименование должности"
-          defaultValue={position.name}
-          ref={nameField}
-        />
-      </div>
-      <div className="form-control">
-        <label htmlFor="entity-parentId">Кому подчиняется</label>
-        <select
-          defaultValue={position.parentId ?? undefined}
-          ref={parentIdField}
-        >
-          <option key={0} value={0}>
-            (нет начальника)
-          </option>
-          {positions.map((position) => (
-            <option key={position.id} value={position.id}>
-              {position.name}
-            </option>
-          ))}
-        </select>
-      </div>
-    </>
-  );
+  const name = useStore($nameField);
+  const parentId = useStore($parentIdField);
 
   const saveForm = () => {
     saveHandler({
       id: position.id,
-      name: nameField.current?.value ?? "",
-      parentId: parseInt(parentIdField.current?.value ?? "0") ?? undefined,
+      name: name,
+      parentId: parentId,
     });
   };
 
@@ -77,7 +45,7 @@ export const EditDialog = (props: EditDialogProps) => {
       }
       onClose={closeHandler}
     >
-      {form}
+      <PositionForm position={position} />
     </Modal>
   );
 };
