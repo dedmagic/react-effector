@@ -43,6 +43,7 @@ export const EditDialog = (props: EditDialogProps) => {
           cancelHandler={closeHandler}
         />
       }
+      onEnter={saveForm}
       onClose={closeHandler}
     >
       <PositionForm position={position} />
