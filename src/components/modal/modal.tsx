@@ -1,6 +1,7 @@
 /*
   Автор не я, компонент честно украден в инете :). Я только типизировал +
   убрал мелкие косяки + стилизовал под проект + заиспользовал `children`
+  + добавил возможность закрытия по `Enter`
 */
 import { ReactNode, useCallback, useEffect } from "react";
 import "./modal.css";
@@ -10,6 +11,7 @@ interface ModalProps {
   title: string | ReactNode;
   footer: ReactNode;
   onClose: () => void;
+  onEnter?: () => void;
   children: ReactNode;
 }
 
@@ -18,6 +20,7 @@ export const Modal = ({
   title,
   footer,
   onClose,
+  onEnter = undefined,
   children,
 }: ModalProps) => {
   const keydownHandler = useCallback(
@@ -26,10 +29,13 @@ export const Modal = ({
         case "Escape":
           onClose();
           break;
+        case "Enter":
+          onEnter?.();
+          break;
         default:
       }
     },
-    [onClose]
+    [onClose, onEnter]
   );
 
   useEffect(() => {
