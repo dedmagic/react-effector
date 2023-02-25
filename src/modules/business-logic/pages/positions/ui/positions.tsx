@@ -59,7 +59,9 @@ export const Positions = () => {
   };
 
   const addHandler = () => {
-    setCurrentPosition(new Position());
+    // Нельзя `parentId: null`, ибо стейт не обновляется. По этой же причине
+    // нельзя `setCurrentPosition(new Postion())`
+    setCurrentPosition({ id: 0, name: "", parentId: 0 } as Position);
     showEditDialog();
   };
 
