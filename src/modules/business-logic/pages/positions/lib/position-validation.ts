@@ -1,10 +1,10 @@
-import { NO_ERRORS } from "types";
+import { ValidateFunction, ValidationResult } from "types";
 
 import { Position } from "models/position";
 
-export const validatePosition = (
+export const validatePosition: ValidateFunction<Position> = (
   rawPosition: Position
-): string[] | typeof NO_ERRORS => {
+): ValidationResult => {
   const errors: string[] = [];
 
   if (rawPosition.name.trim().length === 0) {
@@ -17,10 +17,6 @@ export const validatePosition = (
 
   // TODO: Проверять иерархию должностей, чтобы не было циклов (нижестоящий
   // является начальником вышестоящему)
-
-  if (errors.length === 0) {
-    return NO_ERRORS;
-  }
 
   return errors;
 };

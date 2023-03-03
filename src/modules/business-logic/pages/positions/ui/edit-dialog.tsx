@@ -1,13 +1,13 @@
 import { useStore } from "effector-react";
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 
 import { ErrorsList, Modal, OkCancelButtons } from "components";
-import { NO_ERRORS } from "types";
 
 import { Position } from "models/position";
 import { PositionForm } from "./position-form";
 import { $nameField, $parentIdField } from "../lib/position-form-store";
 import { validatePosition } from "../lib/position-validation";
+import { useValidation } from "hooks/use-validation";
 
 interface EditDialogProps {
   isVisible: boolean;
@@ -18,12 +18,11 @@ interface EditDialogProps {
 
 export const EditDialog = (props: EditDialogProps) => {
   const { isVisible, saveHandler, closeHandler, position } = props;
-  const [errors, setErrors] = useState<string[]>([]);
+  const [hasErrors, errors, validate, resetErrors] =
+    useValidation(validatePosition);
 
   const name = useStore($nameField);
   const parentId = useStore($parentIdField);
-
-  const clearErrors = () => setErrors([]);
 
   const saveForm = () => {
     const rawPosition = {
@@ -32,13 +31,12 @@ export const EditDialog = (props: EditDialogProps) => {
       parentId: parentId,
     };
 
-    const errors = validatePosition(rawPosition);
-    if (errors === NO_ERRORS) {
+    validate(rawPosition);
+    console.info({ hasErrors });
+    console.info({ errors });
+    if (!hasErrors) {
       saveHandler(rawPosition);
-      return;
     }
-
-    setErrors(errors);
   };
 
   const dialogTitle = useMemo(
@@ -64,7 +62,7 @@ export const EditDialog = (props: EditDialogProps) => {
       >
         <PositionForm position={position} />
       </Modal>
-      <ErrorsList errors={errors} closeHandler={clearErrors} />
+      <ErrorsList errors={errors} closeHandler={resetErrors} />
     </>
   );
 };

@@ -27,7 +27,7 @@ sample({
 export const removePosition = createEvent<number>("remove position");
 const deletePositionFx = createEffect(async (positionId: number) => {
   const result = await api.deletePosition(positionId);
-  console.log(result);
+  console.log(`api call result: ${result}`);
 });
 sample({ clock: removePosition, target: deletePositionFx });
 sample({ clock: deletePositionFx.done, target: fetchAllPositionsFx });
@@ -37,7 +37,7 @@ sample({ clock: deletePositionFx.done, target: fetchAllPositionsFx });
 export const updatePosition = createEvent<Position>("update position");
 const updatePositionFx = createEffect(async (position: Position) => {
   const result = await api.updatePosition(position);
-  console.log(result);
+  console.log(`api call result: ${result}`);
 });
 sample({ clock: updatePosition, target: updatePositionFx });
 sample({ clock: updatePositionFx.done, target: fetchAllPositionsFx });
@@ -47,7 +47,7 @@ sample({ clock: updatePositionFx.done, target: fetchAllPositionsFx });
 export const createPosition = createEvent<Position>("create new position");
 const createPositionFx = createEffect(async (position: Position) => {
   const result = await api.createPosition(position);
-  console.log(result);
+  console.log(`api call result: ${result}`);
 });
 sample({ clock: createPosition, target: createPositionFx });
 sample({ clock: createPositionFx.done, target: fetchAllPositionsFx });
