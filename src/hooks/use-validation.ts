@@ -20,16 +20,19 @@ export const useValidation = <T>(
 
   const validate = (checkedData: T) => {
     const validationResult = validateFunction(checkedData);
-    console.info({ validationResult });
+    console.info("use-validation → ", { validationResult });
     setErrors(validationResult);
-    console.info({ errors });
+    console.info("use-validation → ", { errors });
+    // Здесь это не сработает из-за асинхронности `useState`
     // setHasErrors(errors.length > 0);
-    console.info({ hasErrors });
+    // или использовать `useEffect` (см. выше), или это:
+    // setHasErrors(validationResult.length > 0);
+    console.info("use-validation → ", { hasErrors });
   };
 
   const resetErrors = () => {
     setErrors([]);
-    // setHasErrors(false);
+    setHasErrors(false);
   };
 
   return [hasErrors, errors, validate, resetErrors];

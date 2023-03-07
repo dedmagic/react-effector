@@ -32,8 +32,8 @@ export const EditDialog = (props: EditDialogProps) => {
     };
 
     validate(rawPosition);
-    console.info({ hasErrors });
-    console.info({ errors });
+    console.info("edit-dialog → ", { hasErrors });
+    console.info("edit-dialog → ", { errors });
     if (!hasErrors) {
       saveHandler(rawPosition);
     }
