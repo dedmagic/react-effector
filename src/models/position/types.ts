@@ -1,7 +1,9 @@
+import { Nullable } from "types";
+
 export class Position {
   id: number = 0;
   name: string = "";
-  parentId: number | null = null;
+  parentId: Nullable<number> = null;
 }
 
 export interface PositionRow extends Position {
