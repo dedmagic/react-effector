@@ -1,19 +1,16 @@
-import { createEvent, createStore, sample } from "effector";
+import { createApi, createStore } from "effector";
+import { Nullable } from "types";
 
 // #region name field
 export const $nameField = createStore<string>("");
-export const changeNameField = createEvent<string>();
-sample({
-  clock: changeNameField,
-  target: $nameField,
+export const { changeNameField } = createApi($nameField, {
+  changeNameField: (_, newValue: string) => newValue,
 });
 // #endregion name field
 
 // #region parentId field
-export const $parentIdField = createStore<number | null>(null);
-export const changeParentIdField = createEvent<number | null>();
-sample({
-  clock: changeParentIdField,
-  target: $parentIdField,
+export const $parentIdField = createStore<Nullable<number>>(null);
+export const { changeParentIdField } = createApi($parentIdField, {
+  changeParentIdField: (_, newValue: Nullable<number>) => newValue,
 });
 // #endregion parentId field
