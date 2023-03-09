@@ -1,5 +1,5 @@
 import { createApi, createStore } from "effector";
-import { Nullable } from "types";
+import { Nullable } from "types/types";
 
 // #region name field
 export const $nameField = createStore<string>("");

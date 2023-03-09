@@ -1,10 +1,8 @@
-import { NO_ERRORS } from "types";
+import { NO_ERRORS, ValidationResult } from "types";
 
 import { Position } from "models/position";
 
-export const validatePosition = (
-  rawPosition: Position
-): string[] | typeof NO_ERRORS => {
+export const validatePosition = (rawPosition: Position): ValidationResult => {
   const errors: string[] = [];
 
   if (rawPosition.name.trim().length === 0) {
