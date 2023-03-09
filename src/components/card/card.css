@@ -10,7 +10,7 @@
   background-color: var(--content-background-color);
 }
 
-.card-title {
+.card .title {
   /* size & indents */
   margin: 24px;
 }
