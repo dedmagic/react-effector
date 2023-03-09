@@ -47,11 +47,13 @@ export const PositionForm = (props: PositionFormProps) => {
           <option key={0} value={0}>
             (нет начальника)
           </option>
-          {positions.map((position) => (
-            <option key={position.id} value={position.id}>
-              {position.name}
-            </option>
-          ))}
+          {positions
+            .filter((pos) => pos.id !== position.id)
+            .map((pos) => (
+              <option key={pos.id} value={pos.id}>
+                {pos.name}
+              </option>
+            ))}
         </select>
       </div>
     </>
