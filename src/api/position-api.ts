@@ -7,9 +7,9 @@ const HEADERS = {
 };
 
 export const fetchAllPositions = async (): Promise<Position[]> => {
-  return fetch(POSITIONS_API_URL)
-    .then((response) => response.json())
-    .catch((error) => console.log(error));
+  const response = await fetch(POSITIONS_API_URL);
+  const allPositions = await response.json();
+  return allPositions;
 };
 
 export const deletePosition = async (positionId: number): Promise<boolean> => {
