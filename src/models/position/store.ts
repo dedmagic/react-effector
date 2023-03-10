@@ -22,6 +22,13 @@ sample({
   // },
   //#endregion watch example
 });
+sample({
+  clock: fetchAllPositionsFx.failData,
+  fn: () =>
+    console.log(
+      "Ошибка взаимодействия с сервером: не удалось загрузить данные"
+    ),
+});
 //#endregion fetch all
 
 //#region delete position
@@ -32,6 +39,11 @@ const deletePositionFx = createEffect(async (positionId: number) => {
 });
 sample({ clock: removePosition, target: deletePositionFx });
 sample({ clock: deletePositionFx.done, target: fetchAllPositionsFx });
+sample({
+  clock: deletePositionFx.failData,
+  fn: () =>
+    console.log("Ошибка взаимодействия с сервером: не удалось удалить запись"),
+});
 //#endregion delete position
 
 //#region update position
@@ -42,6 +54,11 @@ const updatePositionFx = createEffect(async (position: Position) => {
 });
 sample({ clock: updatePosition, target: updatePositionFx });
 sample({ clock: updatePositionFx.done, target: fetchAllPositionsFx });
+sample({
+  clock: updatePositionFx.failData,
+  fn: () =>
+    console.log("Ошибка взаимодействия с сервером: не удалось обновить запись"),
+});
 //#endregion update position
 
 //#region create position
@@ -52,6 +69,11 @@ const createPositionFx = createEffect(async (position: Position) => {
 });
 sample({ clock: createPosition, target: createPositionFx });
 sample({ clock: createPositionFx.done, target: fetchAllPositionsFx });
+sample({
+  clock: createPositionFx.failData,
+  fn: () =>
+    console.log("Ошибка взаимодействия с сервером: не удалось создать запись"),
+});
 //#endregion create position
 
 //#region for view
