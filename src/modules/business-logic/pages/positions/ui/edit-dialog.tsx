@@ -1,5 +1,5 @@
-import { useStore } from "effector-react";
 import { useMemo, useState } from "react";
+import { useStore } from "effector-react";
 
 import { ErrorsList, Modal, OkCancelButtons } from "components";
 import { NO_ERRORS } from "types";

@@ -17,7 +17,7 @@
     {
       "id": 42,
       "name": "Клерк",
-      "parentId": 2
+      "parentId": 3
     },
     {
       "id": 48,
@@ -28,11 +28,6 @@
       "id": 49,
       "name": "kkkkkkklllllmmmnnnstttxxx",
       "parentId": 48
-    },
-    {
-      "id": 50,
-      "name": "1111222334444",
-      "parentId": 0
     }
   ]
 }

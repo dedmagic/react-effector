@@ -1,5 +1,5 @@
-import "./menu.css";
 import { businessLogicMenuItems, supportMenuItems } from "./menu-items";
+import "./menu.css";
 
 import { MainMenuItem } from "./menu-item";
 

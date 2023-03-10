@@ -1,4 +1,4 @@
-import { Nullable } from "types/types";
+import { Nullable } from "types";
 
 export class Position {
   id: number = 0;

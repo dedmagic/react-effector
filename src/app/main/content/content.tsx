@@ -1,5 +1,6 @@
-import "./content.css";
 import { Route, Routes } from "react-router";
+
+import "./content.css";
 
 import {
   Analytics,
