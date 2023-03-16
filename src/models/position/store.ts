@@ -15,17 +15,11 @@ sample({ clock: fetchAll, target: fetchAllPositionsFx });
 sample({
   clock: fetchAllPositionsFx.doneData,
   target: $positions,
-  //#region watch example
-  // fn: (data) => {
-  //   console.log(data);
-  //   return data;
-  // },
-  //#endregion watch example
 });
 sample({
   clock: fetchAllPositionsFx.failData,
   fn: () =>
-    console.log(
+    console.info(
       "Ошибка взаимодействия с сервером: не удалось загрузить данные"
     ),
 });
@@ -35,14 +29,14 @@ sample({
 export const removePosition = createEvent<number>("remove position");
 const deletePositionFx = createEffect(async (positionId: number) => {
   const result = await api.deletePosition(positionId);
-  console.log(`api call result: ${result}`);
+  console.info(`api call result: ${result}`);
 });
 sample({ clock: removePosition, target: deletePositionFx });
 sample({ clock: deletePositionFx.done, target: fetchAllPositionsFx });
 sample({
   clock: deletePositionFx.failData,
   fn: () =>
-    console.log("Ошибка взаимодействия с сервером: не удалось удалить запись"),
+    console.info("Ошибка взаимодействия с сервером: не удалось удалить запись"),
 });
 //#endregion delete position
 
@@ -50,14 +44,16 @@ sample({
 export const updatePosition = createEvent<Position>("update position");
 const updatePositionFx = createEffect(async (position: Position) => {
   const result = await api.updatePosition(position);
-  console.log(`api call result: ${result}`);
+  console.info(`api call result: ${result}`);
 });
 sample({ clock: updatePosition, target: updatePositionFx });
 sample({ clock: updatePositionFx.done, target: fetchAllPositionsFx });
 sample({
   clock: updatePositionFx.failData,
   fn: () =>
-    console.log("Ошибка взаимодействия с сервером: не удалось обновить запись"),
+    console.info(
+      "Ошибка взаимодействия с сервером: не удалось обновить запись"
+    ),
 });
 //#endregion update position
 
@@ -65,14 +61,14 @@ sample({
 export const createPosition = createEvent<Position>("create new position");
 const createPositionFx = createEffect(async (position: Position) => {
   const result = await api.createPosition(position);
-  console.log(`api call result: ${result}`);
+  console.info(`api call result: ${result}`);
 });
 sample({ clock: createPosition, target: createPositionFx });
 sample({ clock: createPositionFx.done, target: fetchAllPositionsFx });
 sample({
   clock: createPositionFx.failData,
   fn: () =>
-    console.log("Ошибка взаимодействия с сервером: не удалось создать запись"),
+    console.info("Ошибка взаимодействия с сервером: не удалось создать запись"),
 });
 //#endregion create position
 
