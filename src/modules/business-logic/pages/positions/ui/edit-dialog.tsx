@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import { useStore } from "effector-react";
 
-import { ErrorsList, Modal, OkCancelButtons } from "components";
+import { ErrorsList, Modal, OkCancelButtons } from "shared";
 import { NO_ERRORS } from "types";
 
 import { Position } from "models/position";

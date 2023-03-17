@@ -1,4 +1,4 @@
-import { Modal } from "components";
+import { Modal } from "shared";
 
 import { ErrorsListItem } from "./errors-list-item";
 

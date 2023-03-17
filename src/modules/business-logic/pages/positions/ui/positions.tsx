@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useStore } from "effector-react";
 
 import { EntityActionHandlerByEntity } from "types/types";
-import { Card, Column, Table } from "components";
+import { Card, Column, Table } from "shared";
 
 import {
   $positionsWithParentName,
