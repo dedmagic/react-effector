@@ -1,7 +1,7 @@
-import { businessLogicMenuItems, supportMenuItems } from "./menu-items";
-import "./menu.css";
+import { businessLogicMenuItems, supportMenuItems } from "./main-menu-items";
+import "./main-menu.css";
 
-import { MainMenuItem } from "./menu-item";
+import { MainMenuItem } from "./main-menu-item";
 
 export const MainMenu = () => {
   return (

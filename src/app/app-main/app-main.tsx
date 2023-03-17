@@ -1,8 +1,8 @@
 import { BrowserRouter } from "react-router-dom";
 
-import "./main.css";
-import { MainContent } from "./content/content";
-import { MainMenu } from "./menu/menu";
+import "./app-main.css";
+import { MainContent } from "./main-content";
+import { MainMenu } from "./main-menu";
 
 export const AppMain = () => {
   return (

@@ -9,14 +9,14 @@ import { PositionForm } from "./position-form";
 import { $nameField, $parentIdField } from "../lib/position-form-store";
 import { validatePosition } from "../lib/position-validation";
 
-interface EditDialogProps {
+interface PositionEditDialogProps {
   isVisible: boolean;
   closeHandler: () => void;
   saveHandler: (position: Position) => void;
   position: Position;
 }
 
-export const EditDialog = (props: EditDialogProps) => {
+export const PositionEditDialog = (props: PositionEditDialogProps) => {
   const { isVisible, saveHandler, closeHandler, position } = props;
   const [errors, setErrors] = useState<string[]>([]);
 
