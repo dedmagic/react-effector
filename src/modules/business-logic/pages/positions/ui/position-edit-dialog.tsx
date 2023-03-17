@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import { useStore } from "effector-react";
 
-import { ErrorsList, Modal, OkCancelButtons } from "components";
+import { ErrorsList, Modal, OkCancelButtons } from "shared";
 import { NO_ERRORS } from "types";
 
 import { Position } from "models/position";
@@ -9,14 +9,14 @@ import { PositionForm } from "./position-form";
 import { $nameField, $parentIdField } from "../lib/position-form-store";
 import { validatePosition } from "../lib/position-validation";
 
-interface EditDialogProps {
+interface PositionEditDialogProps {
   isVisible: boolean;
   closeHandler: () => void;
   saveHandler: (position: Position) => void;
   position: Position;
 }
 
-export const EditDialog = (props: EditDialogProps) => {
+export const PositionEditDialog = (props: PositionEditDialogProps) => {
   const { isVisible, saveHandler, closeHandler, position } = props;
   const [errors, setErrors] = useState<string[]>([]);
 

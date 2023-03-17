@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useStore } from "effector-react";
 
 import { EntityActionHandlerByEntity } from "types/types";
-import { Card, Column, Table } from "components";
+import { Card, Column, Table } from "shared";
 
 import {
   $positionsWithParentName,
@@ -13,9 +13,9 @@ import {
   removePosition,
   updatePosition,
 } from "models/position";
-import { DeleteDialog } from "./delete-dialog";
-import { EditDialog } from "./edit-dialog";
-import { useToggle } from "hooks/use-toggle";
+import { PositionDeleteDialog } from "./position-delete-dialog";
+import { PositionEditDialog } from "./position-edit-dialog";
+import { useToggle } from "hooks";
 
 export const Positions = () => {
   const viewData = useStore($positionsWithParentName);
@@ -93,13 +93,13 @@ export const Positions = () => {
         </div>
         <Table<PositionRow> columns={columns} data={viewData} />
       </Card>
-      <EditDialog
+      <PositionEditDialog
         isVisible={isEditDialogVisible}
         position={currentPosition}
         closeHandler={closeEditDialog}
         saveHandler={savePosition}
       />
-      <DeleteDialog
+      <PositionDeleteDialog
         isVisible={isDeleteDialogVisible}
         closeHandler={closeDeleteDialog}
         approveHandler={deletePosition}

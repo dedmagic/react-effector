@@ -1,13 +1,13 @@
-import { Modal } from "components";
-import { OkCancelButtons } from "components/modal/ok-cancel-buttons";
+import { Modal } from "shared";
+import { OkCancelButtons } from "shared/modal/ok-cancel-buttons";
 
-interface DeleteDialogProps {
+interface PositionDeleteDialogProps {
   isVisible: boolean;
   closeHandler: () => void;
   approveHandler: () => void;
 }
 
-export const DeleteDialog = (props: DeleteDialogProps) => {
+export const PositionDeleteDialog = (props: PositionDeleteDialogProps) => {
   const { isVisible, closeHandler, approveHandler } = props;
 
   return (

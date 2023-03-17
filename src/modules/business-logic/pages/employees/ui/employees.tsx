@@ -1,4 +1,4 @@
-import { PageMock } from "components/page-mock";
+import { PageMock } from "shared/page-mock";
 
 export const Employees = () => {
   return (

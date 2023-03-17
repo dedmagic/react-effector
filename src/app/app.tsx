@@ -1,8 +1,8 @@
 import "./app.css";
 
-import { AppFooter } from "./footer/footer";
-import { AppHeader } from "./header/header";
-import { AppMain } from "./main/main";
+import { AppFooter } from "./app-footer";
+import { AppHeader } from "./app-header";
+import { AppMain } from "./app-main";
 
 export const App = () => {
   return (
