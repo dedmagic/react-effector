@@ -1,5 +1,5 @@
 import { Modal } from "shared";
-import { OkCancelButtons } from "shared/modal/ok-cancel-buttons";
+import { OkCancelButtons } from "shared/modal/ok-cancel-buttons/ok-cancel-buttons";
 
 interface PositionDeleteDialogProps {
   isVisible: boolean;

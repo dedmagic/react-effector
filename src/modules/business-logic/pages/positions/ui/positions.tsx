@@ -13,8 +13,8 @@ import {
   removePosition,
   updatePosition,
 } from "models/position";
-import { PositionDeleteDialog } from "./position-delete-dialog";
-import { PositionEditDialog } from "./position-edit-dialog";
+import { PositionDeleteDialog } from "./position-delete-dialog/position-delete-dialog";
+import { PositionEditDialog } from "./position-edit-dialog/position-edit-dialog";
 import { useToggle } from "hooks";
 
 export const Positions = () => {
