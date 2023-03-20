@@ -7,7 +7,7 @@ import {
   $parentIdField,
   changeNameField,
   changeParentIdField,
-} from "../../lib/position-form-store";
+} from "../../../lib/position-form-store";
 
 interface PositionFormProps {
   position: Position;

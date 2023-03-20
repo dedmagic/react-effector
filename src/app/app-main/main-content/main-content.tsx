@@ -9,7 +9,7 @@ import {
   Help,
   Positions,
   Settings,
-} from "modules";
+} from "pages";
 
 export const MainContent = () => {
   return (
