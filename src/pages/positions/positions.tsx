@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { useStore } from "effector-react";
 
-import { EntityActionHandlerByEntity } from "types/types";
+import { EntityActionHandlerByEntity } from "types";
 import { Card, Column, Table } from "shared";
+import { useToggle } from "hooks";
 
 import {
   $positionsWithParentName,
@@ -13,9 +14,8 @@ import {
   removePosition,
   updatePosition,
 } from "models/position";
-import { PositionDeleteDialog } from "./position-delete-dialog/position-delete-dialog";
-import { PositionEditDialog } from "./position-edit-dialog/position-edit-dialog";
-import { useToggle } from "hooks";
+import { PositionEditDialog } from "./position-edit-dialog";
+import { PositionDeleteDialog } from "./position-delete-dialog";
 
 export const Positions = () => {
   const viewData = useStore($positionsWithParentName);
