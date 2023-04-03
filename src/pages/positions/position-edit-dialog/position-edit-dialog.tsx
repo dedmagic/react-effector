@@ -6,8 +6,8 @@ import { NO_ERRORS } from "types";
 
 import { Position } from "models/position";
 import { PositionForm } from "./position-form/position-form";
-import { $nameField, $parentIdField } from "../../lib/position-form-store";
-import { validatePosition } from "../../lib/position-validation";
+import { $nameField, $parentIdField } from "./position-form-store";
+import { validatePosition } from "./position-validation";
 
 interface PositionEditDialogProps {
   isVisible: boolean;
