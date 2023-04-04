@@ -3,7 +3,7 @@ import { useStore } from "effector-react";
 
 import { EntityActionHandlerByEntity } from "types";
 import { Card, Column, Table } from "shared";
-import { useToggle } from "hooks";
+import { useDialog } from "hooks";
 
 import {
   $positionsWithParentName,
@@ -25,24 +25,9 @@ export const Positions = () => {
   const [currentPosition, setCurrentPosition] = useState<Position>(
     new Position()
   );
-  const [isEditDialogVisible, toggleIsEditDialogVisible] = useToggle(false);
-  const [isDeleteDialogVisible, toggleIsDeleteDialogVisible] = useToggle(false);
-
-  const showEditDialog = () => {
-    toggleIsEditDialogVisible(true);
-  };
-
-  const closeEditDialog = () => {
-    toggleIsEditDialogVisible(false);
-  };
-
-  const showDeleteDialog = () => {
-    toggleIsDeleteDialogVisible(true);
-  };
-
-  const closeDeleteDialog = () => {
-    toggleIsDeleteDialogVisible(false);
-  };
+  const [isEditDialogVisible, showEditDialog, closeEditDialog] = useDialog();
+  const [isDeleteDialogVisible, showDeleteDialog, closeDeleteDialog] =
+    useDialog();
 
   const deleteHandler = (position: Position) => {
     setCurrentPosition(position);
