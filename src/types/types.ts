@@ -4,6 +4,8 @@ import { NO_ERRORS } from "./consts";
 
 export type Nullable<T> = T | null;
 
+export type SimpleAction = () => void;
+
 export type EntityActionHandlerById = (id: number) => void;
 export type EntityActionHandlerByEntity<T> = (entity: T) => void;
 
