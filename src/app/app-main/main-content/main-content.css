@@ -2,3 +2,11 @@
   /* size & indents */
   width: 100%;
 }
+
+.main-content__card {
+  margin-left: 16px;
+}
+
+.main-content__page-title {
+  margin: 20px;
+}

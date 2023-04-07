@@ -46,23 +46,23 @@ export const Modal = ({
   return !isVisible ? null : (
     // Чтобы окно закрывалось при щелчке вне его, надо так:
     // <div className="modal" onClick={onClose}>
-    <div className="modal">
+    <div className="lock-screen">
       {/*
         `stopPropagation` нужно только если включено закрытие окна при
         щелчке вне его (см. коммент выше), чтобы окно не закрывалось
         при щелчке по нему
        */}
-      <div className="modal-dialog" onClick={(e) => e.stopPropagation()}>
-        <div className="modal-header">
-          <h3 className="modal-title">{title}</h3>
-          <span className="modal-close" onClick={onClose}>
+      <div className="modal" onClick={(e) => e.stopPropagation()}>
+        <div className="modal__header">
+          <h3 className="modal__title">{title}</h3>
+          <span className="modal__close" onClick={onClose}>
             &times;
           </span>
         </div>
-        <div className="modal-body">
-          <div className="modal-content">{children}</div>
+        <div className="modal__body">
+          <div className="modal__content">{children}</div>
         </div>
-        {footer && <div className="modal-footer">{footer}</div>}
+        {footer && <div className="modal__footer">{footer}</div>}
       </div>
     </div>
   );

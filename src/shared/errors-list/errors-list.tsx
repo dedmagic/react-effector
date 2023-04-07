@@ -1,5 +1,6 @@
 import { Modal } from "shared";
 
+import "./errors-list.css";
 import { ErrorsListItem } from "./errors-list-item";
 
 interface ErrorsListProps {

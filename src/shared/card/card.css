@@ -3,14 +3,13 @@
   display: table;
 
   /* size & indents */
-  margin-left: 16px;
   padding: 24px;
 
   /* appearance */
   background-color: var(--content-background-color);
 }
 
-.card .title {
+.card__title {
   /* size & indents */
-  margin: 24px;
+  margin-bottom: 24px;
 }

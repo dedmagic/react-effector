@@ -9,8 +9,8 @@ export interface CardProps {
 
 export const Card = ({ title, children }: CardProps) => {
   return (
-    <div className="card">
-      {title && <p className="title">{title}</p>}
+    <div className="card main-content__card">
+      {title && <p className="card__title">{title}</p>}
       {children}
     </div>
   );

@@ -1,9 +1,7 @@
-import "./errors-list-item.css";
-
 interface ErrorsListItemProps {
   error: string;
 }
 
 export const ErrorsListItem = ({ error }: ErrorsListItemProps) => (
-  <li className="errors-list-item">{error}</li>
+  <li className="errors-list__item">{error}</li>
 );

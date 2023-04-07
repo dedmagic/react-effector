@@ -1,9 +1,9 @@
-import { PageMock } from "shared/page-mock";
+import { PageMock, PageTitle } from "shared";
 
 export const Settings = () => {
   return (
     <>
-      <h4 className="pageTitle">Настройки</h4>
+      <PageTitle title="Настройки" />
       <PageMock />
     </>
   );

@@ -1,9 +1,9 @@
-import { PageMock } from "shared/page-mock";
+import { PageMock, PageTitle } from "shared";
 
 export const Help = () => {
   return (
     <>
-      <h4 className="pageTitle">Справка</h4>
+      <PageTitle title="Справка" />
       <PageMock />
     </>
   );
