@@ -69,7 +69,7 @@ export const Positions = () => {
   return (
     <>
       <PageTitle title="Должности" />
-      <Card>
+      <Card mixCssClasses="main-content__card">
         <div className="actions-panel">
           <button onClick={addHandler}>
             <i className="far fa-square-plus icon-before-label"></i>
