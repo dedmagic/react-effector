@@ -1,9 +1,10 @@
-import { PageMock, PageTitle } from "shared";
+import { UnifedPageTitle } from "hoc";
+import { PageMock } from "shared";
 
 export const Analytics = () => {
   return (
     <>
-      <PageTitle title="Отчёты" />
+      <UnifedPageTitle title="Отчёты" />
       <PageMock />
     </>
   );

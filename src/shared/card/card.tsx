@@ -11,9 +11,8 @@ export interface CardProps extends BemMix {
 }
 
 export const Card = ({ title, children, mixCssClasses }: CardProps) => {
-  const cssClasses = classNames("card", mixCssClasses);
   return (
-    <div className={cssClasses}>
+    <div className={classNames("card", mixCssClasses)}>
       {title && <p className="card__title">{title}</p>}
       {children}
     </div>

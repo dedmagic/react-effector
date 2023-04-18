@@ -1,6 +1,10 @@
-interface PageTitleProps {
+import classNames from "classnames";
+
+import { BemMix } from "types";
+
+interface PageTitleProps extends BemMix {
   title: string;
 }
-export const PageTitle = ({ title }: PageTitleProps) => {
-  return <h4 className="main-content__page-title">{title}</h4>;
+export const PageTitle = ({ title, mixCssClasses }: PageTitleProps) => {
+  return <h4 className={classNames(mixCssClasses)}>{title}</h4>;
 };

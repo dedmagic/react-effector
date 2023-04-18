@@ -1,9 +1,10 @@
-import { PageMock, PageTitle } from "shared";
+import { UnifedPageTitle } from "hoc";
+import { PageMock } from "shared";
 
 export const Settings = () => {
   return (
     <>
-      <PageTitle title="Настройки" />
+      <UnifedPageTitle title="Настройки" />
       <PageMock />
     </>
   );

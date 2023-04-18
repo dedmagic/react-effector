@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import { useStore } from "effector-react";
 
 import { EntityActionHandlerByEntity } from "types";
-import { Card, Column, PageTitle, Table } from "shared";
+import { Card, Column, Table } from "shared";
+import { UnifedPageTitle } from "hoc";
 import { useDialog } from "hooks";
 
 import {
@@ -68,7 +69,7 @@ export const Positions = () => {
 
   return (
     <>
-      <PageTitle title="Должности" />
+      <UnifedPageTitle title="Должности" />
       <Card mixCssClasses="main-content__card">
         <div className="actions-panel">
           <button onClick={addHandler}>
