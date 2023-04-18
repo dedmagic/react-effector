@@ -1,5 +1,4 @@
-import { UnifedPageTitle } from "hoc";
-import { PageMock } from "shared";
+import { PageMock, UnifedPageTitle } from "shared";
 
 export const Analytics = () => {
   return (

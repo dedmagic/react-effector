@@ -2,8 +2,7 @@ import { useEffect, useState } from "react";
 import { useStore } from "effector-react";
 
 import { EntityActionHandlerByEntity } from "types";
-import { Card, Column, Table } from "shared";
-import { UnifedPageTitle } from "hoc";
+import { Card, Column, Table, UnifedPageTitle } from "shared";
 import { useDialog } from "hooks";
 
 import {

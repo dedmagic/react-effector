@@ -1,7 +1,6 @@
 import { Modal } from "shared";
 
 import "./errors-list.css";
-import { ErrorsListItem } from "./errors-list-item";
 
 interface ErrorsListProps {
   errors: string[];
@@ -18,7 +17,9 @@ export const ErrorsList = ({ errors, closeHandler }: ErrorsListProps) => (
     <ul>
       {errors.map((error, index) => (
         // `key={index}` можно, ибо список read-only
-        <ErrorsListItem error={error} key={index} />
+        <li className="errors-list__item" key={index}>
+          {error}
+        </li>
       ))}
     </ul>
   </Modal>

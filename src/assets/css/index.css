@@ -71,6 +71,7 @@ button+button {
   margin-left: 12px;
 }
 
+/* TODO: подумать -- похоже на компонент, но, с другой стороны, он мегапростой (контейнер only и даже без своих стилей) */
 .actions-panel {
   margin-bottom: 16px;
 }
@@ -87,6 +88,7 @@ button+button {
   margin-top: 16px;
 }
 
+/* TODO: подумать за приведение к БЭМ -- вместо селекторов тегов сделать элементы  */
 .form-control label {
   /* position */
   display: block;
