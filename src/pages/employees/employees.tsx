@@ -1,9 +1,9 @@
-import { PageMock } from "shared/page-mock";
+import { PageMock, UnifedPageTitle } from "shared";
 
 export const Employees = () => {
   return (
     <>
-      <h4 className="pageTitle">Сотрудники</h4>
+      <UnifedPageTitle title="Сотрудники" />
       <PageMock />
     </>
   );

@@ -6,7 +6,7 @@ import { AppMain } from "./app-main";
 
 export const App = () => {
   return (
-    <div className="app-wrapper">
+    <div className="app">
       <AppHeader />
       <AppMain />
       <AppFooter />

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useStore } from "effector-react";
 
 import { EntityActionHandlerByEntity } from "types";
-import { Card, Column, Table } from "shared";
+import { Card, Column, Table, UnifedPageTitle } from "shared";
 import { useDialog } from "hooks";
 
 import {
@@ -68,8 +68,8 @@ export const Positions = () => {
 
   return (
     <>
-      <h4 className="pageTitle">Должности</h4>
-      <Card>
+      <UnifedPageTitle title="Должности" />
+      <Card mixCssClasses="main-content__card">
         <div className="actions-panel">
           <button onClick={addHandler}>
             <i className="far fa-square-plus icon-before-label"></i>
