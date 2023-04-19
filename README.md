@@ -8,6 +8,7 @@
 - Font Awesome
 - json-server
 - react-router
+- БЭМ
 
 Запуск:
 
