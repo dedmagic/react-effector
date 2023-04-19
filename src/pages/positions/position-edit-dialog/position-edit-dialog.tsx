@@ -4,7 +4,7 @@ import { useStore } from "effector-react";
 import { ErrorsList, Modal, OkCancelButtons } from "shared";
 import { NO_ERRORS } from "types";
 
-import { Position } from "models/position";
+import { Position } from "modules/position";
 import { PositionForm } from "./position-form/position-form";
 import { $nameField, $parentIdField } from "./position-form-store";
 import { validatePosition } from "./position-validation";

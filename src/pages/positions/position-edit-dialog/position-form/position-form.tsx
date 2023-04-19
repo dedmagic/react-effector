@@ -1,6 +1,6 @@
 import { useStore } from "effector-react";
 
-import { $positions, Position } from "models/position";
+import { $positions, Position } from "modules/position";
 import { useEffect } from "react";
 import {
   $nameField,

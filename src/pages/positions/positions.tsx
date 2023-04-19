@@ -13,7 +13,7 @@ import {
   PositionRow,
   removePosition,
   updatePosition,
-} from "models/position";
+} from "modules/position";
 import { PositionEditDialog } from "./position-edit-dialog";
 import { PositionDeleteDialog } from "./position-delete-dialog";
 

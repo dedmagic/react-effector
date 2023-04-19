@@ -1,4 +1,4 @@
-import { Position } from "models/position";
+import { Position } from "modules/position";
 
 const API_URL = process.env.REACT_APP_API_URL;
 const POSITIONS_API_URL = `${API_URL}/positions`;

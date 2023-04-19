@@ -1,6 +1,6 @@
 import { createEffect, createEvent, createStore, sample } from "effector";
 
-import * as api from "api/position-api";
+import * as api from "./api";
 import { Position } from "./types";
 
 export const $positions = createStore<Position[]>([]);
