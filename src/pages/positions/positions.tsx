@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useStore } from "effector-react";
 
 import { EntityActionHandlerByEntity } from "types";
-import { Card, Column, Table, UnifedPageTitle } from "shared";
+import { Column, Table, UnifedCard, UnifedPageTitle } from "shared";
 import { useDialog } from "hooks";
 
 import {
@@ -69,7 +69,7 @@ export const Positions = () => {
   return (
     <>
       <UnifedPageTitle title="Должности" />
-      <Card mixCssClasses="main-content__card">
+      <UnifedCard>
         <div className="actions-panel">
           <button onClick={addHandler}>
             <i className="far fa-square-plus icon-before-label"></i>
@@ -77,7 +77,7 @@ export const Positions = () => {
           </button>
         </div>
         <Table<PositionRow> columns={columns} data={viewData} />
-      </Card>
+      </UnifedCard>
       <PositionEditDialog
         isVisible={isEditDialogVisible}
         position={currentPosition}
