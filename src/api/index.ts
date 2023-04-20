@@ -1,1 +1,1 @@
-export * from "../modules/position/api";
+export * from "./api";

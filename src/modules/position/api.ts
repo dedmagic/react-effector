@@ -1,16 +1,11 @@
+import { API_URL, HEADERS, api } from "api";
+
 import { Position } from "modules/position";
 
-const API_URL = process.env.REACT_APP_API_URL;
 const POSITIONS_API_URL = `${API_URL}/positions`;
-const HEADERS = {
-  "Content-type": "application/json; charset=UTF-8",
-};
 
-export const fetchAllPositions = async (): Promise<Position[]> => {
-  const response = await fetch(POSITIONS_API_URL);
-  const allPositions = await response.json();
-  return allPositions;
-};
+export const fetchAllPositions = () =>
+  api.getAllEntities<Position>(POSITIONS_API_URL);
 
 export const deletePosition = async (positionId: number): Promise<boolean> => {
   const url = `${POSITIONS_API_URL}/${positionId}`;

@@ -1,5 +1,7 @@
 import { createEffect, createEvent, createStore, sample } from "effector";
 
+import { GET_ERROR_MSG } from "api";
+
 import * as api from "./api";
 import { Position } from "./types";
 
@@ -18,10 +20,7 @@ sample({
 });
 sample({
   clock: fetchAllPositionsFx.failData,
-  fn: () =>
-    console.info(
-      "Ошибка взаимодействия с сервером: не удалось загрузить данные"
-    ),
+  fn: () => console.error(GET_ERROR_MSG),
 });
 //#endregion fetch all
 
@@ -36,7 +35,9 @@ sample({ clock: deletePositionFx.done, target: fetchAllPositionsFx });
 sample({
   clock: deletePositionFx.failData,
   fn: () =>
-    console.info("Ошибка взаимодействия с сервером: не удалось удалить запись"),
+    console.error(
+      "Ошибка взаимодействия с сервером: не удалось удалить запись"
+    ),
 });
 //#endregion delete position
 

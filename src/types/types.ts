@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 
-import { NO_ERRORS } from "./consts";
+export const NO_ERRORS = "no errors";
 
 export type Nullable<T> = T | null;
 
