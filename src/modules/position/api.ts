@@ -1,4 +1,6 @@
-import { API_URL, HEADERS, api } from "api";
+import { api } from "common/api";
+import { HEADERS } from "common/api/common-api";
+import { API_URL } from "common/config";
 
 import { Position } from "modules/position";
 

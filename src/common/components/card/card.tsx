@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import classNames from "classnames";
 
-import { BemMix } from "types";
+import { BemMix } from "common/types";
 
 import "./card.css";
 

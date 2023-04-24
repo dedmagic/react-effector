@@ -1,4 +1,4 @@
-import { NO_ERRORS, ValidationResult } from "types";
+import { NO_ERRORS, ValidationResult } from "common/types";
 
 import { Position } from "modules/position";
 

@@ -1,4 +1,4 @@
-import { Modal } from "shared";
+import { Modal } from "common/components";
 
 import "./errors-list.css";
 

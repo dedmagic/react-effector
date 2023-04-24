@@ -1,4 +1,5 @@
-import { API_URL, api } from "api";
+import { API_URL } from "common/config";
+import { api } from "common/api";
 
 import { Employee } from "modules/employees";
 

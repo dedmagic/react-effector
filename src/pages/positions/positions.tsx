@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { useStore } from "effector-react";
 
-import { EntityActionHandlerByEntity } from "types";
-import { Column, Table, UnifedCard, UnifedPageTitle } from "shared";
-import { useDialog } from "hooks";
+import { EntityActionHandlerByEntity } from "common/types";
+import { Column, Table, UnifedCard, UnifedPageTitle } from "common/components";
+import { useDialog } from "common/hooks";
 
 import {
   $positionsWithParentName,

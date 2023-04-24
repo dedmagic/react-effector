@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { useStore } from "effector-react";
 
-import { EntityActionHandlerByEntity } from "types";
-import { Column, Table, UnifedCard, UnifedPageTitle } from "shared";
+import { EntityActionHandlerByEntity } from "common/types";
+import { Column, Table, UnifedCard, UnifedPageTitle } from "common/components";
 
 import { $employeesWithPositionName } from "modules/employees/store";
 import { Employee, EmployeeRow } from "modules/employees/types";

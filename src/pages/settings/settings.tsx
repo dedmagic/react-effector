@@ -1,4 +1,4 @@
-import { PageMock, UnifedPageTitle } from "shared";
+import { PageMock, UnifedPageTitle } from "common/components";
 
 export const Settings = () => {
   return (

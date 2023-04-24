@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { Card } from "shared";
+import { Card } from "common/components";
 
 interface UnifedCardProps {
   title?: string;

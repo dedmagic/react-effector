@@ -1,4 +1,4 @@
-import { PageTitle } from "shared";
+import { PageTitle } from "common/components";
 
 interface UnifedPageTitleProps {
   title: string;

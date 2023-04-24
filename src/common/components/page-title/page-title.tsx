@@ -1,6 +1,6 @@
 import classNames from "classnames";
 
-import { BemMix } from "types";
+import { BemMix } from "common/types";
 
 interface PageTitleProps extends BemMix {
   title: string;
