@@ -51,6 +51,7 @@ function getColumns(
       key: "position",
       header: "Должность",
       dataName: "positionName",
+      width: 250,
     },
     {
       key: "actions",

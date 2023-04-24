@@ -43,7 +43,9 @@ export const Table = <TRow extends { id: number }>(props: TableProps<TRow>) => {
       <thead>
         <tr className="header">
           {columns.map((column) => (
-            <th key={column.key}>{createColumnHeader(column.header)}</th>
+            <th key={column.key} style={{ width: column.width }}>
+              {createColumnHeader(column.header)}
+            </th>
           ))}
         </tr>
       </thead>
