@@ -1,6 +1,6 @@
 import { createEffect, createEvent, createStore, sample } from "effector";
 
-import { GET_ERROR_MSG } from "common/api";
+import { ERROR_MSG } from "common/api";
 
 import { Employee } from "modules/employees";
 import { fetchAllEmployees } from "./api";
@@ -17,7 +17,7 @@ sample({ clock: fetchAll, target: fetchAllFx });
 sample({ clock: fetchAllFx.doneData, target: $employees });
 sample({
   clock: fetchAllFx.failData,
-  fn: () => console.error(GET_ERROR_MSG),
+  fn: () => console.error(ERROR_MSG.GET_REQUEST),
 });
 //#endregion fetch all
 

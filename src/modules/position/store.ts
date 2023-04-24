@@ -1,6 +1,6 @@
 import { createEffect, createEvent, createStore, sample } from "effector";
 
-import { GET_ERROR_MSG } from "common/api";
+import { ERROR_MSG } from "common/api";
 
 import * as api from "./api";
 import { Position } from "./types";
@@ -20,7 +20,7 @@ sample({
 });
 sample({
   clock: fetchAllPositionsFx.failData,
-  fn: () => console.error(GET_ERROR_MSG),
+  fn: () => console.error(ERROR_MSG.GET_REQUEST),
 });
 //#endregion fetch all
 

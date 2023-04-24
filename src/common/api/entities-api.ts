@@ -7,6 +7,3 @@ async function getAllEntities<T>(url: string): Promise<T[]> {
 export const api = {
   getAllEntities: getAllEntities,
 };
-
-export const GET_ERROR_MSG =
-  "Ошибка взаимодействия с сервером: не удалось загрузить данные";
