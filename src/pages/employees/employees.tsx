@@ -6,12 +6,12 @@ import { Column, Table, UnifedCard, UnifedPageTitle } from "common/components";
 
 import { $employeesWithPositionName } from "modules/employees/store";
 import { Employee, EmployeeRow } from "modules/employees/types";
-import { fetchAll } from "modules/employees";
+import { fetchAllEmployees } from "modules/employees";
 
 export const Employees = () => {
   const viewData: EmployeeRow[] = useStore($employeesWithPositionName);
 
-  useEffect(() => fetchAll(), []);
+  useEffect(() => fetchAllEmployees(), []);
 
   const addHandler = () => {};
 

@@ -1,31 +1,46 @@
-import { createEffect, createEvent, createStore, sample } from "effector";
+import {
+  combine,
+  createEffect,
+  createEvent,
+  createStore,
+  sample,
+} from "effector";
 
 import { ERROR_MSG } from "common/api";
+import * as api from "./api";
 
 import { Employee } from "modules/employees";
-import { fetchAllEmployees } from "./api";
+import { $positions, fetchAllPositionsFx } from "modules/position";
 
 export const $employees = createStore<Employee[]>([]);
 
 //#region fetch all
-export const fetchAll = createEvent();
+export const fetchAllEmployees = createEvent();
 const fetchAllFx = createEffect(() => {
-  return fetchAllEmployees();
+  return api.fetchAllEmployees();
 });
 
-sample({ clock: fetchAll, target: fetchAllFx });
+sample({ clock: fetchAllEmployees, target: fetchAllFx });
 sample({ clock: fetchAllFx.doneData, target: $employees });
 sample({
   clock: fetchAllFx.failData,
   fn: () => console.error(ERROR_MSG.GET_REQUEST),
 });
+sample({ clock: fetchAllEmployees, target: fetchAllPositionsFx });
 //#endregion fetch all
 
 //#region for view
-export const $employeesWithPositionName = $employees.map((employees) => {
-  return employees.map((employee) => ({
-    ...employee,
-    positionName: "hello world",
-  }));
-});
+export const $employeesWithPositionName = combine(
+  $employees,
+  $positions,
+  (employees, positions) => {
+    console.info(positions);
+    return employees.map((employee) => ({
+      ...employee,
+      positionName:
+        positions.find((position) => position.id === employee.positionId)
+          ?.name ?? "",
+    }));
+  }
+);
 //#endregion for view

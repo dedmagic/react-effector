@@ -8,12 +8,12 @@ import { Position } from "./types";
 export const $positions = createStore<Position[]>([]);
 
 //#region fetch all
-export const fetchAll = createEvent();
-const fetchAllPositionsFx = createEffect(() => {
+export const fetchAllPositions = createEvent();
+export const fetchAllPositionsFx = createEffect(() => {
   return api.fetchAllPositions();
 });
 
-sample({ clock: fetchAll, target: fetchAllPositionsFx });
+sample({ clock: fetchAllPositions, target: fetchAllPositionsFx });
 sample({
   clock: fetchAllPositionsFx.doneData,
   target: $positions,

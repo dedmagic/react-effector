@@ -8,7 +8,7 @@ import { useDialog } from "common/hooks";
 import {
   $positionsWithParentName,
   createPosition,
-  fetchAll,
+  fetchAllPositions,
   Position,
   PositionRow,
   removePosition,
@@ -20,7 +20,7 @@ import { PositionDeleteDialog } from "./position-delete-dialog";
 export const Positions = () => {
   const viewData = useStore($positionsWithParentName);
 
-  useEffect(() => fetchAll(), []);
+  useEffect(() => fetchAllPositions(), []);
 
   const [currentPosition, setCurrentPosition] = useState<Position>(
     new Position()
