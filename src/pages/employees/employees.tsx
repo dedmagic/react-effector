@@ -1,15 +1,21 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useStore } from "effector-react";
 
 import { EntityActionHandlerByEntity } from "common/types";
 import { Column, Table, UnifedCard, UnifedPageTitle } from "common/components";
+import { useDialog } from "common/hooks";
+import { DeleteDialog } from "common/components/delete-dialog";
 
 import { $employeesWithPositionName } from "modules/employees/store";
 import { Employee, EmployeeRow } from "modules/employees/types";
-import { fetchAllEmployees } from "modules/employees";
+import { fetchAllEmployees, removeEmployee } from "modules/employees";
 
 export const Employees = () => {
   const viewData: EmployeeRow[] = useStore($employeesWithPositionName);
+
+  const [currentEntity, setCurrentEntity] = useState<Employee>(new Employee());
+  const [isDeleteDialogVisible, showDeleteDialog, closeDeleteDialog] =
+    useDialog();
 
   useEffect(() => fetchAllEmployees(), []);
 
@@ -17,7 +23,19 @@ export const Employees = () => {
 
   const editHandler = (employee: Employee) => {};
 
-  const deleteHandler = (employee: Employee) => {};
+  const deleteHandler = (employee: Employee) => {
+    setCurrentEntity(employee);
+    showDeleteDialog();
+  };
+
+  const deleteEmployee = () => {
+    closeDeleteDialog();
+    if (currentEntity.id) {
+      removeEmployee(currentEntity.id);
+    } else {
+      throw new Error("Something went wrong...");
+    }
+  };
 
   const columns = getColumns(editHandler, deleteHandler);
 
@@ -33,6 +51,13 @@ export const Employees = () => {
         </div>
         <Table<EmployeeRow> columns={columns} data={viewData} />
       </UnifedCard>
+      <DeleteDialog
+        isVisible={isDeleteDialogVisible}
+        closeHandler={closeDeleteDialog}
+        approveHandler={deleteEmployee}
+        title="Удаление сотрудника"
+        message="Вы действительно хотите удалить этого сотрудника?"
+      />
     </>
   );
 };

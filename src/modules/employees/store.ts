@@ -29,6 +29,23 @@ sample({
 sample({ clock: fetchAllEmployees, target: fetchAllPositionsFx });
 //#endregion fetch all
 
+//#region delete employee
+export const removeEmployee = createEvent<number>("remove employee");
+const deleteEmployeeFx = createEffect(async (employeeId: number) => {
+  const result = await api.deleteEmployee(employeeId);
+  console.info(`api call result: ${result}`);
+});
+sample({ clock: removeEmployee, target: deleteEmployeeFx });
+sample({ clock: deleteEmployeeFx.done, target: fetchAllEmployees });
+sample({
+  clock: deleteEmployeeFx.failData,
+  fn: () =>
+    console.error(
+      "Ошибка взаимодействия с сервером: не удалось удалить запись"
+    ),
+});
+//#endregion delete employee
+
 //#region for view
 export const $employeesWithPositionName = combine(
   $employees,
