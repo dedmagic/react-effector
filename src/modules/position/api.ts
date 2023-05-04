@@ -10,9 +10,7 @@ export const fetchAllPositions = () =>
   api.getAllEntities<Position>(POSITIONS_API_URL);
 
 export const deletePosition = async (positionId: number): Promise<boolean> => {
-  const url = `${POSITIONS_API_URL}/${positionId}`;
-  const response = await fetch(url, { method: "DELETE" });
-  return response.ok;
+  return api.deleteEntity(POSITIONS_API_URL, positionId);
 };
 
 export const updatePosition = async (position: Position) => {
