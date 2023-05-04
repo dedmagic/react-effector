@@ -34,10 +34,7 @@ sample({ clock: removePosition, target: deletePositionFx });
 sample({ clock: deletePositionFx.done, target: fetchAllPositionsFx });
 sample({
   clock: deletePositionFx.failData,
-  fn: () =>
-    console.error(
-      "Ошибка взаимодействия с сервером: не удалось удалить запись"
-    ),
+  fn: () => console.error(ERROR_MSG.DELETE_REQUEST),
 });
 //#endregion delete position
 

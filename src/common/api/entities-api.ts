@@ -1,4 +1,4 @@
-import { deleteQuery, getQuery } from "./common-api";
+import { deleteQuery, getQuery } from "./base-api";
 
 async function getAllEntities<T>(url: string): Promise<T[]> {
   return getQuery<T[]>(url);

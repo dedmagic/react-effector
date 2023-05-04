@@ -7,8 +7,8 @@ import {
 } from "effector";
 
 import { ERROR_MSG } from "common/api";
-import * as api from "./api";
 
+import * as api from "./api";
 import { Employee } from "modules/employees";
 import { $positions, fetchAllPositionsFx } from "modules/position";
 
@@ -39,10 +39,7 @@ sample({ clock: removeEmployee, target: deleteEmployeeFx });
 sample({ clock: deleteEmployeeFx.done, target: fetchAllEmployees });
 sample({
   clock: deleteEmployeeFx.failData,
-  fn: () =>
-    console.error(
-      "Ошибка взаимодействия с сервером: не удалось удалить запись"
-    ),
+  fn: () => console.error(ERROR_MSG.DELETE_REQUEST),
 });
 //#endregion delete employee
 
