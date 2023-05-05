@@ -1,5 +1,4 @@
 import { api } from "common/api";
-import { HEADERS } from "common/api/base-api";
 import { API_URL } from "common/config";
 
 import { Position } from "modules/position";
@@ -14,20 +13,9 @@ export const deletePosition = async (positionId: number): Promise<boolean> => {
 };
 
 export const updatePosition = async (position: Position) => {
-  const url = `${POSITIONS_API_URL}/${position.id}`;
-  const response = await fetch(url, {
-    method: "PUT",
-    body: JSON.stringify(position),
-    headers: HEADERS,
-  });
-  return response.ok;
+  return api.updateEntity(POSITIONS_API_URL, position);
 };
 
 export const createPosition = async (position: Position) => {
-  const response = await fetch(POSITIONS_API_URL, {
-    method: "POST",
-    body: JSON.stringify(position),
-    headers: HEADERS,
-  });
-  return response.ok;
+  return api.createEntity(POSITIONS_API_URL, position);
 };

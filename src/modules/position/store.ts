@@ -48,10 +48,7 @@ sample({ clock: updatePosition, target: updatePositionFx });
 sample({ clock: updatePositionFx.done, target: fetchAllPositionsFx });
 sample({
   clock: updatePositionFx.failData,
-  fn: () =>
-    console.info(
-      "Ошибка взаимодействия с сервером: не удалось обновить запись"
-    ),
+  fn: () => console.error(ERROR_MSG.UPDATE_REQUEST),
 });
 //#endregion update position
 
@@ -65,8 +62,7 @@ sample({ clock: createPosition, target: createPositionFx });
 sample({ clock: createPositionFx.done, target: fetchAllPositionsFx });
 sample({
   clock: createPositionFx.failData,
-  fn: () =>
-    console.info("Ошибка взаимодействия с сервером: не удалось создать запись"),
+  fn: () => console.error(ERROR_MSG.CREATE_REQUEST),
 });
 //#endregion create position
 
