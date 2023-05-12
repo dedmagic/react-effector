@@ -3,19 +3,19 @@ import { API_URL } from "common/config";
 
 import { Position } from "modules/position";
 
-const POSITIONS_API_URL = `${API_URL}/positions`;
+const POSITION_API_URL = `${API_URL}/positions`;
 
 export const fetchAllPositions = () =>
-  api.getAllEntities<Position>(POSITIONS_API_URL);
+  api.getAllEntities<Position>(POSITION_API_URL);
 
 export const deletePosition = async (positionId: number): Promise<boolean> => {
-  return api.deleteEntity(POSITIONS_API_URL, positionId);
+  return api.deleteEntity(POSITION_API_URL, positionId);
 };
 
 export const updatePosition = async (position: Position) => {
-  return api.updateEntity(POSITIONS_API_URL, position);
+  return api.updateEntity(POSITION_API_URL, position);
 };
 
 export const createPosition = async (position: Position) => {
-  return api.createEntity(POSITIONS_API_URL, position);
+  return api.createEntity(POSITION_API_URL, position);
 };

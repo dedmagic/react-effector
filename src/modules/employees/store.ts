@@ -16,14 +16,14 @@ export const $employees = createStore<Employee[]>([]);
 
 //#region fetch all
 export const fetchAllEmployees = createEvent();
-const fetchAllFx = createEffect(() => {
+const fetchAllEmployeesFx = createEffect(() => {
   return api.fetchAllEmployees();
 });
 
-sample({ clock: fetchAllEmployees, target: fetchAllFx });
-sample({ clock: fetchAllFx.doneData, target: $employees });
+sample({ clock: fetchAllEmployees, target: fetchAllEmployeesFx });
+sample({ clock: fetchAllEmployeesFx.doneData, target: $employees });
 sample({
-  clock: fetchAllFx.failData,
+  clock: fetchAllEmployeesFx.failData,
   fn: () => console.error(ERROR_MSG.GET_REQUEST),
 });
 sample({ clock: fetchAllEmployees, target: fetchAllPositionsFx });
@@ -43,12 +43,39 @@ sample({
 });
 //#endregion delete employee
 
+//#region update employee
+export const updateEmployee = createEvent<Employee>("update employee");
+const updateEmployeeFx = createEffect(async (employee: Employee) => {
+  const result = await api.updateEmployee(employee);
+  console.info(`api call result: ${result}`);
+});
+sample({ clock: updateEmployee, target: updateEmployeeFx });
+sample({ clock: updateEmployeeFx.done, target: fetchAllEmployeesFx });
+sample({
+  clock: updateEmployeeFx.failData,
+  fn: () => console.error(ERROR_MSG.UPDATE_REQUEST),
+});
+//#endregion update employee
+
+//#region create employee
+export const createEmployee = createEvent<Employee>("create new employee");
+const createEmployeeFx = createEffect(async (employee: Employee) => {
+  const result = await api.createEmployee(employee);
+  console.info(`api call result: ${result}`);
+});
+sample({ clock: createEmployee, target: createEmployeeFx });
+sample({ clock: createEmployeeFx.done, target: fetchAllEmployeesFx });
+sample({
+  clock: createEmployeeFx.failData,
+  fn: () => console.error(ERROR_MSG.CREATE_REQUEST),
+});
+//#endregion create employee
+
 //#region for view
 export const $employeesWithPositionName = combine(
   $employees,
   $positions,
   (employees, positions) => {
-    console.info(positions);
     return employees.map((employee) => ({
       ...employee,
       positionName:

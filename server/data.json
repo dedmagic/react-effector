@@ -11,7 +11,7 @@
     },
     {
       "id": 4,
-      "name": "Клерк123",
+      "name": "Клерк1234",
       "parentId": 3
     },
     {
@@ -28,11 +28,6 @@
       "id": 7,
       "name": "CCCCCCCCCCCddddddd",
       "parentId": 4
-    },
-    {
-      "id": 8,
-      "name": "eeeeeeeff",
-      "parentId": 6
     }
   ],
   "employees": [
@@ -44,11 +39,17 @@
     {
       "id": 3,
       "name": "Гейтс Б.",
-      "positionId": 4
+      "positionId": 6
     },
     {
       "id": 6,
-      "name": "Горыныч З."
+      "name": "Горыныч З.12",
+      "positionId": 5
+    },
+    {
+      "id": 7,
+      "name": "Иванов И.И.",
+      "positionId": 3
     }
   ]
 }

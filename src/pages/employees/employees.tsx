@@ -6,22 +6,36 @@ import { Column, Table, UnifedCard, UnifedPageTitle } from "common/components";
 import { useDialog } from "common/hooks";
 import { DeleteDialog } from "common/components/delete-dialog";
 
-import { $employeesWithPositionName } from "modules/employees/store";
-import { Employee, EmployeeRow } from "modules/employees/types";
-import { fetchAllEmployees, removeEmployee } from "modules/employees";
+import {
+  $employeesWithPositionName,
+  Employee,
+  EmployeeRow,
+  createEmployee,
+  fetchAllEmployees,
+  removeEmployee,
+  updateEmployee,
+} from "modules/employees";
+import { EmployeeEditDialog } from "./employee-edit-dialog";
 
 export const Employees = () => {
   const viewData: EmployeeRow[] = useStore($employeesWithPositionName);
 
   const [currentEntity, setCurrentEntity] = useState<Employee>(new Employee());
+  const [isEditDialogVisible, showEditDialog, closeEditDialog] = useDialog();
   const [isDeleteDialogVisible, showDeleteDialog, closeDeleteDialog] =
     useDialog();
 
   useEffect(() => fetchAllEmployees(), []);
 
-  const addHandler = () => {};
+  const addHandler = () => {
+    setCurrentEntity({ id: 0, name: "", positionId: 0 } as Employee);
+    showEditDialog();
+  };
 
-  const editHandler = (employee: Employee) => {};
+  const editHandler = (employee: Employee) => {
+    setCurrentEntity(employee);
+    showEditDialog();
+  };
 
   const deleteHandler = (employee: Employee) => {
     setCurrentEntity(employee);
@@ -35,6 +49,15 @@ export const Employees = () => {
     } else {
       throw new Error("Something went wrong...");
     }
+  };
+
+  const saveEmployee = (employee: Employee) => {
+    closeEditDialog();
+    if (employee.id) {
+      updateEmployee(employee);
+      return;
+    }
+    createEmployee(employee);
   };
 
   const columns = getColumns(editHandler, deleteHandler);
@@ -51,6 +74,12 @@ export const Employees = () => {
         </div>
         <Table<EmployeeRow> columns={columns} data={viewData} />
       </UnifedCard>
+      <EmployeeEditDialog
+        isVisible={isEditDialogVisible}
+        employee={currentEntity}
+        saveHandler={saveEmployee}
+        closeHandler={closeEditDialog}
+      />
       <DeleteDialog
         isVisible={isDeleteDialogVisible}
         closeHandler={closeDeleteDialog}

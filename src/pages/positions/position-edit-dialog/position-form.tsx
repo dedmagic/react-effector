@@ -7,7 +7,8 @@ import {
   $parentIdField,
   changeNameField,
   changeParentIdField,
-} from "../position-form-store";
+  setAllFields,
+} from "./position-form-store";
 
 interface PositionFormProps {
   position: Position;
@@ -16,8 +17,7 @@ interface PositionFormProps {
 export const PositionForm = (props: PositionFormProps) => {
   const { position } = props;
   useEffect(() => {
-    changeNameField(position.name);
-    changeParentIdField(position.parentId);
+    setAllFields(position);
   }, [position]);
 
   const positions = useStore($positions);
@@ -40,8 +40,8 @@ export const PositionForm = (props: PositionFormProps) => {
         <label htmlFor="entity-parentId">Кому подчиняется</label>
         <select
           value={parentId ?? undefined}
-          onChange={(e) =>
-            changeParentIdField(parseInt(e.target.value) ?? undefined)
+          onChange={(event) =>
+            changeParentIdField(parseInt(event.target.value) ?? undefined)
           }
         >
           <option key={0} value={0}>

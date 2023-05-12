@@ -11,3 +11,11 @@ export const fetchAllEmployees = () =>
 export const deleteEmployee = async (employeeId: number): Promise<boolean> => {
   return api.deleteEntity(EMPLOYEE_API_URL, employeeId);
 };
+
+export const updateEmployee = async (employee: Employee) => {
+  return api.updateEntity(EMPLOYEE_API_URL, employee);
+};
+
+export const createEmployee = async (employee: Employee) => {
+  return api.createEntity(EMPLOYEE_API_URL, employee);
+};
