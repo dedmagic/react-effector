@@ -15,9 +15,40 @@
       "parentId": 2
     },
     {
-      "id": 42,
+      "id": 4,
       "name": "Клерк",
       "parentId": 3
+    }
+  ],
+  "employees": [
+    {
+      "id": 1,
+      "name": "Иванов И.И.",
+      "positionId": 2
+    },
+    {
+      "id": 2,
+      "name": "Петров П.П.",
+      "positionId": 3
+    },
+    {
+      "id": 3,
+      "name": "Гейтс Б.",
+      "positionId": 4
+    },
+    {
+      "id": 4,
+      "name": "Сидоров С.С.",
+      "positionId": 1
+    },
+    {
+      "id": 5,
+      "name": "Маск И.",
+      "positionId": 2
+    },
+    {
+      "id": 6,
+      "name": "Горыныч З."
     }
   ]
 }

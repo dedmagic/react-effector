@@ -1,11 +1,12 @@
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 import { useStore } from "effector-react";
 
-import { ErrorsList, Modal, OkCancelButtons } from "shared";
-import { NO_ERRORS } from "types";
+import { ErrorsList, Modal, OkCancelButtons } from "common/components";
+import { NO_ERRORS } from "common/types";
+import { useErrors } from "common/hooks";
 
-import { Position } from "models/position";
-import { PositionForm } from "./position-form/position-form";
+import { Position } from "modules/position";
+import { PositionForm } from "./position-form";
 import { $nameField, $parentIdField } from "./position-form-store";
 import { validatePosition } from "./position-validation";
 
@@ -18,12 +19,10 @@ interface PositionEditDialogProps {
 
 export const PositionEditDialog = (props: PositionEditDialogProps) => {
   const { isVisible, saveHandler, closeHandler, position } = props;
-  const [errors, setErrors] = useState<string[]>([]);
+  const [errors, setErrors, clearErrors] = useErrors();
 
   const name = useStore($nameField);
   const parentId = useStore($parentIdField);
-
-  const clearErrors = () => setErrors([]);
 
   const saveForm = () => {
     const rawPosition = {

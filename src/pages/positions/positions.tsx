@@ -1,43 +1,41 @@
 import { useEffect, useState } from "react";
 import { useStore } from "effector-react";
 
-import { EntityActionHandlerByEntity } from "types";
-import { Card, Column, Table, UnifedPageTitle } from "shared";
-import { useDialog } from "hooks";
+import { EntityActionHandlerByEntity } from "common/types";
+import { Column, Table, UnifedCard, UnifedPageTitle } from "common/components";
+import { DeleteDialog } from "common/components/delete-dialog";
+import { useDialog } from "common/hooks";
 
 import {
   $positionsWithParentName,
   createPosition,
-  fetchAll,
+  fetchAllPositions,
   Position,
   PositionRow,
   removePosition,
   updatePosition,
-} from "models/position";
+} from "modules/position";
 import { PositionEditDialog } from "./position-edit-dialog";
-import { PositionDeleteDialog } from "./position-delete-dialog";
 
 export const Positions = () => {
   const viewData = useStore($positionsWithParentName);
 
-  useEffect(() => fetchAll(), []);
-
-  const [currentPosition, setCurrentPosition] = useState<Position>(
-    new Position()
-  );
+  const [currentEntity, setCurrentEntity] = useState<Position>(new Position());
   const [isEditDialogVisible, showEditDialog, closeEditDialog] = useDialog();
   const [isDeleteDialogVisible, showDeleteDialog, closeDeleteDialog] =
     useDialog();
 
+  useEffect(() => fetchAllPositions(), []);
+
   const deleteHandler = (position: Position) => {
-    setCurrentPosition(position);
+    setCurrentEntity(position);
     showDeleteDialog();
   };
 
   const deletePosition = () => {
     closeDeleteDialog();
-    if (currentPosition.id) {
-      removePosition(currentPosition.id);
+    if (currentEntity.id) {
+      removePosition(currentEntity.id);
     } else {
       throw new Error("Something went wrong...");
     }
@@ -46,12 +44,12 @@ export const Positions = () => {
   const addHandler = () => {
     // Нельзя `parentId: null`, ибо стейт не обновляется. По этой же причине
     // нельзя `setCurrentPosition(new Postion())`
-    setCurrentPosition({ id: 0, name: "", parentId: 0 } as Position);
+    setCurrentEntity({ id: 0, name: "", parentId: 0 } as Position);
     showEditDialog();
   };
 
   const editHandler = (position: Position) => {
-    setCurrentPosition(position);
+    setCurrentEntity(position);
     showEditDialog();
   };
 
@@ -69,7 +67,7 @@ export const Positions = () => {
   return (
     <>
       <UnifedPageTitle title="Должности" />
-      <Card mixCssClasses="main-content__card">
+      <UnifedCard>
         <div className="actions-panel">
           <button onClick={addHandler}>
             <i className="far fa-square-plus icon-before-label"></i>
@@ -77,17 +75,19 @@ export const Positions = () => {
           </button>
         </div>
         <Table<PositionRow> columns={columns} data={viewData} />
-      </Card>
+      </UnifedCard>
       <PositionEditDialog
         isVisible={isEditDialogVisible}
-        position={currentPosition}
+        position={currentEntity}
         closeHandler={closeEditDialog}
         saveHandler={savePosition}
       />
-      <PositionDeleteDialog
+      <DeleteDialog
         isVisible={isDeleteDialogVisible}
         closeHandler={closeDeleteDialog}
         approveHandler={deletePosition}
+        title={"Удаление должности"}
+        message={"Вы действительно хотите удалить эту должность?"}
       />
     </>
   );

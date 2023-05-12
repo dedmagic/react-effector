@@ -5,29 +5,51 @@
       "name": "Начальник"
     },
     {
-      "id": 2,
-      "name": "Заместитель начальника",
+      "id": 3,
+      "name": "Начальник отдела",
       "parentId": 1
     },
     {
+      "id": 4,
+      "name": "Клерк1234",
+      "parentId": 3
+    },
+    {
+      "id": 5,
+      "name": "asasdsdsd",
+      "parentId": 1
+    },
+    {
+      "id": 6,
+      "name": "bbbbbbbbbbbbbbb222222",
+      "parentId": 3
+    },
+    {
+      "id": 7,
+      "name": "CCCCCCCCCCCddddddd",
+      "parentId": 4
+    }
+  ],
+  "employees": [
+    {
+      "id": 2,
+      "name": "Петров П.П.",
+      "positionId": 3
+    },
+    {
       "id": 3,
-      "name": "Начальник отдела",
-      "parentId": 2
+      "name": "Гейтс Б.",
+      "positionId": 6
     },
     {
-      "id": 42,
-      "name": "Клерк",
-      "parentId": 3
+      "id": 6,
+      "name": "Горыныч З.12",
+      "positionId": 5
     },
     {
-      "id": 48,
-      "name": "aaaabbbccccdddeeefffgggg",
-      "parentId": 3
-    },
-    {
-      "id": 49,
-      "name": "kkkkkkkllmnnnstttxxx",
-      "parentId": 48
+      "id": 7,
+      "name": "Иванов И.И.",
+      "positionId": 3
     }
   ]
 }
