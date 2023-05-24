@@ -1,4 +1,4 @@
-import { SimpleAction } from "common/types";
+import { SimpleAction } from "shared/types";
 import { useToggle } from "./use-toggle";
 
 export const useDialog = (

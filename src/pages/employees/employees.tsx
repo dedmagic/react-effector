@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { useStore } from "effector-react";
 
-import { EntityActionHandlerByEntity } from "common/types";
-import { Column, Table, UnifedCard, UnifedPageTitle } from "common/components";
-import { useDialog } from "common/hooks";
-import { DeleteDialog } from "common/components/delete-dialog";
+import { EntityActionHandlerByEntity } from "shared/types";
+import { Column, Table, UnifedCard, UnifedPageTitle } from "shared/components";
+import { useDialog } from "shared/hooks";
+import { DeleteDialog } from "shared/components/delete-dialog";
 
 import {
   $employeesWithPositionName,

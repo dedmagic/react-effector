@@ -1,4 +1,4 @@
-import { RenderFunction } from "common/types/types";
+import { RenderFunction } from "shared/types/types";
 
 export type CellContent = string | RenderFunction;
 

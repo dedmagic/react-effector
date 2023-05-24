@@ -1,13 +1,13 @@
 import { useStore } from "effector-react";
 
-import { useErrors } from "common/hooks";
+import { useErrors } from "shared/hooks";
 
 import { Employee } from "modules/employees";
 import { $nameField, $positionIdField } from "./employee-form-store";
 import { validateEmployee } from "./employee-validation";
-import { NO_ERRORS } from "common/types";
+import { NO_ERRORS } from "shared/types";
 import { useMemo } from "react";
-import { ErrorsList, Modal, OkCancelButtons } from "common/components";
+import { ErrorsList, Modal, OkCancelButtons } from "shared/components";
 import { EmployeeForm } from "./employee-form";
 
 interface EmployeeEditDialogProps {

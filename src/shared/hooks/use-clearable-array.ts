@@ -1,4 +1,4 @@
-import { SimpleAction } from "common/types";
+import { SimpleAction } from "shared/types";
 import { useState } from "react";
 
 export const useClearableArray = <T>(

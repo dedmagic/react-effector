@@ -1,4 +1,4 @@
-import { NO_ERRORS, ValidationResult } from "common/types";
+import { NO_ERRORS, ValidationResult } from "shared/types";
 
 import { Employee } from "modules/employees";
 

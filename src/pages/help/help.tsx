@@ -1,4 +1,4 @@
-import { PageMock, UnifedPageTitle } from "common/components";
+import { PageMock, UnifedPageTitle } from "shared/components";
 
 export const Help = () => {
   return (

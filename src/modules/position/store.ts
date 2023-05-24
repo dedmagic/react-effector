@@ -1,6 +1,6 @@
 import { createEffect, createEvent, createStore, sample } from "effector";
 
-import { ERROR_MSG } from "common/api";
+import { ERROR_MSG } from "shared/api";
 
 import * as api from "./api";
 import { Position } from "./types";

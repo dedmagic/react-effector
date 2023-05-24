@@ -1,9 +1,9 @@
 import { useMemo } from "react";
 import { useStore } from "effector-react";
 
-import { ErrorsList, Modal, OkCancelButtons } from "common/components";
-import { NO_ERRORS } from "common/types";
-import { useErrors } from "common/hooks";
+import { ErrorsList, Modal, OkCancelButtons } from "shared/components";
+import { NO_ERRORS } from "shared/types";
+import { useErrors } from "shared/hooks";
 
 import { Position } from "modules/position";
 import { PositionForm } from "./position-form";

@@ -1,6 +1,6 @@
 import { createApi, createEvent, createStore, sample } from "effector";
 
-import { Nullable } from "common/types/types";
+import { Nullable } from "shared/types/types";
 
 import { Position } from "modules/position";
 

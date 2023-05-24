@@ -1,5 +1,5 @@
-import { api } from "common/api";
-import { API_URL } from "common/config";
+import { api } from "shared/api";
+import { API_URL } from "shared/config";
 
 import { Position } from "modules/position";
 
