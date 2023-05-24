@@ -52,7 +52,7 @@ export const Modal = ({
         щелчке вне его (см. коммент выше), чтобы окно не закрывалось
         при щелчке по нему
        */}
-      <div className="modal" onClick={(e) => e.stopPropagation()}>
+      <div className="modal" onClick={(event) => event.stopPropagation()}>
         <div className="modal__header">
           <h3 className="modal__title">{title}</h3>
           <span className="modal__close" onClick={onClose}>

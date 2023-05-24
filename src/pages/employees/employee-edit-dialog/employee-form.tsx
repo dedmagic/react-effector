@@ -34,7 +34,7 @@ export const EmployeeForm = (props: EmployeeFormProps) => {
           id="entity-name"
           placeholder="Введите ФИО сотрудника"
           value={name}
-          onChange={(e) => changeNameField(e.target.value)}
+          onChange={(event) => changeNameField(event.target.value)}
         />
       </div>
       <div className="form-control">

@@ -33,7 +33,7 @@ export const PositionForm = (props: PositionFormProps) => {
           id="entity-name"
           placeholder="Введите наименование должности"
           value={name}
-          onChange={(e) => changeNameField(e.target.value)}
+          onChange={(event) => changeNameField(event.target.value)}
         />
       </div>
       <div className="form-control">
