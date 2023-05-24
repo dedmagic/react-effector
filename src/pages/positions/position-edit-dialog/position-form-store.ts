@@ -2,7 +2,7 @@ import { createApi, createEvent, createStore, sample } from "effector";
 
 import { Nullable } from "shared/types/types";
 
-import { Position } from "modules/position";
+import { Position } from "entities/position";
 
 //#region name field
 export const $nameField = createStore<string>("");

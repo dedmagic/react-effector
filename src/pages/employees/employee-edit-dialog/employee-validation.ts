@@ -1,6 +1,6 @@
 import { NO_ERRORS, ValidationResult } from "shared/types";
 
-import { Employee } from "modules/employees";
+import { Employee } from "entities/employees";
 
 export const validateEmployee = (rawEmployee: Employee): ValidationResult => {
   const errors: string[] = [];

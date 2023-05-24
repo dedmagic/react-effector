@@ -9,8 +9,8 @@ import {
 import { ERROR_MSG } from "shared/api";
 
 import * as api from "./api";
-import { Employee } from "modules/employees";
-import { $positions, fetchAllPositionsFx } from "modules/position";
+import { Employee } from "entities/employees";
+import { $positions, fetchAllPositionsFx } from "entities/position";
 
 export const $employees = createStore<Employee[]>([]);
 

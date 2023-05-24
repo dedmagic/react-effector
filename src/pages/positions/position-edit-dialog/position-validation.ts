@@ -1,6 +1,6 @@
 import { NO_ERRORS, ValidationResult } from "shared/types";
 
-import { Position } from "modules/position";
+import { Position } from "entities/position";
 
 export const validatePosition = (rawPosition: Position): ValidationResult => {
   const errors: string[] = [];

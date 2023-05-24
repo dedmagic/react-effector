@@ -5,7 +5,7 @@ import { ErrorsList, Modal, OkCancelButtons } from "shared/components";
 import { NO_ERRORS } from "shared/types";
 import { useErrors } from "shared/hooks";
 
-import { Position } from "modules/position";
+import { Position } from "entities/position";
 import { PositionForm } from "./position-form";
 import { $nameField, $parentIdField } from "./position-form-store";
 import { validatePosition } from "./position-validation";

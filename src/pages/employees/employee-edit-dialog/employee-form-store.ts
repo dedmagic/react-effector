@@ -2,7 +2,7 @@ import { createApi, createEvent, createStore, sample } from "effector";
 
 import { Nullable } from "shared/types";
 
-import { Employee } from "modules/employees";
+import { Employee } from "entities/employees";
 
 // #region name field
 export const $nameField = createStore<string>("");

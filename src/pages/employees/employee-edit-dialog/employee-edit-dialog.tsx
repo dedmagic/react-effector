@@ -2,7 +2,7 @@ import { useStore } from "effector-react";
 
 import { useErrors } from "shared/hooks";
 
-import { Employee } from "modules/employees";
+import { Employee } from "entities/employees";
 import { $nameField, $positionIdField } from "./employee-form-store";
 import { validateEmployee } from "./employee-validation";
 import { NO_ERRORS } from "shared/types";

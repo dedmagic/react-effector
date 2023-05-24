@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useStore } from "effector-react";
 
-import { Employee } from "modules/employees";
+import { Employee } from "entities/employees";
 import {
   $nameField,
   $positionIdField,
@@ -9,7 +9,7 @@ import {
   changePositionIdField,
   setAllFields,
 } from "./employee-form-store";
-import { $positions } from "modules/position";
+import { $positions } from "entities/position";
 
 interface EmployeeFormProps {
   employee: Employee;

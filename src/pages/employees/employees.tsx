@@ -14,7 +14,7 @@ import {
   fetchAllEmployees,
   removeEmployee,
   updateEmployee,
-} from "modules/employees";
+} from "entities/employees";
 import { EmployeeEditDialog } from "./employee-edit-dialog";
 
 export const Employees = () => {

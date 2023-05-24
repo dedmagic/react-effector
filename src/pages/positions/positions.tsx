@@ -14,7 +14,7 @@ import {
   PositionRow,
   removePosition,
   updatePosition,
-} from "modules/position";
+} from "entities/position";
 import { PositionEditDialog } from "./position-edit-dialog";
 
 export const Positions = () => {
