@@ -1,1 +1,2 @@
-export * from "./types";
+export * from "./common-types";
+export * from "./domain-types";
