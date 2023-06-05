@@ -1,11 +1,11 @@
-import { createApi, createEvent, createStore, sample } from "effector";
+import { createApi, createEvent, createStore, sample } from 'effector';
 
-import { Nullable } from "shared/types";
+import { Nullable } from 'shared/types';
 
-import { Employee } from "entities/employees";
+import { Employee } from 'entities/employee';
 
 // #region name field
-export const $nameField = createStore<string>("");
+export const $nameField = createStore<string>('');
 export const { changeNameField, setNameField } = createApi($nameField, {
   changeNameField: (_, newValue: string) => newValue,
   setNameField: (_, employee: Employee) => employee.name,

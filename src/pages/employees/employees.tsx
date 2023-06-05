@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
-import { useStore } from "effector-react";
+import { useEffect, useState } from 'react';
+import { useStore } from 'effector-react';
 
-import { EntityActionHandlerByEntity } from "shared/types";
-import { Column, Table, UnifedCard, UnifedPageTitle } from "shared/components";
-import { useDialog } from "shared/hooks";
-import { DeleteDialog } from "shared/components/delete-dialog";
+import { EntityActionHandlerByEntity } from 'shared/types';
+import { Column, Table, UnifedCard, UnifedPageTitle } from 'shared/components';
+import { useDialog } from 'shared/hooks';
+import { DeleteDialog } from 'shared/components/delete-dialog';
 
 import {
   $employeesWithPositionName,
@@ -14,8 +14,8 @@ import {
   fetchAllEmployees,
   removeEmployee,
   updateEmployee,
-} from "entities/employees";
-import { EmployeeEditDialog } from "./employee-edit-dialog";
+} from 'entities/employee';
+import { EmployeeEditDialog } from './employee-edit-dialog';
 
 export const Employees = () => {
   const viewData: EmployeeRow[] = useStore($employeesWithPositionName);
@@ -28,7 +28,7 @@ export const Employees = () => {
   useEffect(() => fetchAllEmployees(), []);
 
   const addHandler = () => {
-    setCurrentEntity({ id: 0, name: "", positionId: 0 } as Employee);
+    setCurrentEntity({ id: 0, name: '', positionId: 0 } as Employee);
     showEditDialog();
   };
 
@@ -47,7 +47,7 @@ export const Employees = () => {
     if (currentEntity.id) {
       removeEmployee(currentEntity.id);
     } else {
-      throw new Error("Something went wrong...");
+      throw new Error('Something went wrong...');
     }
   };
 
@@ -97,18 +97,18 @@ function getColumns(
 ) {
   const columns: Column<EmployeeRow>[] = [
     {
-      key: "name",
-      header: "ФИО",
-      dataName: "name",
+      key: 'name',
+      header: 'ФИО',
+      dataName: 'name',
     },
     {
-      key: "position",
-      header: "Должность",
-      dataName: "positionName",
+      key: 'position',
+      header: 'Должность',
+      dataName: 'positionName',
       width: 250,
     },
     {
-      key: "actions",
+      key: 'actions',
       header: () => (
         <div className="center">
           <i className="fa fa-gears"></i>

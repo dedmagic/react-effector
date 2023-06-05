@@ -1,15 +1,15 @@
-import { useEffect } from "react";
-import { useStore } from "effector-react";
+import { useEffect } from 'react';
+import { useStore } from 'effector-react';
 
-import { Employee } from "entities/employees";
+import { Employee } from 'entities/employee';
 import {
   $nameField,
   $positionIdField,
   changeNameField,
   changePositionIdField,
   setAllFields,
-} from "./employee-form-store";
-import { $positions } from "entities/position";
+} from './employee-form-store';
+import { $positions } from 'entities/position';
 
 interface EmployeeFormProps {
   employee: Employee;

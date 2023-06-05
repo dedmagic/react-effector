@@ -1,14 +1,14 @@
-import { useStore } from "effector-react";
+import { useStore } from 'effector-react';
 
-import { useErrors } from "shared/hooks";
+import { useErrors } from 'shared/hooks';
 
-import { Employee } from "entities/employees";
-import { $nameField, $positionIdField } from "./employee-form-store";
-import { validateEmployee } from "./employee-validation";
-import { NO_ERRORS } from "shared/types";
-import { useMemo } from "react";
-import { ErrorsList, Modal, OkCancelButtons } from "shared/components";
-import { EmployeeForm } from "./employee-form";
+import { Employee } from 'entities/employee';
+import { $nameField, $positionIdField } from './employee-form-store';
+import { validateEmployee } from './employee-validation';
+import { NO_ERRORS } from 'shared/types';
+import { useMemo } from 'react';
+import { ErrorsList, Modal, OkCancelButtons } from 'shared/components';
+import { EmployeeForm } from './employee-form';
 
 interface EmployeeEditDialogProps {
   isVisible: boolean;
@@ -41,7 +41,7 @@ export const EmployeeEditDialog = (props: EmployeeEditDialogProps) => {
 
   const dialogTitle = useMemo(
     () =>
-      !employee.id ? "Добавление сотрудника" : "Редактирование сотрудника",
+      !employee.id ? 'Добавление сотрудника' : 'Редактирование сотрудника',
     [employee.id]
   );
 

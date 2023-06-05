@@ -4,13 +4,13 @@ import {
   createEvent,
   createStore,
   sample,
-} from "effector";
+} from 'effector';
 
-import { ERROR_MSG } from "shared/api";
+import { ERROR_MSG } from 'shared/api';
 
-import * as api from "./api";
-import { Employee } from "entities/employees";
-import { $positions, fetchAllPositionsFx } from "entities/position";
+import * as api from './api';
+import { Employee } from '.';
+import { $positions, fetchAllPositionsFx } from 'entities/position';
 
 export const $employees = createStore<Employee[]>([]);
 
@@ -30,7 +30,7 @@ sample({ clock: fetchAllEmployees, target: fetchAllPositionsFx });
 //#endregion fetch all
 
 //#region delete employee
-export const removeEmployee = createEvent<number>("remove employee");
+export const removeEmployee = createEvent<number>('remove employee');
 const deleteEmployeeFx = createEffect(async (employeeId: number) => {
   const result = await api.deleteEmployee(employeeId);
   console.info(`api call result: ${result}`);
@@ -44,7 +44,7 @@ sample({
 //#endregion delete employee
 
 //#region update employee
-export const updateEmployee = createEvent<Employee>("update employee");
+export const updateEmployee = createEvent<Employee>('update employee');
 const updateEmployeeFx = createEffect(async (employee: Employee) => {
   const result = await api.updateEmployee(employee);
   console.info(`api call result: ${result}`);
@@ -58,7 +58,7 @@ sample({
 //#endregion update employee
 
 //#region create employee
-export const createEmployee = createEvent<Employee>("create new employee");
+export const createEmployee = createEvent<Employee>('create new employee');
 const createEmployeeFx = createEffect(async (employee: Employee) => {
   const result = await api.createEmployee(employee);
   console.info(`api call result: ${result}`);
@@ -80,7 +80,7 @@ export const $employeesWithPositionName = combine(
       ...employee,
       positionName:
         positions.find((position) => position.id === employee.positionId)
-          ?.name ?? "",
+          ?.name ?? '',
     }));
   }
 );

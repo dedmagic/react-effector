@@ -1,7 +1,7 @@
-import { api } from "shared/api";
-import { API_URL } from "shared/config";
+import { api } from 'shared/api';
+import { API_URL } from 'shared/config';
 
-import { Position } from "entities/position";
+import { Position } from '.';
 
 const POSITION_API_URL = `${API_URL}/positions`;
 

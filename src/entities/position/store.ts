@@ -1,9 +1,9 @@
-import { createEffect, createEvent, createStore, sample } from "effector";
+import { createEffect, createEvent, createStore, sample } from 'effector';
 
-import { ERROR_MSG } from "shared/api";
+import { ERROR_MSG } from 'shared/api';
 
-import * as api from "./api";
-import { Position } from "./model";
+import * as api from './api';
+import { Position } from '.';
 
 export const $positions = createStore<Position[]>([]);
 
@@ -25,7 +25,7 @@ sample({
 //#endregion fetch all
 
 //#region delete position
-export const removePosition = createEvent<number>("remove position");
+export const removePosition = createEvent<number>('remove position');
 const deletePositionFx = createEffect(async (positionId: number) => {
   const result = await api.deletePosition(positionId);
   console.info(`api call result: ${result}`);
@@ -39,7 +39,7 @@ sample({
 //#endregion delete position
 
 //#region update position
-export const updatePosition = createEvent<Position>("update position");
+export const updatePosition = createEvent<Position>('update position');
 const updatePositionFx = createEffect(async (position: Position) => {
   const result = await api.updatePosition(position);
   console.info(`api call result: ${result}`);
@@ -53,7 +53,7 @@ sample({
 //#endregion update position
 
 //#region create position
-export const createPosition = createEvent<Position>("create new position");
+export const createPosition = createEvent<Position>('create new position');
 const createPositionFx = createEffect(async (position: Position) => {
   const result = await api.createPosition(position);
   console.info(`api call result: ${result}`);
