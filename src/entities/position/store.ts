@@ -2,15 +2,19 @@ import { createEffect, createEvent, createStore, sample } from 'effector';
 
 import { ERROR_MSG } from 'shared/api';
 
-import * as api from './api';
+import { api } from 'shared/api';
+import { API_URL } from 'shared/config';
+
 import { Position } from '.';
+
+const POSITION_API_URL = `${API_URL}/positions`;
 
 export const $positions = createStore<Position[]>([]);
 
 //#region fetch all
 export const fetchAllPositions = createEvent();
 export const fetchAllPositionsFx = createEffect(() => {
-  return api.fetchAllPositions();
+  return api.getAllEntities<Position>(POSITION_API_URL);
 });
 
 sample({ clock: fetchAllPositions, target: fetchAllPositionsFx });
@@ -27,7 +31,7 @@ sample({
 //#region delete position
 export const removePosition = createEvent<number>('remove position');
 const deletePositionFx = createEffect(async (positionId: number) => {
-  const result = await api.deletePosition(positionId);
+  const result = await api.deleteEntity(POSITION_API_URL, positionId);
   console.info(`api call result: ${result}`);
 });
 sample({ clock: removePosition, target: deletePositionFx });
@@ -41,7 +45,7 @@ sample({
 //#region update position
 export const updatePosition = createEvent<Position>('update position');
 const updatePositionFx = createEffect(async (position: Position) => {
-  const result = await api.updatePosition(position);
+  const result = await api.updateEntity(POSITION_API_URL, position);
   console.info(`api call result: ${result}`);
 });
 sample({ clock: updatePosition, target: updatePositionFx });
@@ -55,7 +59,7 @@ sample({
 //#region create position
 export const createPosition = createEvent<Position>('create new position');
 const createPositionFx = createEffect(async (position: Position) => {
-  const result = await api.createPosition(position);
+  const result = await api.createEntity(POSITION_API_URL, position);
   console.info(`api call result: ${result}`);
 });
 sample({ clock: createPosition, target: createPositionFx });
