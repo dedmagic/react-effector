@@ -1,4 +1,5 @@
 export enum ErrandStatus {
+  Undefined,
   InWork,
   SoonToExpire,
   Overdue,
@@ -10,5 +11,11 @@ export enum ErrandStatus {
 export class Errand {
   id: number = 0;
   description: string = '';
-  status: ErrandStatus = ErrandStatus.InWork;
+  responsibleId: number = 0; // responsible is employee
+  status: ErrandStatus = ErrandStatus.Undefined;
+}
+
+export interface ErrandRow {
+  responsibleName: string;
+  statusName: string;
 }

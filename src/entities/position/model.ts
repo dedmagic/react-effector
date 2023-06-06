@@ -1,8 +1,8 @@
-import { Nullable } from "shared/types";
+import { Nullable } from 'shared/types';
 
 export class Position {
   id: number = 0;
-  name: string = "";
+  name: string = '';
   parentId: Nullable<number> = null;
 }
 

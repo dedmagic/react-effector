@@ -5,17 +5,14 @@ import { Employee } from '.';
 
 const EMPLOYEE_API_URL = `${API_URL}/employees`;
 
-export const fetchAllEmployees = () =>
+export const fetchAllEmployees = (): Promise<Employee[]> =>
   api.getAllEntities<Employee>(EMPLOYEE_API_URL);
 
-export const deleteEmployee = async (employeeId: number): Promise<boolean> => {
-  return api.deleteEntity(EMPLOYEE_API_URL, employeeId);
-};
+export const deleteEmployee = async (employeeId: number): Promise<boolean> =>
+  api.deleteEntity(EMPLOYEE_API_URL, employeeId);
 
-export const updateEmployee = async (employee: Employee) => {
-  return api.updateEntity(EMPLOYEE_API_URL, employee);
-};
+export const updateEmployee = async (employee: Employee): Promise<boolean> =>
+  api.updateEntity(EMPLOYEE_API_URL, employee);
 
-export const createEmployee = async (employee: Employee) => {
-  return api.createEntity(EMPLOYEE_API_URL, employee);
-};
+export const createEmployee = async (employee: Employee): Promise<boolean> =>
+  api.createEntity(EMPLOYEE_API_URL, employee);
