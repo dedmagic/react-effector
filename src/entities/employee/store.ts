@@ -8,16 +8,20 @@ import {
 
 import { ERROR_MSG } from 'shared/api';
 
-import * as api from './api';
+import { API_URL } from 'shared/config';
+import { api } from 'shared/api';
+
 import { Employee } from '.';
 import { $positions, fetchAllPositionsFx } from 'entities/position';
 
 export const $employees = createStore<Employee[]>([]);
 
+const EMPLOYEE_API_URL = `${API_URL}/employees`;
+
 //#region fetch all
 export const fetchAllEmployees = createEvent();
 const fetchAllEmployeesFx = createEffect(() => {
-  return api.fetchAllEmployees();
+  return api.getAllEntities<Employee>(EMPLOYEE_API_URL);
 });
 
 sample({ clock: fetchAllEmployees, target: fetchAllEmployeesFx });
@@ -32,7 +36,7 @@ sample({ clock: fetchAllEmployees, target: fetchAllPositionsFx });
 //#region delete employee
 export const removeEmployee = createEvent<number>('remove employee');
 const deleteEmployeeFx = createEffect(async (employeeId: number) => {
-  const result = await api.deleteEmployee(employeeId);
+  const result = await api.deleteEntity(EMPLOYEE_API_URL, employeeId);
   console.info(`api call result: ${result}`);
 });
 sample({ clock: removeEmployee, target: deleteEmployeeFx });
@@ -46,7 +50,7 @@ sample({
 //#region update employee
 export const updateEmployee = createEvent<Employee>('update employee');
 const updateEmployeeFx = createEffect(async (employee: Employee) => {
-  const result = await api.updateEmployee(employee);
+  const result = await api.updateEntity(EMPLOYEE_API_URL, employee);
   console.info(`api call result: ${result}`);
 });
 sample({ clock: updateEmployee, target: updateEmployeeFx });
@@ -60,7 +64,7 @@ sample({
 //#region create employee
 export const createEmployee = createEvent<Employee>('create new employee');
 const createEmployeeFx = createEffect(async (employee: Employee) => {
-  const result = await api.createEmployee(employee);
+  const result = await api.createEntity(EMPLOYEE_API_URL, employee);
   console.info(`api call result: ${result}`);
 });
 sample({ clock: createEmployee, target: createEmployeeFx });
