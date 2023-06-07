@@ -11,7 +11,7 @@ export enum ErrandStatus {
 export class Errand {
   id: number = 0;
   description: string = '';
-  responsibleId: number = 0; // responsible is employee
+  responsibleEmployeeId: number = 0;
   status: ErrandStatus = ErrandStatus.Undefined;
 }
 

@@ -6,17 +6,15 @@ import {
   sample,
 } from 'effector';
 
-import { ERROR_MSG } from 'shared/api';
-
 import { API_URL } from 'shared/config';
-import { api } from 'shared/api';
+import { api, ERROR_MSG } from 'shared/api';
 
 import { Employee } from '.';
 import { $positions, fetchAllPositionsFx } from 'entities/position';
 
-export const $employees = createStore<Employee[]>([]);
-
 const EMPLOYEE_API_URL = `${API_URL}/employees`;
+
+export const $employees = createStore<Employee[]>([]);
 
 //#region fetch all
 export const fetchAllEmployees = createEvent();
@@ -27,7 +25,7 @@ const fetchAllEmployeesFx = createEffect(() => {
 sample({ clock: fetchAllEmployees, target: fetchAllEmployeesFx });
 sample({ clock: fetchAllEmployeesFx.doneData, target: $employees });
 sample({
-  clock: fetchAllEmployeesFx.failData,
+  clock: fetchAllEmployeesFx.fail,
   fn: () => console.error(ERROR_MSG.GET_REQUEST),
 });
 sample({ clock: fetchAllEmployees, target: fetchAllPositionsFx });
@@ -42,7 +40,7 @@ const deleteEmployeeFx = createEffect(async (employeeId: number) => {
 sample({ clock: removeEmployee, target: deleteEmployeeFx });
 sample({ clock: deleteEmployeeFx.done, target: fetchAllEmployees });
 sample({
-  clock: deleteEmployeeFx.failData,
+  clock: deleteEmployeeFx.fail,
   fn: () => console.error(ERROR_MSG.DELETE_REQUEST),
 });
 //#endregion delete employee
@@ -56,7 +54,7 @@ const updateEmployeeFx = createEffect(async (employee: Employee) => {
 sample({ clock: updateEmployee, target: updateEmployeeFx });
 sample({ clock: updateEmployeeFx.done, target: fetchAllEmployeesFx });
 sample({
-  clock: updateEmployeeFx.failData,
+  clock: updateEmployeeFx.fail,
   fn: () => console.error(ERROR_MSG.UPDATE_REQUEST),
 });
 //#endregion update employee
@@ -70,7 +68,7 @@ const createEmployeeFx = createEffect(async (employee: Employee) => {
 sample({ clock: createEmployee, target: createEmployeeFx });
 sample({ clock: createEmployeeFx.done, target: fetchAllEmployeesFx });
 sample({
-  clock: createEmployeeFx.failData,
+  clock: createEmployeeFx.fail,
   fn: () => console.error(ERROR_MSG.CREATE_REQUEST),
 });
 //#endregion create employee

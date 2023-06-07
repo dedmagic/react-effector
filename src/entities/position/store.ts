@@ -1,8 +1,6 @@
 import { createEffect, createEvent, createStore, sample } from 'effector';
 
-import { ERROR_MSG } from 'shared/api';
-
-import { api } from 'shared/api';
+import { api, ERROR_MSG } from 'shared/api';
 import { API_URL } from 'shared/config';
 
 import { Position } from '.';
@@ -23,7 +21,7 @@ sample({
   target: $positions,
 });
 sample({
-  clock: fetchAllPositionsFx.failData,
+  clock: fetchAllPositionsFx.fail,
   fn: () => console.error(ERROR_MSG.GET_REQUEST),
 });
 //#endregion fetch all
@@ -37,7 +35,7 @@ const deletePositionFx = createEffect(async (positionId: number) => {
 sample({ clock: removePosition, target: deletePositionFx });
 sample({ clock: deletePositionFx.done, target: fetchAllPositionsFx });
 sample({
-  clock: deletePositionFx.failData,
+  clock: deletePositionFx.fail,
   fn: () => console.error(ERROR_MSG.DELETE_REQUEST),
 });
 //#endregion delete position
@@ -51,7 +49,7 @@ const updatePositionFx = createEffect(async (position: Position) => {
 sample({ clock: updatePosition, target: updatePositionFx });
 sample({ clock: updatePositionFx.done, target: fetchAllPositionsFx });
 sample({
-  clock: updatePositionFx.failData,
+  clock: updatePositionFx.fail,
   fn: () => console.error(ERROR_MSG.UPDATE_REQUEST),
 });
 //#endregion update position
@@ -65,7 +63,7 @@ const createPositionFx = createEffect(async (position: Position) => {
 sample({ clock: createPosition, target: createPositionFx });
 sample({ clock: createPositionFx.done, target: fetchAllPositionsFx });
 sample({
-  clock: createPositionFx.failData,
+  clock: createPositionFx.fail,
   fn: () => console.error(ERROR_MSG.CREATE_REQUEST),
 });
 //#endregion create position

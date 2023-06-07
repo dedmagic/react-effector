@@ -21,13 +21,8 @@
     },
     {
       "id": 6,
-      "name": "bbbbbbbbb222222",
-      "parentId": 3
-    },
-    {
-      "id": 8,
-      "name": "111111111",
-      "parentId": 5
+      "name": "bbbbbbbbbbbbbb",
+      "parentId": 0
     }
   ],
   "employees": [
@@ -35,16 +30,6 @@
       "id": 2,
       "name": "Петров П.П.",
       "positionId": 3
-    },
-    {
-      "id": 3,
-      "name": "Гейтс Б.",
-      "positionId": 6
-    },
-    {
-      "id": 6,
-      "name": "Горыныч З.12",
-      "positionId": 8
     },
     {
       "id": 7,
